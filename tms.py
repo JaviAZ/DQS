@@ -1,38 +1,28 @@
 #!/usr/bin/python3
 from database import *
+from tuteesMeth import *
+from tutorsMeth import *
 
-def viewTutorList():
+def endProgram():	#Later dictionaries will be put into csv in this method
+	print("Exiting program.")
+	quit()
+
+def userInput(msg):	#Function to handle user input, check gameparser from Computatinal thinking coursework. To be completed
+	npt = input(msg).lower()
+	if npt=="endp":
+		endProgram()
+	if npt=="main":
+		main()
+	return npt
+
+def createProgram(): #will create the tutee and tuteeList using csv file and call genGroups(). Use addTutee()
 	print("To be completed")
 
-def editTutor(tutorObj):
-	editChoice=input("Do you wish to edit name, surname, email, or group?").lower()
-	if editChoice=="name":
-		print("To be completed")
-	elif editChoice=="surname":
-		print("To be completed")
-	elif editChoice=="email":
-		print("To be completed")
-	elif editChoice=="group":
-		print("To be completed")
-	else:
-		print("Please input name, surname, email or group.")
-
-def viewStudentList():
+def startProgram(): #will fetch csv for dictionaries data
 	print("To be completed")
 
-def editStudent(studentObj):
-	print("To be completed")
-
-def createProgram():
-	print("To be completed")
-
-def startProgram():
-	print("To be completed")
-
-def endProgram():
-	print("To be completed")
-
-def admin():
+def admin():	#Let user choose view tutors, view students, edit tutors, edit students, create program, start program or end program. Call method depending on user choice. Main menu and go back option every view
+	print("\n                     -----------\n                        ADMIN\n                     -----------")
 	print("Manage tutors:                             Manage students:")
 	print()
 	print(" View tutors                                View students  ")
@@ -42,56 +32,15 @@ def admin():
 	print("                     Create program                        ")
 	print("                     Start program                         ")
 	print("                       End program                         ")
-	adminOption=input().lower()
-	print()
+	adminOption=userInput("")
 	if adminOption=="view tutors":
 		viewTutorList()
 	elif adminOption=="edit tutors":
-		tflag=True
-		tflag2=True
-		while tflag:
-			tutorSurname=input("Input the surname of the tutor you wish to edit: ").lower()
-			tcount=0
-			for tutorKey in tutorList:
-				if tutorSurname==tutorList[tutorKey]["surname"].lower():
-					tcount+=1
-					tflag=False
-					print ("ID: "+tutorList[tutorKey]["id"]+". Name: "+tutorList[tutorKey]["name"]+". Surname: "+tutorList[tutorKey]["surname"]+". Email: "+tutorList[tutorKey]["email"])
-			if tcount==0:
-				print("Sorry the tutor was not found.")
-			else:
-				while tflag2:
-					tChoice=input("Enter the ID of the tutor you wish to edit: ")
-					if tChoice in tutorList:
-						editTutor(tutorList[tChoice])
-						tflag2=False
-						break
-					else:
-						print("That tutor isn't in the list.")
+		editTutor()
 	elif adminOption=="view students":
-		viewStudentList()
+		viewTuteeList()
 	elif adminOption=="edit students":
-		sflag=True
-		sflag2=True
-		while sflag:
-			studentSurname=input("Input the surname of the student you wish to edit: ").lower()
-			scount=0
-			for studentKey in studentList:
-				if studentSurname==studentList[studentKey]["surname"].lower():
-					scount+=1
-					sflag=False
-					print ("Student number: "+studentList[studentKey]["studentNo"]+". Name: "+studentList[studentKey]["name"]+". Surname: "+studentList[studentKey]["surname"]+". Email: "+studentList[studentKey]["email"])
-			if tcount==0:
-				print("Sorry the student was not found.")
-			else:
-				while sflag2:
-					Choice=input("Enter the student number of the student you wish to edit: ")
-					if sChoice in studentList:
-						editTutor(studentList[sChoice])
-						sflag2=False
-						break
-					else:
-						print("That student isn't in the list.")
+		editTutee()
 	elif adminOption=="create program":
 		createProgram()
 	elif adminOption=="start program":
@@ -99,28 +48,25 @@ def admin():
 	elif adminOption=="end program":
 		endProgram()
 	else:
-		print("Please input view tutors, edit tutors, view students, edit students, create program, start program or end program.")
-
-def tutor():
-	print("To be completed")
-
-def student():
-	print("To be completed")
+		print("\n\n                          ***Please input view tutors, edit tutors, view students, edit students, create program, start program or end program.***\n\n")
+		admin()
 
 def main():
 	print("Cardiff University Computer Science Tutor Management System")
 	print("Admin")
 	print("Tutor")
 	print("Student")
-	chooseView=input().lower()
-	print()
+	print("**Type endp at any time to exit the program**")
+	print("**Type main at any time to go back to this menu**")
+	chooseView=userInput("")
 	if chooseView=="admin":
 		admin()
 	elif chooseView=="tutor":
 		tutor()
 	elif chooseView=="student":
-		student()
+		tutee()
 	else:
-		print("Please input admin, tutor or student.")
+		print("\n\n                          ***Please input admin, tutor or student.***\n\n")
+		main()
 
 main()
