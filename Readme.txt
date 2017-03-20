@@ -4,8 +4,8 @@ To run the project you will need to change the csv file path in tms.importTutees
 Javier: tms.importTutees(completed),tms.importTutors(completed),tms.startprogram(completed),tms.admin(completed),tms.main(completed)
 Kurt:
 Anuj:
-Andrew:
-Charlie:
+Andrew: the entire project.
+Charlie: LOL
 
 MarkScheme:
 	1.Upload an excel / csv file of new students and assign new students to personal tutees
