@@ -51,9 +51,10 @@ def editTutor(): #Ask for surname. Show possible options or print error message.
 					break
 				else:
 					print("That tutor isn't in the list.")
-	editChoice=tms.userInput("Do you wish to edit name, surname, email, or group?")
+	editChoice=tms.userInput("Do you wish to edit name, surname, email, or group? ")
 	if editChoice=="name":
-		print("To be completed")
+		tutorObj["name"] = tms.userInput("Please enter the new name: ")
+		print(tutorObj)
 	elif editChoice=="surname":
 		print("To be completed")
 	elif editChoice=="email":
