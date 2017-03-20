@@ -85,26 +85,38 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 			print("Sorry the tutee was not found.")
 		else:
 			while sflag2:
-				Choice=tms.userInput("Enter the student number of the tutee you wish to edit: ")
-				if sChoice in tuteeList:
-					tuteeObj=tuteeList[sChoice]
+				Choice=tms.userInput("Enter the student number of the tutee you wish to edit: ").upper()
+				if Choice in tuteeList:
+					tuteeObj=tuteeList[Choice]
 					sflag2=False
 					break
 				else:
 					print("That student isn't in the list.")
 	editChoice=tms.userInput("Do you wish to edit name, surname, email, course, course year or tutor?")
 	if editChoice=="name":
-		print("To be completed")
+		tuteeObj["name"] = input("Please enter the new name: ")
+		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
+
 	elif editChoice=="surname":
-		print("To be completed")
+		tuteeObj["surname"] = tms.userInput("Please enter the new surname: ")
+		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
+
 	elif editChoice=="email":
-		print("To be completed")
+		tuteeObj["email"] = input("Please enter the new Email address : ")
+		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
+
 	elif editChoice=="course":
-		print("To be completed")
+		tuteeObj["course"] = input("Please enter the new course: ")
+		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
+
 	elif editChoice=="course year":
-		print("To be completed")
+		tuteeObj["course year"] = input("Please enter the new course year: ")
+		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
+
 	elif editChoice=="tutor":
-		print("To be completed")
+		tuteeObj["tutor"] = input("Please enter the new tutor: ")
+		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
+
 	else:
 		print("\n\n                          ***Please input name, surname, email, course, course year or tutor.***\n\n")
 	database.tuteeList=tuteeList

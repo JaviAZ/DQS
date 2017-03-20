@@ -51,15 +51,19 @@ def editTutor(): #Ask for surname. Show possible options or print error message.
 					break
 				else:
 					print("That tutor isn't in the list.")
-	editChoice=tms.userInput("Do you wish to edit name, surname, email, or group?")
+	editChoice=tms.userInput("Do you wish to edit name, surname, email, or group? ")
 	if editChoice=="name":
-		print("To be completed")
+		tutorObj["name"] = input("Please enter the new name: ")
+		print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
 	elif editChoice=="surname":
-		print("To be completed")
+		tutorObj["surname"] = input("Please enter the new surname: ")
+		print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
 	elif editChoice=="email":
-		print("To be completed")
+		tutorObj["email"] = input("Please enter the new Email address: ")
+		print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
 	elif editChoice=="group":
-		print("To be completed")
+		tutorObj["group"] = input("Please enter the new tutor ID: ")
+		print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
 	else:
 		print("\n\n                          ***Please input name, surname, email or group.***\n\n")
 	database.tutorList=tutorList
