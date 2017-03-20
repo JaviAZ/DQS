@@ -77,12 +77,11 @@ def admin(): #Let user choose view tutors, view students, edit tutors, edit stud
 		tuteesMeth.editTutee()
 	elif adminOption=="create groups":
 		tutorsMeth.genGroups()
-		admin()
 	elif adminOption=="end program":
 		endProgram()
 	else:
 		print("\n\n                          ***Please input view tutors, edit tutors, view students, edit students, create program, start program or end program.***\n\n")
-		admin()
+	admin()
 
 def main():
 	print("            Cardiff University Computer Science Tutor Management System\n")
