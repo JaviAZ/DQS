@@ -1,7 +1,7 @@
 If you want to edit csv files to add more info, or simply view them, use notepad, excel can give errors.
 To run the project you will need to change the csv file path in tms.importTutees and tms.importTutors.
 
-Javier: tms.importTutees(completed),tms.importTutors(completed),tms.startprogram(completed),tms.admin(completed),tms.main(completed)
+Javier: tms.userInput(Completed) tms.importTutees(completed),tms.importTutors(completed),tms.startprogram(completed),tms.admin(completed),tms.main(completed)
 Kurt:
 Anuj:
 Andrew: the entire project.
@@ -16,7 +16,6 @@ MarkScheme:
 
 Choose to complete from: 
 	tms.endProgram
-	tms.userInput
 	tutorMeth.redistGroups
 	tutorMeth.removeTutor
 	tutorMeth.viewTutorList
