@@ -8,7 +8,7 @@ def endProgram(): #Later dictionaries will be put into csv before closing the ap
 	print("Exiting program.")
 	quit()
 
-def userInput(msg):	#Function to handle user input, check gameparser from Computational thinking coursework. To be completed
+def userInput(msg):	#Function to handle user input, make it lower case and check if user wants to end program or go back to main menu. Completed
 	npt = input(msg).lower()
 	if npt=="endp":
 		endProgram()
