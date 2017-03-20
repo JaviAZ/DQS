@@ -3,7 +3,7 @@ To run the project you will need to change the csv file path in tms.importTutees
 
 Javier: tms.userInput(Completed) tms.importTutees(completed),tms.importTutors(completed),tms.startprogram(completed),tms.admin(completed),tms.main(completed)
 Kurt:
-Anuj:
+Anuj:tutorMeth.editTutor, tuteeMeth.editTutee, 
 Andrew: the entire project.
 Charlie: LOL
 
@@ -19,10 +19,8 @@ Choose to complete from:
 	tutorMeth.redistGroups
 	tutorMeth.removeTutor
 	tutorMeth.viewTutorList
-	tutorMeth.editTutor
 	tutorMeth.tutor
 	tuteeMeth.removeTutee
 	tuteeMeth.viewTutorGroup
 	tuteeMeth.viewTuteeList
-	tuteeMeth.editTutee
 	tuteeMeth.tutee
