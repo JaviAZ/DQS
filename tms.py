@@ -9,7 +9,6 @@ def endProgram(): #Later dictionaries will be put into csv before closing the ap
 	quit()
 
 def userInput(msg):	#Function to handle user input, check gameparser from Computational thinking coursework. To be completed
-	import tms
 	npt = input(msg).lower()
 	if npt=="endp":
 		endProgram()
@@ -18,7 +17,7 @@ def userInput(msg):	#Function to handle user input, check gameparser from Comput
 	return npt
 
 def importTutees(): #Imports information from Tutees.csv into tuteeList COMPLETED
-	with open (r'C:\Users\Javier\ComputerScience\CM1202_DevelopingQualitySoftware\group_cswk_CM1202\Code\DQS\Tutees.csv',"r") as csvfile:
+	with open (r'H:\DQS\Tutees.csv',"r") as csvfile:
 		spamreader=csv.reader(csvfile,delimiter=",",quotechar="|")
 		next(spamreader,None)
 		for row in spamreader:
@@ -35,7 +34,7 @@ def importTutees(): #Imports information from Tutees.csv into tuteeList COMPLETE
 				tuteesMeth.addTutee(t[0],t[1],t[2]+t[3],t[4],t[5],t[6],t[7])
 
 def importTutors(): #Imports informtation from Tutors.csv into tutorList COMPLETED
-	with open (r'C:\Users\Javier\ComputerScience\CM1202_DevelopingQualitySoftware\group_cswk_CM1202\Code\DQS\Tutors.csv',"r") as csvfile:
+	with open (r'H:\DQS\Tutors.csv',"r") as csvfile:
 		spamreader=csv.reader(csvfile,delimiter=",",quotechar="|")
 		next(spamreader,None)
 		for row in spamreader:
@@ -78,6 +77,7 @@ def admin(): #Let user choose view tutors, view students, edit tutors, edit stud
 		tuteesMeth.editTutee()
 	elif adminOption=="create groups":
 		tutorsMeth.genGroups()
+		admin()
 	elif adminOption=="end program":
 		endProgram()
 	else:
