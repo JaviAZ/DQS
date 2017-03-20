@@ -1,13 +1,15 @@
 #!/usr/bin/python3
-from database import *
-from tuteesMeth import *
-from tutorsMeth import *
+import database
+import tutorsMeth
+import tuteesMeth
+import csv
 
-def endProgram():	#Later dictionaries will be put into csv in this method
+def endProgram(): #Later dictionaries will be put into csv before closing the application. To be completed
 	print("Exiting program.")
 	quit()
 
-def userInput(msg):	#Function to handle user input, check gameparser from Computatinal thinking coursework. To be completed
+def userInput(msg):	#Function to handle user input, check gameparser from Computational thinking coursework. To be completed
+	import tms
 	npt = input(msg).lower()
 	if npt=="endp":
 		endProgram()
@@ -15,36 +17,67 @@ def userInput(msg):	#Function to handle user input, check gameparser from Comput
 		main()
 	return npt
 
-def createProgram(): #will create the tutee and tuteeList using csv file and call genGroups(). Use addTutee()
-	print("To be completed")
+def importTutees(): #Imports information from Tutees.csv into tuteeList COMPLETED
+	with open (r'C:\Users\Javier\ComputerScience\CM1202_DevelopingQualitySoftware\group_cswk_CM1202\Code\DQS\Tutees.csv',"r") as csvfile:
+		spamreader=csv.reader(csvfile,delimiter=",",quotechar="|")
+		next(spamreader,None)
+		for row in spamreader:
+			if row[0][0]!=";" and row[0][0]!="U":
+				t=[]
+				for col in row:
+					temp=""
+					for char in col:
+						if char!=";":
+							temp+=char
+						else:
+							t.append(temp)
+							temp=""
+				tuteesMeth.addTutee(t[0],t[1],t[2]+t[3],t[4],t[5],t[6],t[7])
 
-def startProgram(): #will fetch csv for dictionaries data
-	print("To be completed")
+def importTutors(): #Imports informtation from Tutors.csv into tutorList COMPLETED
+	with open (r'C:\Users\Javier\ComputerScience\CM1202_DevelopingQualitySoftware\group_cswk_CM1202\Code\DQS\Tutors.csv',"r") as csvfile:
+		spamreader=csv.reader(csvfile,delimiter=",",quotechar="|")
+		next(spamreader,None)
+		for row in spamreader:
+			if row[0][0]!=";":
+				t=[]
+				for col in row:
+					temp=""
+					for char in col:
+						if char!=";":
+							temp+=char
+						else:
+							t.append(temp)
+							temp=""
+				tutorsMeth.addTutor(t[0],t[1],t[2],t[3])
 
-def admin():	#Let user choose view tutors, view students, edit tutors, edit students, create program, start program or end program. Call method depending on user choice. Main menu and go back option every view
-	print("\n                     -----------\n                        ADMIN\n                     -----------")
-	print("Manage tutors:                             Manage students:")
+def startProgram(): #Calls importing functions and main function. COMPLETED
+	importTutees()
+	importTutors()
+	main()
+
+def admin(): #Let user choose view tutors, view students, edit tutors, edit students, create groups or end program. Call method depending on user choice. COMPLETED
+	print("\n                              -----------\n                                 ADMIN\n                              -----------")
+	print("     Manage tutors:                                  Manage students:")
 	print()
-	print(" View tutors                                View students  ")
+	print("      View tutors                                     View students  ")
+	print("(Also for adding/deleting)                     (Also for adding/deleting)")
 	print()
-	print(" Edit tutors                                Edit students  ")
+	print("      Edit tutors                                     Edit students  ")
 	print()
-	print("                     Create program                        ")
-	print("                     Start program                         ")
-	print("                       End program                         ")
+	print("                               Create groups                        ")
+	print("                                End program                         ")
 	adminOption=userInput("")
 	if adminOption=="view tutors":
-		viewTutorList()
+		tutorsMeth.viewTutorList()
 	elif adminOption=="edit tutors":
-		editTutor()
+		tutorsMeth.editTutor()
 	elif adminOption=="view students":
-		viewTuteeList()
+		tuteesMeth.viewTuteeList()
 	elif adminOption=="edit students":
-		editTutee()
-	elif adminOption=="create program":
-		createProgram()
-	elif adminOption=="start program":
-		startProgram()
+		tuteesMeth.editTutee()
+	elif adminOption=="create groups":
+		tutorsMeth.genGroups()
 	elif adminOption=="end program":
 		endProgram()
 	else:
@@ -52,21 +85,22 @@ def admin():	#Let user choose view tutors, view students, edit tutors, edit stud
 		admin()
 
 def main():
-	print("Cardiff University Computer Science Tutor Management System")
-	print("Admin")
-	print("Tutor")
-	print("Student")
-	print("**Type endp at any time to exit the program**")
+	print("            Cardiff University Computer Science Tutor Management System\n")
+	print("                                   Admin")
+	print("                                   Tutor")
+	print("                                  Student")
+	print("\n**Type endp at any time to exit the program**")
 	print("**Type main at any time to go back to this menu**")
 	chooseView=userInput("")
 	if chooseView=="admin":
 		admin()
 	elif chooseView=="tutor":
-		tutor()
+		tutorsMeth.tutor()
 	elif chooseView=="student":
-		tutee()
+		tuteesMeth.tutee()
 	else:
 		print("\n\n                          ***Please input admin, tutor or student.***\n\n")
 		main()
 
-main()
+if __name__ == "__main__":
+	startProgram()
