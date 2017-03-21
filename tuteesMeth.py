@@ -14,8 +14,13 @@ def removeTutee(surname): #remove from tutor group too
 	#		print("No Tutee's with the surname: " + surname)
 	print("To be completed")
 
-def viewTutorGroup():	#Print tutorgroup depending on tutor
-	print("To be completed")
+def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
+	tuteeList=database.tuteeList
+	groupid=0
+	groupmembers=[]
+	
+	for entry in tuteeList:
+		print(entry)
 
 def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods)
 	tuteeList=database.tuteeList
@@ -129,3 +134,4 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask if he wants to view tutor group info, enrolled courses or tutor info.
 	print("\n                     -----------\n                       STUDENT\n                     -----------")
 	number=tms.userInput("Enter your student number: ")
+	viewTutorGroup(1)
