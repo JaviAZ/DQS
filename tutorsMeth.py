@@ -74,7 +74,6 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 		else:
 			print("invalid input")
 
-
 def editTutor(): #Ask for surname. Show possible options or print error message. ask user for attribute to change.
 	tflag=True
 	tflag2=True
