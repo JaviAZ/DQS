@@ -1,6 +1,5 @@
 If you want to edit csv files to add more info, or simply view them, use notepad, excel can give errors.
 
-
 Javier: tms.userInput(Completed) tms.importTutees(completed),tms.importTutors(completed),tms.startprogram(completed),tms.admin(completed),tms.main(completed)
 Kurt:tutorMeth.removeTutor, tutorMeth.viewTutorList, tuteeMeth.viewTuteeList, tuteeMeth.removeTutee
 Anuj:tutorMeth.editTutor, tuteeMeth.editTutee, tutorMeth.tutor, tuteeMeth.tutee
