@@ -134,5 +134,3 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask if he wants to view tutor group info, enrolled courses or tutor info.
 	print("\n                     -----------\n                       STUDENT\n                     -----------")
 	number=tms.userInput("Enter your student number: ")
-	#test purposes only \|/
-	viewTutorGroup(2)
