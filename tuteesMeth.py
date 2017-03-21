@@ -15,11 +15,20 @@ def removeTutee(surname): #remove from tutor group too
 	print("To be completed")
 
 def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
+<<<<<<< HEAD
 	groupid=0
 	groupmembers=[]
 	
 	for entry in database.tuteeList:
 		print(entry)
+=======
+	tuteeList=database.tuteeList
+	print("The other members of your tutor group are:\n")
+	for entry in tuteeList:
+		if int(tuteeList[entry]["tutor"]) == tutorN:
+			print(tuteeList[entry]["tuteeNo"]+" "+tuteeList[entry]["name"]+" "+tuteeList[entry]["surname"]+" "+tuteeList[entry]["email"])
+
+>>>>>>> 27a988fd5001233fc156c8e0b25c041993426e16
 
 def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods)
 	outputList = []
@@ -130,4 +139,5 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask if he wants to view tutor group info, enrolled courses or tutor info.
 	print("\n                     -----------\n                       STUDENT\n                     -----------")
 	number=tms.userInput("Enter your student number: ")
-	viewTutorGroup(1)
+	#test purposes only \|/
+	viewTutorGroup(2)
