@@ -27,26 +27,29 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 		print(entry)
 	takeAction = True
 	while takeAction:
-		print("\n	Add student 		Remove Student 			Return to Menu")
+		print("\n	ADD STUDENT 		REMOVE STUDENT 			RETURN TO MENU")
+		print("")
 		action = tms.userInput("")	
 		if action.lower()=="add student":
-			print("What is the new students, student number: ")
+			print("Enter the new student's student number: ")
 			studentCode=tms.userInput("")
-			print("And their first name: ")
+			print("Enter the new student's first name: ")
 			name=tms.userInput("")
-			name=name[0].capitalize()+name[1:]
-			print("And their surname: ")
+			if len(name)>0:
+				name=name[0].capitalize()+name[1:]
+			print("Enter the new student's surname: ")
 			surname=tms.userInput("")
-			surname=surname[0].capitalize()+surname[1:]
-			print("And their e-mail: ")
+			if len(surname)>0:
+				surname=surname[0].capitalize()+surname[1:]
+			print("Enter the new student's e-mail: ")
 			email=tms.userInput("")
-			print("And the course they're studying: ")
+			print("Enter the course they will be studying: ")
 			course=tms.userInput("")
-			print("And which year of study are they in: ")
+			print("Enter which year of study will they be in: ")
 			courseY=tms.userInput("")
-			print("And who will be their tutor: ")
+			print("Enter the ID of the tutor they will have: ")
 			tutor=tms.userInput("")
-			print("So, \nStudent number: "+studentCode+"\nFullname: "+name+" "+surname+"\nE-mail: "+email+" \nCourse: "+course+"\nYear of study: "+courseY+"\nTutor: "+tutor) 
+			print("So, \nStudent Number: "+studentCode+"\nFullname: "+name+" "+surname+"\nE-mail: "+email+" \nCourse: "+course+"\nYear of study: "+courseY+"\nTutor: "+tutor) 
 			undecided = True
 			while undecided:
 				print("Is that correct: yes/no")
@@ -75,13 +78,14 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 	sflag2=True
 	tuteeList=database.tuteeList
 	while sflag:
+		print("")
 		tuteeSurname=tms.userInput("Input the surname of the tutee you wish to edit: ")
 		scount=0
 		for tuteeKey in tuteeList:
 			if tuteeSurname==tuteeList[tuteeKey]["surname"].lower():
 				scount+=1
 				sflag=False
-				print ("Student number: "+tuteeList[tuteeKey]["tuteeNo"]+". Name: "+tuteeList[tuteeKey]["name"]+". Surname: "+tuteeList[tuteeKey]["surname"]+". Email: "+tuteeList[tuteeKey]["email"])
+				print ("Student Number: "+tuteeList[tuteeKey]["tuteeNo"]+". Name: "+tuteeList[tuteeKey]["name"]+". Surname: "+tuteeList[tuteeKey]["surname"]+". Email: "+tuteeList[tuteeKey]["email"])
 		if scount==0:
 			print("Sorry the tutee was not found.")
 		else:
@@ -93,7 +97,7 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 					break
 				else:
 					print("That student isn't in the list.")
-	editChoice=tms.userInput("Do you wish to edit name, surname, email, course, course year or tutor?")
+	editChoice=tms.userInput("Do you wish to edit name, surname, email, course, course year or tutor? ")
 	if editChoice=="name":
 		tuteeObj["name"] = input("Please enter the new name: ")
 		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
