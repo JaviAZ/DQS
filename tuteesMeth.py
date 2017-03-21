@@ -15,20 +15,11 @@ def removeTutee(surname): #remove from tutor group too
 	print("To be completed")
 
 def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
-<<<<<<< HEAD
-	groupid=0
-	groupmembers=[]
-	
-	for entry in database.tuteeList:
-		print(entry)
-=======
 	tuteeList=database.tuteeList
 	print("The other members of your tutor group are:\n")
 	for entry in tuteeList:
 		if int(tuteeList[entry]["tutor"]) == tutorN:
 			print(tuteeList[entry]["tuteeNo"]+" "+tuteeList[entry]["name"]+" "+tuteeList[entry]["surname"]+" "+tuteeList[entry]["email"])
-
->>>>>>> 27a988fd5001233fc156c8e0b25c041993426e16
 
 def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods)
 	outputList = []

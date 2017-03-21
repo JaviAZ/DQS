@@ -2,24 +2,11 @@ If you want to edit csv files to add more info, or simply view them, use notepad
 
 
 Javier: tms.userInput(Completed) tms.importTutees(completed),tms.importTutors(completed),tms.startprogram(completed),tms.admin(completed),tms.main(completed)
-<<<<<<< HEAD
 
-Kurt:tutorMeth.removeTutor, tutorMeth.viewTutorList,tuteeMeth.viewTuteeList, tuteeMeth.removeTutee
-
-Anuj:tutorMeth.editTutor, tuteeMeth.editTutee, tuteeMeth.tutee, tutorMeth.tutor
-
-Andrew: the entire project.
-
-Charlie: LOL
-=======
 Kurt:tutorMeth.removeTutor, tutorMeth.viewTutorList, tuteeMeth.viewTuteeList, tuteeMeth.removeTutee
 Anuj:tutorMeth.editTutor, tuteeMeth.editTutee, tutorMeth.tutor, tuteeMeth.tutee
 Andrew: tutorMeth.redistGroups
 Charlie: tuteeMeth.viewTutorGroup
->>>>>>> origin/master
-
-
-
 
 MarkScheme:
 	1.Upload an excel / csv file of new students and assign new students to personal tutees
@@ -31,12 +18,6 @@ MarkScheme:
 
 Choose to complete from: 
 	tms.endProgram
-<<<<<<< HEAD
-	tutorMeth.redistGroups
-	tuteeMeth.viewTutorGroup
-
-=======
->>>>>>> origin/master
 
 Things to fix:
 	tutor can be added with the same ID of an old tutor, overwritting it. Make the program create the ID instead of the user
