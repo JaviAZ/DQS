@@ -21,7 +21,10 @@ def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
 		if int(tuteeList[entry]["tutor"]) == tutorN:
 			print(tuteeList[entry]["tuteeNo"]+" "+tuteeList[entry]["name"]+" "+tuteeList[entry]["surname"]+" "+tuteeList[entry]["email"])
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90dd7096476b9cdaa22dc86e9899aa0599caa55a
 def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods)
 	outputList = []
 	for entry in database.tuteeList:
@@ -102,7 +105,7 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 					print("That student isn't in the list.")
 	editChoice=tms.userInput("Do you wish to edit name, surname, email, course, course year or tutor? ")
 	if editChoice=="name":
-		tuteeObj["name"] = input("Please enter the new name: ")
+		tuteeObj["name"] = tms.userInput("Please enter the new name: ")
 		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
 
 	elif editChoice=="surname":
@@ -110,19 +113,19 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
 
 	elif editChoice=="email":
-		tuteeObj["email"] = input("Please enter the new Email address : ")
+		tuteeObj["email"] = tms.userInput("Please enter the new Email address : ")
 		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
 
 	elif editChoice=="course":
-		tuteeObj["course"] = input("Please enter the new course: ")
+		tuteeObj["course"] = tms.userInput("Please enter the new course: ")
 		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
 
 	elif editChoice=="course year":
-		tuteeObj["course year"] = input("Please enter the new course year: ")
+		tuteeObj["course year"] = tms.userInput("Please enter the new course year: ")
 		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
 
 	elif editChoice=="tutor":
-		tuteeObj["tutor"] = input("Please enter the new tutor: ")
+		tuteeObj["tutor"] = tms.userInput("Please enter the new tutor: ")
 		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
 
 	else:

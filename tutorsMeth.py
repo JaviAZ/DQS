@@ -23,6 +23,9 @@ def removeTutor(): #Call redistGroups to redistribute group if tutor has one, de
 	print("To be completed")
 
 def viewTutorList(): #Print tutorlist and how many tutees each has. With option to add or remove tutor (which would call respective methods)
+<<<<<<< HEAD
+	print("To be completed")
+=======
 	outputList = []
 	for entry in database.tutorList:
 		temp = "	Name: " + database.tutorList[entry]["name"] + " " + database.tutorList[entry]["surname"]
@@ -69,6 +72,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 			tms.admin()
 		else:
 			print("invalid input")
+>>>>>>> origin/master
 
 def editTutor(): #Ask for surname. Show possible options or print error message. ask user for attribute to change.
 	while True:
@@ -92,7 +96,7 @@ def editTutor(): #Ask for surname. Show possible options or print error message.
 					print("That tutor isn't in the list.")
 			break
 	while True:
-		editChoice=tms.userInput("Do you wish to edit name, surname, email, or group? ")
+		editChoice=tms.userInput("Do you wish to edit name, surname, email, or group?. ")
 		if editChoice=="name":
 			tutorObj["name"] = input("Please enter the new name: ")
 			break
@@ -109,6 +113,31 @@ def editTutor(): #Ask for surname. Show possible options or print error message.
 			print("\n\n                          ***Please input name, surname, email or group.***\n\n")
 	print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
 
-def tutor(): #Ask for surname. Check list of tutors for surname. Print error message if tutor not found. Print results with id, name, surname and email. User chooses result and prints its group
+def tutor(): 
+#Ask for surname. Check list of tutors for surname. 
+#Print error message if tutor not found. Print results with id, name, surname and email. User chooses result and prints its group
 	print("\n                     -----------\n                        TUTOR\n                     -----------")
-	name=tms.userInput("Enter your surname: ")
+	check1=True
+	check2=True
+	tutorList=database.tutorList
+	while check1:
+		print("")
+		tutorSurname=tms.userInput("Enter your surname: ")
+		tcount=0
+		for tutorKey in tutorList:
+			if tutorSurname == tutorList[tutorKey]["surname"].lower():
+				tcount += 1
+				tutorObj = tutorList[tutorKey]
+				check1 = False
+				print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
+		if check1:
+			print("Sorry that tutor was not found.")
+		else:
+			while check2:
+				Choice = tms.userInput("Enter your tutor ID: ")
+				if Choice in tutorList:
+					tutorObj=tutorList[Choice]
+					check2=False
+					break
+				else:
+					print("That tutor isn't in the list.")
