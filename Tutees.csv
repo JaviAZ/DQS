@@ -1,7 +1,14 @@
 Student Code;Surname;Forename1;Forename2;TUTOR;Course;Acad Year;Univ Email;
 0236587/1;BLOGGS;JO;;;UFBSCMSA;2001/2;BloggsJ43@cardiff.ac.uk;
 C1628112;Alcazar;Javier;;1;UFBSCMSA;2016/17;AlcazarZafraJ@cardiff.ac.uk;
-;;;;;;;;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+C1628113;Geraldine;Bobby;;1;UFBSCMSA;2016/17;BobbyG@cardiff.ac.uk;
+C1628114;Amos;Goeff;;1;UFBSCMSA;2016/17;GeoffA@cardiff.ac.uk;
+C1628115;Jones;Larry;;1;UFBSCMSA;2016/17;LarryJ@cardiff.ac.uk;
+C1628116;Hades;Jerald;;1;UFBSCMSA;2016/17;JeraldH@cardiff.ac.uk;
+C1628117;Smith;Alex;;1;UFBSCMSA;2016/17;AlexS@cardiff.ac.uk;
+C1628118;Moss;Ben;;1;UFBSCMSA;2016/17;BenM@cardiff.ac.uk;
+C1628119;Jones;Felix;Frosty;1;UFBSCMSA;2016/17;FelixJ@cardiff.ac.uk;
+;;;;;;;;
 UFBSCMSA;BSc Computer Science;;;;;;;
 UFBSCMSB;BSc Computer Science with year in industry;;;;;;;
 UFBSCSFA;BSc Computer Science with Security and Forensics;;;;;;;

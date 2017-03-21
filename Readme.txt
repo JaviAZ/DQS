@@ -2,6 +2,7 @@ If you want to edit csv files to add more info, or simply view them, use notepad
 
 
 Javier: tms.userInput(Completed) tms.importTutees(completed),tms.importTutors(completed),tms.startprogram(completed),tms.admin(completed),tms.main(completed)
+<<<<<<< HEAD
 
 Kurt:tutorMeth.removeTutor, tutorMeth.viewTutorList,tuteeMeth.viewTuteeList, tuteeMeth.removeTutee
 
@@ -10,6 +11,12 @@ Anuj:tutorMeth.editTutor, tuteeMeth.editTutee, tuteeMeth.tutee, tutorMeth.tutor
 Andrew: the entire project.
 
 Charlie: LOL
+=======
+Kurt:tutorMeth.removeTutor, tutorMeth.viewTutorList, tuteeMeth.viewTuteeList, tuteeMeth.removeTutee
+Anuj:tutorMeth.editTutor, tuteeMeth.editTutee, tutorMeth.tutor, tuteeMeth.tutee
+Andrew: tutorMeth.redistGroups
+Charlie: tuteeMeth.viewTutorGroup
+>>>>>>> origin/master
 
 
 
@@ -24,10 +31,14 @@ MarkScheme:
 
 Choose to complete from: 
 	tms.endProgram
+<<<<<<< HEAD
 	tutorMeth.redistGroups
 	tuteeMeth.viewTutorGroup
 
+=======
+>>>>>>> origin/master
 
 Things to fix:
-	tutor can be added with the same Id of an old tutor, overwritting it. Make the program create the ID instead of the user
+	tutor can be added with the same ID of an old tutor, overwritting it. Make the program create the ID instead of the user
+	tutee can be added with the same tuteeNo of an old tutee, overwritting it. Make the program check if that tuteeNo is already in the list.
 	
