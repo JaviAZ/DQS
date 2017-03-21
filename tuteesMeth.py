@@ -26,7 +26,6 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 	for entry in outputList:
 		print(entry)
 	takeAction = True
-	undecided = True
 	while takeAction:
 		print("\n	Add student 		Remove Student 			Return to Menu")
 		action = tms.userInput("")	
@@ -35,8 +34,10 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 			studentCode=tms.userInput("")
 			print("And their first name: ")
 			name=tms.userInput("")
+			name=name[0].capitalize()+name[1:]
 			print("And their surname: ")
 			surname=tms.userInput("")
+			surname=surname[0].capitalize()+surname[1:]
 			print("And their e-mail: ")
 			email=tms.userInput("")
 			print("And the course they're studying: ")
