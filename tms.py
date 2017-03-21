@@ -31,7 +31,7 @@ def importTutees(): #Imports information from Tutees.csv into tuteeList COMPLETE
 						else:
 							t.append(temp)
 							temp=""
-				tuteesMeth.addTutee(t[0],t[1],t[2]+t[3],t[4],t[5],t[6],t[7])
+				tuteesMeth.addTutee(t[0],t[1],t[2]+" "+t[3],t[4],t[5],t[6],t[7])
 
 def importTutors(): #Imports informtation from Tutors.csv into tutorList COMPLETED
 	with open (r'Tutors.csv',"r") as csvfile:
