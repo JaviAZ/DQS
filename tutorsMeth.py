@@ -3,7 +3,7 @@ import database
 import tms
 
 def genGroups(): #Assigns a tutor to each tutee
-	tuteespertutor=len(database.tuteeList)//len(database.tutorList)
+	tuteespertutor=len(database.tuteeList)//(len(database.tutorList)-1)
 	i=0
 	c=0
 	for tutee in tuteeList:
