@@ -57,7 +57,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 				if response=="yes":
 					takeAction=False
 					undecided=False
-					addTutee(studentCode, surname, name, email, course, courseY, tutor)
+					addTutee(studentCode, surname, name, course, courseY, tutor,email)
 					viewTuteeList()
 				elif response=="no":
 					print("You'll be returned to the menu to try again.")
@@ -66,7 +66,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 					print("Please enter 'yes' or 'no'")
 		elif action.lower()=="remove student":
 			takeAction=False
-			removeTutee()
+			removeTutee("")
 		elif action.lower()=="return to menu":
 			takeAction=False
 			tms.admin()

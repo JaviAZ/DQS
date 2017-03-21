@@ -38,7 +38,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 		print("\n	Add Tutor 		Remove Tutor 			Return to Menu")
 		action = tms.userInput("")	
 		if action.lower()=="add tutor":
-			print("What will be the new Tutor's, Tutor ID: ")
+			print("What will be the new tutor's ID: ")
 			tutorID=tms.userInput("")
 			print("And their first name: ")
 			name=tms.userInput("")
@@ -65,9 +65,9 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 					undecided=False
 				else:
 					print("Please enter 'yes' or 'no'")
-		elif action.lower()=="remove student":
+		elif action.lower()=="remove tutor":
 			takeAction=False
-			removeTutee()
+			removeTutor()
 		elif action.lower()=="return to menu":
 			takeAction=False
 			tms.admin()
