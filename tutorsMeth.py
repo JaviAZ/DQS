@@ -19,8 +19,8 @@ def genGroups(): #Assigns a tutor to each tutee
 def redistGroups(tutorDelID): #Redistribute students into new groups
 	print("To be completed")
 
-def addTutor(ID,name,surname,email): #Adds tutor to tutorList
-	database.tutorList[ID]={"id":ID, "name":name, "surname":surname, "email":email}
+def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
+	database.tutorList[ID]={"id":ID, "name":name, "surname":surname, "email":email, "tuteesN":tuteesN}
 
 def removeTutor(): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
 	print("To be completed")
@@ -48,9 +48,9 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 			surname=surname[0].capitalize()+surname[1:]
 			print("And their e-mail: ")
 			email=tms.userInput("")
-			print("How many tutee's will this tutor be able to hold: ")
-			size=tms.userInput("")
-			print("So, \nTutor ID: "+tutorID+"\nFullname: "+name+" "+surname+"\nE-mail: "+email+" \nNumver of students for this Tutor: "+size) 
+			print("How many tutee's does this tutor have: ")
+			tuteesN=tms.userInput("")
+			print("So, \nTutor ID: "+tutorID+"\nFullname: "+name+" "+surname+"\nE-mail: "+email+" \nNumber of students in his group: "+tuteesN) 
 			undecided = True
 			while undecided:
 				print("Is that correct: yes/no")
@@ -58,7 +58,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 				if response=="yes":
 					takeAction=False
 					undecided=False
-					addTutor(tutorID, name, surname, email)
+					addTutor(tutorID, name, surname, email,tueesN)
 					viewTutorList()
 				elif response=="no":
 					print("You'll be returned to the menu to try again.")
@@ -75,44 +75,44 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 			print("invalid input")
 
 def editTutor(): #Ask for surname. Show possible options or print error message. ask user for attribute to change.
-	tflag=True
-	tflag2=True
 	tutorList=database.tutorList
-	while tflag:
+	while True:
 		print("")
 		tutorSurname=tms.userInput("Input the surname of the tutor you wish to edit: ")
 		tcount=0
 		for tutorKey in tutorList:
 			if tutorSurname==tutorList[tutorKey]["surname"].lower():
 				tcount+=1
-				tflag=False
 				print ("ID: "+tutorList[tutorKey]["id"]+". Name: "+tutorList[tutorKey]["name"]+". Surname: "+tutorList[tutorKey]["surname"]+". Email: "+tutorList[tutorKey]["email"])
+				break
 		if tcount==0:
 			print("Sorry the tutor was not found.")
 		else:
-			while tflag2:
+			while True:
 				tChoice=tms.userInput("Enter the ID of the tutor you wish to edit: ")
 				if tChoice in tutorList:
 					tutorObj=tutorList[tChoice]
-					tflag2=False
 					break
 				else:
 					print("That tutor isn't in the list.")
-	editChoice=tms.userInput("Do you wish to edit name, surname, email, or group? ")
-	if editChoice=="name":
-		tutorObj["name"] = input("Please enter the new name: ")
-		print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
-	elif editChoice=="surname":
-		tutorObj["surname"] = input("Please enter the new surname: ")
-		print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
-	elif editChoice=="email":
-		tutorObj["email"] = input("Please enter the new Email address: ")
-		print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
-	elif editChoice=="group":
-		tutorObj["group"] = input("Please enter the new tutor ID: ")
-		print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
-	else:
-		print("\n\n                          ***Please input name, surname, email or group.***\n\n")
+			break
+	while True:
+		editChoice=tms.userInput("Do you wish to edit name, surname, email, or group? ")
+		if editChoice=="name":
+			tutorObj["name"] = input("Please enter the new name: ")
+			break
+		elif editChoice=="surname":
+			tutorObj["surname"] = input("Please enter the new surname: ")
+			break
+		elif editChoice=="email":
+			tutorObj["email"] = input("Please enter the new Email address: ")
+			break
+		elif editChoice=="group":
+			tutorObj["group"] = input("Please enter the new tutor ID: ")
+			break
+		else:
+			print("\n\n                          ***Please input name, surname, email or group.***\n\n")
+	print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
 	database.tutorList=tutorList
 
 def tutor(): #Ask for surname. Check list of tutors for surname. Print error message if tutor not found. Print results with id, name, surname and email. User chooses result and prints its group
