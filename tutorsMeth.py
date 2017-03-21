@@ -33,6 +33,7 @@ def editTutor(): #Ask for surname. Show possible options or print error message.
 	tflag2=True
 	tutorList=database.tutorList
 	while tflag:
+		print("")
 		tutorSurname=tms.userInput("Input the surname of the tutor you wish to edit: ")
 		tcount=0
 		for tutorKey in tutorList:
