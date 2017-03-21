@@ -15,18 +15,16 @@ def removeTutee(surname): #remove from tutor group too
 	print("To be completed")
 
 def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
-	tuteeList=database.tuteeList
 	groupid=0
 	groupmembers=[]
 	
-	for entry in tuteeList:
+	for entry in database.tuteeList:
 		print(entry)
 
 def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods)
-	tuteeList=database.tuteeList
 	outputList = []
-	for entry in tuteeList:
-		temp = "	Name: " + tuteeList[entry]["name"] + " " + tuteeList[entry]["surname"]
+	for entry in database.tuteeList:
+		temp = "	Name: " + database.tuteeList[entry]["name"] + " " + database.tuteeList[entry]["surname"]
 		outputList.append(temp)
 	for entry in outputList:
 		print(entry)
@@ -81,23 +79,22 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 def editTutee(): #Ask for tutee surname. show possible options or print error message. ask user for attribute to change.
 	sflag=True
 	sflag2=True
-	tuteeList=database.tuteeList
 	while sflag:
 		print("")
 		tuteeSurname=tms.userInput("Input the surname of the tutee you wish to edit: ")
 		scount=0
-		for tuteeKey in tuteeList:
-			if tuteeSurname==tuteeList[tuteeKey]["surname"].lower():
+		for tuteeKey in database.tuteeList:
+			if tuteeSurname==database.tuteeList[tuteeKey]["surname"].lower():
 				scount+=1
 				sflag=False
-				print ("Student Number: "+tuteeList[tuteeKey]["tuteeNo"]+". Name: "+tuteeList[tuteeKey]["name"]+". Surname: "+tuteeList[tuteeKey]["surname"]+". Email: "+tuteeList[tuteeKey]["email"])
+				print ("Student Number: "+database.tuteeList[tuteeKey]["tuteeNo"]+". Name: "+database.tuteeList[tuteeKey]["name"]+". Surname: "+database.tuteeList[tuteeKey]["surname"]+". Email: "+databse.tuteeList[tuteeKey]["email"])
 		if scount==0:
 			print("Sorry the tutee was not found.")
 		else:
 			while sflag2:
 				Choice=tms.userInput("Enter the student number of the tutee you wish to edit: ").upper()
-				if Choice in tuteeList:
-					tuteeObj=tuteeList[Choice]
+				if Choice in databse.tuteeList:
+					tuteeObj=database.tuteeList[Choice]
 					sflag2=False
 					break
 				else:
@@ -129,7 +126,6 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 
 	else:
 		print("\n\n                          ***Please input name, surname, email, course, course year or tutor.***\n\n")
-	database.tuteeList=tuteeList
 
 def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask if he wants to view tutor group info, enrolled courses or tutor info.
 	print("\n                     -----------\n                       STUDENT\n                     -----------")
