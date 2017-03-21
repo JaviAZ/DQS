@@ -1,9 +1,9 @@
 If you want to edit csv files to add more info, or simply view them, use notepad, excel can give errors.
-To run the project you will need to change the csv file path in tms.importTutees and tms.importTutors.
+
 
 Javier: tms.userInput(Completed) tms.importTutees(completed),tms.importTutors(completed),tms.startprogram(completed),tms.admin(completed),tms.main(completed)
-Kurt:
-Anuj:tutorMeth.editTutor, tuteeMeth.editTutee, 
+Kurt:tutorMeth.removeTutor, tutorMeth.viewTutorList
+Anuj:tutorMeth.editTutor, tuteeMeth.editTutee, tuteeMeth.viewTuteeList, tuteeMeth.removeTutee
 Andrew: the entire project.
 Charlie: LOL
 
@@ -17,10 +17,10 @@ MarkScheme:
 Choose to complete from: 
 	tms.endProgram
 	tutorMeth.redistGroups
-	tutorMeth.removeTutor
-	tutorMeth.viewTutorList
 	tutorMeth.tutor
-	tuteeMeth.removeTutee
 	tuteeMeth.viewTutorGroup
-	tuteeMeth.viewTuteeList
 	tuteeMeth.tutee
+
+Things to fix:
+	tutor can be added with the same Id of an old tutor, overwritting it. Make the program create the ID instead of the user
+	
