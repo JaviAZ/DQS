@@ -21,10 +21,6 @@ def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
 		if int(tuteeList[entry]["tutor"]) == tutorN:
 			print(tuteeList[entry]["tuteeNo"]+" "+tuteeList[entry]["name"]+" "+tuteeList[entry]["surname"]+" "+tuteeList[entry]["email"])
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 90dd7096476b9cdaa22dc86e9899aa0599caa55a
 def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods)
 	outputList = []
 	for entry in database.tuteeList:

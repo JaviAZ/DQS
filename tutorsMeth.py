@@ -23,9 +23,6 @@ def removeTutor(): #Call redistGroups to redistribute group if tutor has one, de
 	print("To be completed")
 
 def viewTutorList(): #Print tutorlist and how many tutees each has. With option to add or remove tutor (which would call respective methods)
-<<<<<<< HEAD
-	print("To be completed")
-=======
 	outputList = []
 	for entry in database.tutorList:
 		temp = "	Name: " + database.tutorList[entry]["name"] + " " + database.tutorList[entry]["surname"]
@@ -72,7 +69,6 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 			tms.admin()
 		else:
 			print("invalid input")
->>>>>>> origin/master
 
 def editTutor(): #Ask for surname. Show possible options or print error message. ask user for attribute to change.
 	while True:
