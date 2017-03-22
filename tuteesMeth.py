@@ -2,6 +2,7 @@
 import database
 import tms
 
+
 def addTutee(studentCode,surname,name,tutor,course,acadYear,email):	#will call addToGroup if method isnt called from createProgram
 	database.tuteeList[studentCode]={"tuteeNo":studentCode, "name":name, "surname":surname, "email":email, "course":course, "courseY":acadYear, "tutor":tutor}
 
@@ -30,9 +31,9 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 		action = tms.userInput("")	
 
 		if action.lower()=="add student":
-			taken=True
+			taken1=True
 			checker1=0
-			while taken:
+			while taken1:
 				checker2=0
 				print("Enter the new student's student number: ")
 				studentCode=tms.userInput("")
@@ -49,23 +50,57 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 								print("			That number is already taken.")
 								checker1=1
 						if checker1!=1:	
-							taken=False
-			print("Enter the new student's first name: ")
-			name=tms.userInput("")
-			if len(name)>0:
-				name=name[0].capitalize()+name[1:]
-			print("Enter the new student's surname: ")
-			surname=tms.userInput("")
-			if len(surname)>0:
-				surname=surname[0].capitalize()+surname[1:]
-			print("Enter the new student's e-mail: ")
-			email=tms.userInput("")
-			print("Enter the course they will be studying: ")
-			course=tms.userInput("")
-			print("Enter which year of study will they be in: ")
-			courseY=tms.userInput("")
-			print("Enter the ID of the tutor they will have: ")
-			tutor=tms.userInput("")
+							taken1=False
+			taken2 = True
+			while taken2:
+				print("Enter the new student's first name: ")
+				name=tms.userInput("")
+				if len(name)>0:
+					name=name[0].capitalize()+name[1:]
+					taken2=False
+				elif len(name)==0:
+					print("Please enter a value.")
+			taken3=True
+			while taken3:
+				print("Enter the new student's surname: ")
+				surname=tms.userInput("")
+				if len(surname)>0:
+					surname=surname[0].capitalize()+surname[1:]
+					taken3=False
+				elif len(surname)==0:
+					print("Please enter a value.")
+			taken4=True
+			while taken4:
+				print("Enter the new student's e-mail: ")
+				email=tms.userInput("")
+				if len(email)>0:
+					taken4=False
+				elif len(email)==0:
+					print("Please enter a value.")
+			taken5=True
+			while taken5:
+				print("Enter the course they will be studying: ")
+				course=tms.userInput("")
+				if len(course)>0:
+					taken5=False
+				elif len(course)==0:
+					print("Please enter a value.")
+			taken6=True
+			while taken6:
+				print("Enter which year of study will they be in: ")
+				courseY=tms.userInput("")
+				if len(courseY)>0:
+					taken6=False
+				elif len(courseY)==0:
+					print("Please enter a value.")
+			taken7=True
+			while taken7:
+				print("Enter the ID of the tutor they will have: ")
+				tutor=tms.userInput("")
+				if len(tutor)>0:
+					taken7=False
+				elif len(tutor)==0:
+					print("Please enter a value.")
 			print("So, \nStudent Number: "+studentCode+"\nFullname: "+name+" "+surname+"\nE-mail: "+email+" \nCourse: "+course+"\nYear of study: "+courseY+"\nTutor: "+tutor) 
 			undecided = True
 			while undecided:
