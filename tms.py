@@ -6,6 +6,8 @@ import csv
 
 def endProgram(): #Later dictionaries will be put into csv before closing the application. To be completed
 	print("Exiting program.")
+	exportTutees()
+	exportTutors()
 	quit()
 
 def userInput(msg):	#Function to handle user input, make it lower case and check if user wants to end program or go back to main menu. Completed
@@ -17,38 +19,40 @@ def userInput(msg):	#Function to handle user input, make it lower case and check
 	return npt
 
 def importTutees(): #Imports information from Tutees.csv into tuteeList COMPLETED
-	with open (r'Tutees.csv',"r") as csvfile:
-		spamreader=csv.reader(csvfile,delimiter=",",quotechar="|")
+	with open ('Tutees.csv',"r") as csvfile:
+		spamreader=csv.reader(csvfile,delimiter=";",quotechar="|")
 		next(spamreader,None)
 		for row in spamreader:
-			if row[0][0]!=";" and row[0][0]!="U":
-				t=[]
-				for col in row:
-					temp=""
-					for char in col:
-						if char!=";":
-							temp+=char
-						else:
-							t.append(temp)
-							temp=""
-				tuteesMeth.addTutee(t[0],t[1],t[2]+" "+t[3],t[4],t[5],t[6],t[7])
+			if len(row[0])>0:
+				if row[0][0]!="U":
+					tuteesMeth.addTutee(row[0],row[1],row[2]+" "+row[3],row[4],row[5],row[6],row[7])
 
 def importTutors(): #Imports informtation from Tutors.csv into tutorList COMPLETED
-	with open (r'Tutors.csv',"r") as csvfile:
-		spamreader=csv.reader(csvfile,delimiter=",",quotechar="|")
+	with open ('Tutors.csv',"r") as csvfile:
+		spamreader=csv.reader(csvfile,delimiter=";",quotechar="|")
 		next(spamreader,None)
 		for row in spamreader:
-			if row[0][0]!=";":
-				t=[]
-				for col in row:
-					temp=""
-					for char in col:
-						if char!=";":
-							temp+=char
-						else:
-							t.append(temp)
-							temp=""
-				tutorsMeth.addTutor(t[0],t[1],t[2],t[3],t[4])
+			if len(row[0])>0:
+				if row[0][0]!="U":
+					tutorsMeth.addTutor(row[0],row[1],row[2],row[3],row[4])
+
+def exportTutees(): #Exports information from tuteeList into Tutees.csv
+	with open ('Tutees.csv','w') as csvfile:
+		writer=csv.writer(csvfile,delimiter=";")
+		header=["Student Code","Surname","Forename1","Forename2","TUTOR","Course","Acad Year","Univ Email"]
+		writer.writerow(header)
+		for tutee in database.tuteeList:
+			writer.writerow([database.tuteeList[tutee]["tuteeNo"],database.tuteeList[tutee]["surname"],database.tuteeList[tutee]["name"],database.tuteeList[tutee]["tutor"],database.tuteeList[tutee]["course"],database.tuteeList[tutee]["courseY"],database.tuteeList[tutee]["email"],])
+		courseCodes=[["UFBSCMSA","BSc Computer Science"],["UFBSCMSB","BSc Computer Science with year in industry"],["UFBSCSFA","BSc Computer Science with Security and Forensics"],["UFBSCSFB","BSC Computer Science with Security and Forensics with year in industry"],["UFBSCSHA","BSc Computer Science with HPC"],["UFBSCSHB","BSc Computer Science with HPC with year in industry"],["UFBSCVCA","BSc Computer Science with Computer Vision and Computer Graphics"],["UFBSCVCB","BSc Computer Science with Computer Vision and Computer Graphics with year in industry"],["UFBSASEA","BSc Applied Software Engineering"]]
+		writer.writerows(courseCodes)
+
+def exportTutors(): #Exports information from tutorList into Tutors.csv
+	with open ('Tutors.csv',"w") as csvfile:
+		writer=csv.writer(csvfile,delimiter=";")
+		header=["ID","Name","Surname","Email","nOfTutees"]
+		writer.writerow(header)
+		for tutor in database.tutorList:
+			writer.writerow([database.tutorList[tutor]["id"],database.tutorList[tutor]["name"],database.tutorList[tutor]["surname"],database.tutorList[tutor]["email"],database.tutorList[tutor]["tuteesN"]])
 
 def startProgram(): #Calls importing functions and main function. COMPLETED
 	importTutees()
