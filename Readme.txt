@@ -3,7 +3,7 @@ If you want to edit csv files to add more info, or simply view them, use notepad
 Javier: tms.userInput(Completed) tms.importTutees(completed),tms.importTutors(completed),tms.startprogram(completed),tms.admin(completed),tms.main(completed),tms.endProgram(completed),tms.exportTutees(completed),tms.exportTutors(completed)
 Kurt:tutorMeth.removeTutor(completed), tutorMeth.viewTutorList, tuteeMeth.viewTuteeList(completed), tuteeMeth.removeTutee(completed)
 Anuj:tutorMeth.editTutor(completed), tuteeMeth.editTutee(completed), tutorMeth.tutor,tuteeMeth.tutee(completed)
-Andrew: tutorMeth.redistGroups,tuteeMeth.addTutee(completed),tutorsMeth.addTutor
+Andrew: tutorMeth.redistGroups,tuteeMeth.addTutee(completed),tutorsMeth.addTutor(completed)
 Charlie: tuteeMeth.viewTutorGroup,tutorsMeth.genGroups(completed)
 
 MarkScheme:
@@ -14,8 +14,12 @@ MarkScheme:
 	5.Teams of five or more: Delete a student from the tutor list and re-assign a single student to an alternative tutor.	
 
 Things to fix:
+	when showing tutor list print their ID
+	when adding student you can put any number into tutor number
+	when editing student you can put any number into tutor number
+
+Fixed:
 	tutor can be added with the same ID of an old tutor, overwritting it. Make the program create the ID instead of the user - issue also applies to editting preexisting tutors
 	tutee can be added with the same tuteeNo of an old tutee, overwritting it. Make the program check if that tuteeNo is already in the list.
-	potentially can try and view tutor groups as before they've been generated, makes it crash
 	can't cancel editting tutor or students on admin page
-	when showing tutor list print their ID
+	potentially can try and view tutor groups as before they've been generated, makes it crash
