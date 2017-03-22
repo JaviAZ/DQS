@@ -90,7 +90,10 @@ def admin(): #Let user choose view tutors, view students, edit tutors, edit stud
 
 def main():
 	print("")
-	print("            Cardiff University Computer Science Tutor Management System\n")
+	print("            ===========================================================")
+	print("            Cardiff University Computer Science Tutor Management System")
+	print("            ===========================================================")
+	print("")
 	print("                                     ADMIN")
 	print("")
 	print("                                     TUTOR")
