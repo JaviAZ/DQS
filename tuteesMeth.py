@@ -6,12 +6,7 @@ def addTutee(studentCode,surname,name,tutor,course,acadYear,email):	#will call a
 	database.tuteeList[studentCode]={"tuteeNo":studentCode, "name":name, "surname":surname, "email":email, "course":course, "courseY":acadYear, "tutor":tutor}
 
 def removeTutee(tuteeNo): #remove from tutor group too 
-	#tuteeList=database.tuteeList
-	#for entry in tuteeList:
-	#	if entry["surname"] == surname:
-	#		print("Do you want to remove: " + surname)
-	#	else:
-	#		print("No Tutee's with the surname: " + surname)
+	
 	print("To be completed")
 
 def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
@@ -37,16 +32,32 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 
 		if action.lower()=="add student":
 			taken=True
-			checker=0
+			checker1=0
 			while taken:
+				checker2=0
 				print("Enter the new student's student number: ")
 				studentCode=tms.userInput("")
-				for entry in database.tuteeList:
-					if studentCode == database.tuteeList[entry]["tuteeNo"].lower():
-						print("			That number is already taken.")
-						checker=1
-				if checker!=1:	
-					taken=False
+				if len(studentCode)==0:
+					print("Please enter a value.")
+				if len(studentCode)>0:	
+					if not studentCode[0].isalpha():
+						print("A student number must be in the format 1 letter followed by 7 digits. \nFor example: C1234567")
+						checker2=1
+					elif not studentCode[1:].isdigit():
+						print("A student number must be in the format 1 letter followed by 7 digits. \nFor example: C1234567")
+						checker2=1
+					elif len(studentCode)!=8:
+						print("A student number must be in the format 1 letter followed by 7 digits. \nFor example: C1234567")
+						checker2=1
+					if checker2==0:
+						studentCode=studentCode[0].capitalize()+studentCode[1:]	
+						for entry in database.tuteeList:
+							if studentCode == database.tuteeList[entry]["tuteeNo"]:
+								print("			That number is already taken.")
+								checker1=1
+						if checker1!=1:	
+							taken=False
+
 			print("Enter the new student's first name: ")
 			name=tms.userInput("")
 			if len(name)>0:
