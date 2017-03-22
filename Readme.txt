@@ -17,6 +17,8 @@ Choose to complete from:
 	tms.endProgram
 
 Things to fix:
-	tutor can be added with the same ID of an old tutor, overwritting it. Make the program create the ID instead of the user
+	tutor can be added with the same ID of an old tutor, overwritting it. Make the program create the ID instead of the user - issue also applies to editting preexisting tutors
 	tutee can be added with the same tuteeNo of an old tutee, overwritting it. Make the program check if that tuteeNo is already in the list.
-	potentially can try and view tutor groups as a student before they've been generated, makes it crash
+	potentially can try and view tutor groups as before they've been generated, makes it crash
+	can't cancel editting tutor or students on admin page
+	
