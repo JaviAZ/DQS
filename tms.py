@@ -23,16 +23,16 @@ def importTutees(): #Imports information from Tutees.csv into tuteeList COMPLETE
 		spamreader=csv.reader(csvfile,delimiter=";",quotechar="|")
 		next(spamreader,None)
 		for row in spamreader:
-			if len(row[0])>0:
+			if len(row)>0:
 				if row[0][0]!="U":
-					tuteesMeth.addTutee(row[0],row[1],row[2]+" "+row[3],row[4],row[5],row[6],row[7])
+					tuteesMeth.addTutee(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7])
 
 def importTutors(): #Imports informtation from Tutors.csv into tutorList COMPLETED
 	with open ('Tutors.csv',"r") as csvfile:
 		spamreader=csv.reader(csvfile,delimiter=";",quotechar="|")
 		next(spamreader,None)
 		for row in spamreader:
-			if len(row[0])>0:
+			if len(row)>0:
 				if row[0][0]!="U":
 					tutorsMeth.addTutor(row[0],row[1],row[2],row[3],row[4])
 
@@ -42,7 +42,7 @@ def exportTutees(): #Exports information from tuteeList into Tutees.csv
 		header=["Student Code","Surname","Forename1","Forename2","TUTOR","Course","Acad Year","Univ Email"]
 		writer.writerow(header)
 		for tutee in database.tuteeList:
-			writer.writerow([database.tuteeList[tutee]["tuteeNo"],database.tuteeList[tutee]["surname"],database.tuteeList[tutee]["name"],database.tuteeList[tutee]["tutor"],database.tuteeList[tutee]["course"],database.tuteeList[tutee]["courseY"],database.tuteeList[tutee]["email"],])
+			writer.writerow([database.tuteeList[tutee]["tuteeNo"],database.tuteeList[tutee]["surname"],database.tuteeList[tutee]["name"],database.tuteeList[tutee]["name2"],database.tuteeList[tutee]["tutor"],database.tuteeList[tutee]["course"],database.tuteeList[tutee]["courseY"],database.tuteeList[tutee]["email"],])
 		courseCodes=[["UFBSCMSA","BSc Computer Science"],["UFBSCMSB","BSc Computer Science with year in industry"],["UFBSCSFA","BSc Computer Science with Security and Forensics"],["UFBSCSFB","BSC Computer Science with Security and Forensics with year in industry"],["UFBSCSHA","BSc Computer Science with HPC"],["UFBSCSHB","BSc Computer Science with HPC with year in industry"],["UFBSCVCA","BSc Computer Science with Computer Vision and Computer Graphics"],["UFBSCVCB","BSc Computer Science with Computer Vision and Computer Graphics with year in industry"],["UFBSASEA","BSc Applied Software Engineering"]]
 		writer.writerows(courseCodes)
 
