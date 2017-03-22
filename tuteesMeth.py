@@ -34,8 +34,17 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 		print("")
 		action = tms.userInput("")	
 		if action.lower()=="add student":
-			print("Enter the new student's student number: ")
-			studentCode=tms.userInput("")
+			taken=True
+			checker=0
+			while taken:
+				print("Enter the new student's student number: ")
+				studentCode=tms.userInput("")
+				for entry in database.tuteeList:
+					if studentCode == database.tuteeList[entry]["tuteeNo"].lower():
+						print("			That number is already taken.")
+						checker=1
+				if checker!=1:	
+					taken=False
 			print("Enter the new student's first name: ")
 			name=tms.userInput("")
 			if len(name)>0:

@@ -22,18 +22,20 @@ def removeTutor(): #Call redistGroups to redistribute group if tutor has one, de
 
 def viewTutorList(): #Print tutorlist and how many tutees each has. With option to add or remove tutor (which would call respective methods)
 	outputList = []
+	i=1
 	for entry in database.tutorList:
 		temp = "	Name: " + database.tutorList[entry]["name"] + " " + database.tutorList[entry]["surname"]
 		outputList.append(temp)
 	for entry in outputList:
 		print(entry)
+		i+=1
+		print(i)
 	takeAction = True
 	while takeAction:
 		print("\n	Add Tutor 		Remove Tutor 			Return to Menu")
 		action = tms.userInput("")	
 		if action.lower()=="add tutor":
-			print("What will be the new tutor's ID: ")
-			tutorID=tms.userInput("")
+			tutorID=i
 			print("And their first name: ")
 			name=tms.userInput("")
 			name=name[0].capitalize()+name[1:]
@@ -44,7 +46,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 			email=tms.userInput("")
 			print("How many tutee's does this tutor have: ")
 			tuteesN=tms.userInput("")
-			print("So, \nTutor ID: "+tutorID+"\nFullname: "+name+" "+surname+"\nE-mail: "+email+" \nNumber of students in his group: "+tuteesN) 
+			print("So, \nTutor ID: "+str(tutorID)+"\nFullname: "+name+" "+surname+"\nE-mail: "+email+" \nNumber of students in his group: "+tuteesN) 
 			undecided = True
 			while undecided:
 				print("Is that correct: yes/no")
