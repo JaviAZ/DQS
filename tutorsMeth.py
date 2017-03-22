@@ -18,7 +18,7 @@ def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
 	database.tutorList[ID]={"id":ID, "name":name, "surname":surname, "email":email, "tuteesN":tuteesN}
 
 def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
-	print("To be completed")
+	del database.tutorList[ID]
 
 def viewTutorList(): #Print tutorlist and how many tutees each has. With option to add or remove tutor (which would call respective methods)
 	outputList = []
@@ -44,7 +44,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 					name=name[0].capitalize()+name[1:]
 					taken1=False
 				elif len(name)==0:
-					print("Please enter a value.")
+					print("			Please enter a value.")
 			taken2=True
 			while taken2:
 				print("Enter their surname: ")
@@ -53,7 +53,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 					surname=surname[0].capitalize()+surname[1:]
 					taken2=False
 				elif len(surname)==0:
-					print("Please enter a value.")
+					print("			Please enter a value.")
 			taken3=True
 			while taken3:
 				print("Enter their e-mail: ")
@@ -61,7 +61,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 				if len(email)>0:
 					taken3=False
 				elif len(email)==0:
-					print("Please enter a value.")
+					print("			Please enter a value.")
 			taken4=True
 			while taken4:
 				print("How many tutee's does this tutor have: ")
@@ -69,7 +69,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 				if len(tuteesN)>0:
 					taken4=False
 				elif len(tuteesN)==0:
-					print("Please enter a value.")
+					print("			Please enter a value.")
 			print("So, \nTutor ID: "+tutorID+"\nFullname: "+name+" "+surname+"\nE-mail: "+email+" \nNumber of students in his group: "+tuteesN) 
 			undecided = True
 			while undecided:
@@ -81,25 +81,34 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 					addTutor(tutorID, name, surname, email,tuteesN)
 					viewTutorList()
 				elif response=="no":
-					print("You'll be returned to the menu to try again.")
+					print("	   You'll be returned to the menu to try again.")
 					undecided=False
 				else:
-					print("Please enter 'yes' or 'no'")
+					print("		   Please enter 'yes' or 'no'")
 		
 
 		elif action.lower()=="remove tutor":
 			match=True
 			checker = 0
 			while match:
-				print("Enter the tutor ID of the tutor to remove: ")
-				removeNo=tms.userInput("")
-				for entry in database.tutorList:
-					if removeNo == database.tutorList[entry]["id"].lower():						
-						checker=1
-				if checker!=1:	
-					print("	    That doesn't match a tutor ID in the database.")
-				elif checker==1:
-					match=False
+				checker8 =True
+				while checker8:
+					print("Enter the tutor ID of the tutor to remove: ")
+					removeNo=tms.userInput("")
+					if len(removeNo)>0:
+						if not removeNo.isdigit():
+							print("Tutor id contains only numbers.")
+						else:
+							checker8=False
+					elif len(removeNo)<1:
+						print("			Please enter a value.")
+					for entry in database.tutorList:
+						if removeNo == database.tutorList[entry]["id"].lower():						
+							checker=1
+					if checker!=1:	
+						print("	    That doesn't match a tutor ID in the database.")
+					elif checker==1:
+						match=False
 			delete = True
 			while delete:
 				print("			   Remove "+removeNo+": yes/no")

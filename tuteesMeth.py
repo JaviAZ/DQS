@@ -7,8 +7,7 @@ def addTutee(studentCode,surname,name,tutor,course,acadYear,email):	#will call a
 	database.tuteeList[studentCode]={"tuteeNo":studentCode, "name":name, "surname":surname, "email":email, "course":course, "courseY":acadYear, "tutor":tutor}
 
 def removeTutee(tuteeNo): #remove from tutor group too 
-	
-	print("To be completed")
+	del database.tuteeList[tuteeNo]
 
 def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
 	tuteeList=database.tuteeList
@@ -38,10 +37,10 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 				print("Enter the new student's student number: ")
 				studentCode=tms.userInput("")
 				if len(studentCode)==0:
-					print("Please enter a value.")
+					print("			Please enter a value.")
 				if len(studentCode)>0:	
 					if (not studentCode[0].isalpha()) or (not studentCode[1:].isdigit()) or (len(studentCode)!=8):
-						print("A student number must be in the format 1 letter followed by 7 digits. \nFor example: C1234567")
+						print("   A student number must be in the format 1 letter followed by 7 digits. \nFor example: C1234567")
 						checker2=1
 					if checker2==0:
 						studentCode=studentCode[0].capitalize()+studentCode[1:]	
@@ -59,7 +58,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 					name=name[0].capitalize()+name[1:]
 					taken2=False
 				elif len(name)==0:
-					print("Please enter a value.")
+					print("			Please enter a value.")
 			taken3=True
 			while taken3:
 				print("Enter the new student's surname: ")
@@ -68,7 +67,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 					surname=surname[0].capitalize()+surname[1:]
 					taken3=False
 				elif len(surname)==0:
-					print("Please enter a value.")
+					print("			Please enter a value.")
 			taken4=True
 			while taken4:
 				print("Enter the new student's e-mail: ")
@@ -76,7 +75,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 				if len(email)>0:
 					taken4=False
 				elif len(email)==0:
-					print("Please enter a value.")
+					print("			Please enter a value.")
 			taken5=True
 			while taken5:
 				print("Enter the course they will be studying: ")
@@ -84,7 +83,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 				if len(course)>0:
 					taken5=False
 				elif len(course)==0:
-					print("Please enter a value.")
+					print("			Please enter a value.")
 			taken6=True
 			while taken6:
 				print("Enter which year of study will they be in: ")
@@ -92,7 +91,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 				if len(courseY)>0:
 					taken6=False
 				elif len(courseY)==0:
-					print("Please enter a value.")
+					print("			Please enter a value.")
 			taken7=True
 			while taken7:
 				print("Enter the ID of the tutor they will have: ")
@@ -100,7 +99,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 				if len(tutor)>0:
 					taken7=False
 				elif len(tutor)==0:
-					print("Please enter a value.")
+					print("			Please enter a value.")
 			print("So, \nStudent Number: "+studentCode+"\nFullname: "+name+" "+surname+"\nE-mail: "+email+" \nCourse: "+course+"\nYear of study: "+courseY+"\nTutor: "+tutor) 
 			undecided = True
 			while undecided:
@@ -121,10 +120,21 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 			match=True
 			checker = 0
 			while match:
-				print("Enter the Student number of the student to remove: ")
-				removeNo=tms.userInput("")
+				checker8=True
+				while checker8:
+					checker9 = 0
+					print("Enter the Student number of the student to remove: ")
+					removeNo=tms.userInput("")
+					if len(removeNo)>0:	
+						if (not removeNo[0].isalpha()) or (not removeNo[1:].isdigit()) or (len(removeNo)!=8):
+							print("   A student number must be in the format 1 letter followed by 7 digits. \nFor example: C1234567")
+							checker9=1
+						if checker9==0:
+							removeNo=removeNo[0].capitalize()+removeNo[1:]
+							checker8=False	
+
 				for entry in database.tuteeList:
-					if removeNo == database.tuteeList[entry]["tuteeNo"].lower():						
+					if removeNo == database.tuteeList[entry]["tuteeNo"]:						
 						checker=1
 				if checker!=1:	
 					print("	    That doesn't match a student number in the database.")
