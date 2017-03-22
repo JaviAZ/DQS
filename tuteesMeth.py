@@ -185,7 +185,7 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 			if tuteeSurname==database.tuteeList[tuteeKey]["surname"].lower():
 				scount+=1
 				sflag=False
-				print ("Student Number: "+database.tuteeList[tuteeKey]["tuteeNo"]+". Name: "+database.tuteeList[tuteeKey]["name"]+" "+database.tuteeList[tuteeKey]["name2"]+". Surname: "+database.tuteeList[tuteeKey]["surname"]+". Email: "+databse.tuteeList[tuteeKey]["email"])
+				print ("Student Number: "+database.tuteeList[tuteeKey]["tuteeNo"]+". Name: "+database.tuteeList[tuteeKey]["name"]+" "+database.tuteeList[tuteeKey]["name2"]+". Surname: "+database.tuteeList[tuteeKey]["surname"]+". Email: "+database.tuteeList[tuteeKey]["email"])
 		if scount==0:
 			print("Sorry the tutee was not found.")
 		else:
