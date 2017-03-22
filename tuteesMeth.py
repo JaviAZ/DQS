@@ -28,7 +28,6 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 		print("\n	ADD STUDENT 		REMOVE STUDENT 		  RETURN TO MENU")
 		print("")
 		action = tms.userInput("")	
-		
 
 		if action.lower()=="add student":
 			taken=True
@@ -40,13 +39,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 				if len(studentCode)==0:
 					print("Please enter a value.")
 				if len(studentCode)>0:	
-					if not studentCode[0].isalpha():
-						print("A student number must be in the format 1 letter followed by 7 digits. \nFor example: C1234567")
-						checker2=1
-					elif not studentCode[1:].isdigit():
-						print("A student number must be in the format 1 letter followed by 7 digits. \nFor example: C1234567")
-						checker2=1
-					elif len(studentCode)!=8:
+					if (not studentCode[0].isalpha()) or (not studentCode[1:].isdigit()) or (len(studentCode)!=8):
 						print("A student number must be in the format 1 letter followed by 7 digits. \nFor example: C1234567")
 						checker2=1
 					if checker2==0:
@@ -57,7 +50,6 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 								checker1=1
 						if checker1!=1:	
 							taken=False
-
 			print("Enter the new student's first name: ")
 			name=tms.userInput("")
 			if len(name)>0:
@@ -90,7 +82,6 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 				else:
 					print("Please enter 'yes' or 'no'")
 		
-
 		elif action.lower()=="remove student":
 			match=True
 			checker = 0
@@ -120,12 +111,12 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 					print("Please enter 'yes' or 'no'")
 			
 		
-
 		elif action.lower()=="return to menu":
 			takeAction=False
 			tms.admin()
 		else:
 			print("invalid input")
+
 
 def editTutee(): #Ask for tutee surname. show possible options or print error message. ask user for attribute to change.
 	sflag=True
