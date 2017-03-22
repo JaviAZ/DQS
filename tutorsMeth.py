@@ -34,19 +34,42 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 		print("\n		Add Tutor 	   Remove Tutor 	  Return to Menu")
 		action = tms.userInput("")	
 		
-
 		if action.lower()=="add tutor":
 			tutorID=str(i)
-			print("And their first name: ")
-			name=tms.userInput("")
-			name=name[0].capitalize()+name[1:]
-			print("And their surname: ")
-			surname=tms.userInput("")
-			surname=surname[0].capitalize()+surname[1:]
-			print("And their e-mail: ")
-			email=tms.userInput("")
-			print("How many tutee's does this tutor have: ")
-			tuteesN=tms.userInput("")
+			taken1=True
+			while taken1:
+				print("And their first name: ")
+				name=tms.userInput("")
+				if len(name)>0:
+					name=name[0].capitalize()+name[1:]
+					taken1=False
+				elif len(name)==0:
+					print("Please enter a value.")
+			taken2=True
+			while taken2:
+				print("Enter their surname: ")
+				surname=tms.userInput("")
+				if len(surname)>0:
+					surname=surname[0].capitalize()+surname[1:]
+					taken2=False
+				elif len(surname)==0:
+					print("Please enter a value.")
+			taken3=True
+			while taken3:
+				print("Enter their e-mail: ")
+				email=tms.userInput("")
+				if len(email)>0:
+					taken3=False
+				elif len(email)==0:
+					print("Please enter a value.")
+			taken4=True
+			while taken4:
+				print("How many tutee's does this tutor have: ")
+				tuteesN=tms.userInput("")
+				if len(tuteesN)>0:
+					taken4=False
+				elif len(tuteesN)==0:
+					print("Please enter a value.")
 			print("So, \nTutor ID: "+tutorID+"\nFullname: "+name+" "+surname+"\nE-mail: "+email+" \nNumber of students in his group: "+tuteesN) 
 			undecided = True
 			while undecided:
