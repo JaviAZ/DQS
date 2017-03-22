@@ -15,7 +15,7 @@ def userInput(msg):	#Function to handle user input, make it lower case and check
 	if npt=="endp":
 		endProgram()
 	if npt=="main":
-		main()
+		main(True)
 	return npt
 
 def importTutees(): #Imports information from Tutees.csv into tuteeList COMPLETED
@@ -57,9 +57,13 @@ def exportTutors(): #Exports information from tutorList into Tutors.csv
 def startProgram(): #Calls importing functions and main function. COMPLETED
 	importTutees()
 	importTutors()
-	main()
+	for tutee in database.tuteeList:
+		if(len(database.tuteeList[tutee]["tutor"])==0):
+			print("Groups must be created, go to ADMIN and create groups")
+			main(False)
+	main(True)
 
-def admin(): #Let user choose view tutors, view students, edit tutors, edit students, create groups or end program. Call method depending on user choice. COMPLETED
+def admin(groupsCreated): #Let user choose view tutors, view students, edit tutors, edit students, create groups or end program. Call method depending on user choice. COMPLETED
 	print("\n                              -----------\n                                 ADMIN\n                              -----------")
 	print("     Manage Tutors:                                  Manage Students:")
 	print()
@@ -71,24 +75,31 @@ def admin(): #Let user choose view tutors, view students, edit tutors, edit stud
 	print("                               CREATE GROUPS                        ")
 	print("                                END PROGRAM                         ")
 	adminOption=userInput("")
-	if adminOption=="view tutors":
-		tutorsMeth.viewTutorList()
-	elif adminOption=="edit tutors":
-		tutorsMeth.editTutor()
-	elif adminOption=="view students":
-		print("")
-		tuteesMeth.viewTuteeList()
-	elif adminOption=="edit students":
-		tuteesMeth.editTutee()
-	elif adminOption=="create groups":
-		tutorsMeth.genGroups()
-	elif adminOption=="end program":
-		endProgram()
+	if groupsCreated==False:
+		if adminOption=="create groups":
+			tutorsMeth.genGroups()
+		else:
+			print("Groups must be created, go to Create groups")
+			admin(False)
 	else:
-		print("\n\n                          ***Please input view tutors, edit tutors, view students, edit students, create program, start program or end program.***\n\n")
-	admin()
+		if adminOption=="view tutors":
+			tutorsMeth.viewTutorList()
+		elif adminOption=="edit tutors":
+			tutorsMeth.editTutor()
+		elif adminOption=="view students":
+			print("")
+			tuteesMeth.viewTuteeList()
+		elif adminOption=="edit students":
+			tuteesMeth.editTutee()
+		elif adminOption=="create groups":
+			tutorsMeth.genGroups()
+		elif adminOption=="end program":
+			endProgram()
+		else:
+			print("\n\n                          ***Please input view tutors, edit tutors, view students, edit students, create program, start program or end program.***\n\n")
+		admin(True)
 
-def main():
+def main(groupsCreated):
 	print("")
 	print("            ===========================================================")
 	print("            Cardiff University Computer Science Tutor Management System")
@@ -102,15 +113,23 @@ def main():
 	print("\n                  **Type endp at any time to exit the program**")
 	print("                **Type main at any time to go back to this menu**")
 	chooseView=userInput("")
-	if chooseView=="admin":
-		admin()
-	elif chooseView=="tutor":
-		tutorsMeth.tutor()
-	elif chooseView=="student":
-		tuteesMeth.tutee()
+	if groupsCreated==False:
+		if chooseView=="admin":
+			admin(False)
+		else:
+			print("Groups must be created, go to ADMIN and create groups")
+			main(False)
 	else:
-		print("\n\n                          ***Please input admin, tutor or student.***\n\n")
-		main()
+		if chooseView=="admin":
+			admin(True)
+		elif chooseView=="tutor":
+			tutorsMeth.tutor()
+		elif chooseView=="student":
+			tuteesMeth.tutee()
+		else:
+			print("\n\n                          ***Please input admin, tutor or student.***\n\n")
+			main(True)
 
 if __name__ == "__main__":
 	startProgram()
+	

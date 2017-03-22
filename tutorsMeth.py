@@ -127,7 +127,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 
 		elif action.lower()=="return to menu":
 			takeAction=False
-			tms.admin()
+			tms.admin(True)
 		else:
 			print("invalid input")
 

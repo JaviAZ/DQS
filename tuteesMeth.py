@@ -169,7 +169,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 		
 		elif action.lower()=="return to menu":
 			takeAction=False
-			tms.admin()
+			tms.admin(True)
 		else:
 			print("invalid input")
 
@@ -261,7 +261,7 @@ def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask 
 						print("")
 						Choice2 = tms.userInput("")
 						if Choice2 == "return to menu":
-							tms.main()
+							tms.main(True)
 				elif Choice == "no":
 					tutee()
 				else:
