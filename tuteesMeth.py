@@ -11,7 +11,10 @@ def removeTutee(tuteeNo): #remove from tutor group too
 
 def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
 	tuteeList=database.tuteeList
-	print("The other members of your tutor group are:\nStudent Number    Name                 Email")
+	print("")
+	print("The other members of your tutor group are:")
+	print("")
+	print("Student Number    Name                 Email")
 	for entry in tuteeList:
 		if tuteeList[entry]["tutor"] == tutorN:
 			print(tuteeList[entry]["tuteeNo"]+" "+(" ")*(17-len(tuteeList[entry]["tuteeNo"]))+tuteeList[entry]["name"]+" "+tuteeList[entry]["name2"]+tuteeList[entry]["surname"]+" "+(" ")*(19-(len(tuteeList[entry]["name"])+len(tuteeList[entry]["surname"])))+tuteeList[entry]["email"])
@@ -230,10 +233,12 @@ def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask 
 	print("\n                     -----------\n                       STUDENT\n                     -----------")
 	check1=True
 	check2=True
+	check3=True
 	tuteeList=database.tuteeList
 	while check1:
 		print("")
 		studentNumber=tms.userInput("Enter your student number: ")
+		print("")
 		tcount=0
 		for tuteeKey in tuteeList:
 			if studentNumber == tuteeList[tuteeKey]["tuteeNo"].lower():
@@ -245,11 +250,18 @@ def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask 
 			print("Sorry that student was not found.")
 		else:
 			while check2:
+				print("")
 				Choice = tms.userInput("Is this the correct student? ")
+				print("")
 				if Choice == "yes":
 					check2=False
-					viewTutorGroup(tuteeObj["tutor"])
-					break
+					while check3:
+						viewTutorGroup(tuteeObj["tutor"])
+						print("\n	            		RETURN TO MENU 		                ")
+						print("")
+						Choice2 = tms.userInput("")
+						if Choice2 == "return to menu":
+							tms.main()
 				elif Choice == "no":
 					tutee()
 				else:
