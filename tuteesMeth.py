@@ -13,7 +13,7 @@ def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
 	tuteeList=database.tuteeList
 	print("The other members of your tutor group are:\nStudent Number    Name                 Email")
 	for entry in tuteeList:
-		if int(tuteeList[entry]["tutor"]) == tutorN:
+		if tuteeList[entry]["tutor"] == tutorN:
 			print(tuteeList[entry]["tuteeNo"]+" "+(" ")*(17-len(tuteeList[entry]["tuteeNo"]))+tuteeList[entry]["name"]+" "+tuteeList[entry]["surname"]+" "+(" ")*(19-(len(tuteeList[entry]["name"])+len(tuteeList[entry]["surname"])))+tuteeList[entry]["email"])
 
 def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods)
@@ -216,4 +216,30 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 
 def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask if he wants to view tutor group info, enrolled courses or tutor info.
 	print("\n                     -----------\n                       STUDENT\n                     -----------")
-	number=tms.userInput("Enter your student number: ")
+	check1=True
+	check2=True
+	tuteeList=database.tuteeList
+	while check1:
+		print("")
+		studentNumber=tms.userInput("Enter your student number: ")
+		tcount=0
+		for tuteeKey in tuteeList:
+			if studentNumber == tuteeList[tuteeKey]["tuteeNo"].lower():
+				tcount += 1
+				tuteeObj = tuteeList[tuteeKey]
+				check1 = False
+				print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
+		if check1:
+			print("Sorry that student was not found.")
+		else:
+			while check2:
+				Choice = tms.userInput("Is this the correct student? ")
+				if Choice == "yes":
+					check2=False
+					viewTutorGroup(tuteeObj["tutor"])
+					break
+				elif Choice == "no":
+					tutee()
+				else:
+					print("That is not a valid response. Please enter 'yes' or 'no'.")
+					print("")
