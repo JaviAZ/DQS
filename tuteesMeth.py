@@ -22,7 +22,7 @@ def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
 def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods)
 	outputList = []
 	for entry in database.tuteeList:
-		temp = "		Student number: "+database.tuteeList[entry]["tuteeNo"]+" \n			Name: " + database.tuteeList[entry]["name"] +tuteeList[entry]["name"]+ " " + database.tuteeList[entry]["surname"]
+		temp = "		Student number: "+database.tuteeList[entry]["tuteeNo"]+" \n			Name: " + database.tuteeList[entry]["name"] +database.tuteeList[entry]["name"]+ " " + database.tuteeList[entry]["surname"]
 		outputList.append(temp)
 	for entry in outputList:
 		print(entry)
