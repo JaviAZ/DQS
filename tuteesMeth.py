@@ -5,7 +5,7 @@ import tms
 def addTutee(studentCode,surname,name,tutor,course,acadYear,email):	#will call addToGroup if method isnt called from createProgram
 	database.tuteeList[studentCode]={"tuteeNo":studentCode, "name":name, "surname":surname, "email":email, "course":course, "courseY":acadYear, "tutor":tutor}
 
-def removeTutee(surname): #remove from tutor group too 
+def removeTutee(tuteeNo): #remove from tutor group too 
 	#tuteeList=database.tuteeList
 	#for entry in tuteeList:
 	#	if entry["surname"] == surname:
@@ -24,15 +24,17 @@ def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
 def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods)
 	outputList = []
 	for entry in database.tuteeList:
-		temp = "	Name: " + database.tuteeList[entry]["name"] + " " + database.tuteeList[entry]["surname"]
+		temp = "		Student number: "+database.tuteeList[entry]["tuteeNo"]+" \n			Name: " + database.tuteeList[entry]["name"] + " " + database.tuteeList[entry]["surname"]
 		outputList.append(temp)
 	for entry in outputList:
 		print(entry)
 	takeAction = True
 	while takeAction:
-		print("\n	ADD STUDENT 		REMOVE STUDENT 			RETURN TO MENU")
+		print("\n	ADD STUDENT 		REMOVE STUDENT 		  RETURN TO MENU")
 		print("")
 		action = tms.userInput("")	
+		
+
 		if action.lower()=="add student":
 			taken=True
 			checker=0
@@ -76,9 +78,38 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 					undecided=False
 				else:
 					print("Please enter 'yes' or 'no'")
+		
+
 		elif action.lower()=="remove student":
-			takeAction=False
-			removeTutee("")
+			match=True
+			checker = 0
+			while match:
+				print("Enter the Student number of the student to remove: ")
+				removeNo=tms.userInput("")
+				for entry in database.tuteeList:
+					if removeNo == database.tuteeList[entry]["tuteeNo"].lower():						
+						checker=1
+				if checker!=1:	
+					print("	    That doesn't match a student number in the database.")
+				elif checker==1:
+					match=False
+			delete = True
+			while delete:
+				print("			   Remove "+removeNo+": yes/no")
+				response = tms.userInput("")
+				if response=="yes":
+					takeAction=False
+					delete=False
+					removeTutee(removeNo)
+					viewTuteeList()
+				elif response=="no":
+					print("You'll be returned to the menu to try again.")
+					delete=False
+				else:
+					print("Please enter 'yes' or 'no'")
+			
+		
+
 		elif action.lower()=="return to menu":
 			takeAction=False
 			tms.admin()

@@ -17,7 +17,7 @@ def redistGroups(tutorDelID): #Redistribute students into new groups
 def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
 	database.tutorList[ID]={"id":ID, "name":name, "surname":surname, "email":email, "tuteesN":tuteesN}
 
-def removeTutor(): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
+def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
 	print("To be completed")
 
 def viewTutorList(): #Print tutorlist and how many tutees each has. With option to add or remove tutor (which would call respective methods)
@@ -29,13 +29,14 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 	for entry in outputList:
 		print(entry)
 		i+=1
-		print(i)
 	takeAction = True
 	while takeAction:
-		print("\n	Add Tutor 		Remove Tutor 			Return to Menu")
+		print("\n		Add Tutor 	   Remove Tutor 	  Return to Menu")
 		action = tms.userInput("")	
+		
+
 		if action.lower()=="add tutor":
-			tutorID=i
+			tutorID=str(i)
 			print("And their first name: ")
 			name=tms.userInput("")
 			name=name[0].capitalize()+name[1:]
@@ -46,7 +47,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 			email=tms.userInput("")
 			print("How many tutee's does this tutor have: ")
 			tuteesN=tms.userInput("")
-			print("So, \nTutor ID: "+str(tutorID)+"\nFullname: "+name+" "+surname+"\nE-mail: "+email+" \nNumber of students in his group: "+tuteesN) 
+			print("So, \nTutor ID: "+tutorID+"\nFullname: "+name+" "+surname+"\nE-mail: "+email+" \nNumber of students in his group: "+tuteesN) 
 			undecided = True
 			while undecided:
 				print("Is that correct: yes/no")
@@ -54,16 +55,44 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 				if response=="yes":
 					takeAction=False
 					undecided=False
-					addTutor(tutorID, name, surname, email,tueesN)
+					addTutor(tutorID, name, surname, email,tuteesN)
 					viewTutorList()
 				elif response=="no":
 					print("You'll be returned to the menu to try again.")
 					undecided=False
 				else:
 					print("Please enter 'yes' or 'no'")
+		
+
 		elif action.lower()=="remove tutor":
-			takeAction=False
-			removeTutor()
+			match=True
+			checker = 0
+			while match:
+				print("Enter the tutor ID of the tutor to remove: ")
+				removeNo=tms.userInput("")
+				for entry in database.tutorList:
+					if removeNo == database.tutorList[entry]["id"].lower():						
+						checker=1
+				if checker!=1:	
+					print("	    That doesn't match a tutor ID in the database.")
+				elif checker==1:
+					match=False
+			delete = True
+			while delete:
+				print("			   Remove "+removeNo+": yes/no")
+				response = tms.userInput("")
+				if response=="yes":
+					takeAction=False
+					delete=False
+					removeTutor(removeNo)
+					viewTutorList()
+				elif response=="no":
+					print("You'll be returned to the menu to try again.")
+					delete=False
+				else:
+					print("Please enter 'yes' or 'no'")
+		
+
 		elif action.lower()=="return to menu":
 			takeAction=False
 			tms.admin()
