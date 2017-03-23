@@ -8,6 +8,9 @@ def addTutee(studentCode,surname,name,name2,tutor,course,acadYear,email):	#Adds 
 
 def removeTutee(tuteeNo): #Place tutee in a separate database.
 	database.delTuteeList[tuteeNo]=database.tuteeList[tuteeNo]
+	tn=int(database.tutorList[database.tuteeList[tuteeNo]["tutor"]]["tuteesN"])
+	tn-=1
+	database.tutorList[database.tuteeList[tuteeNo]["tutor"]]["tuteesN"]=str(tn)
 	del database.tuteeList[tuteeNo]
 
 def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
@@ -135,6 +138,9 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 					takeAction=False
 					undecided=False
 					addTutee(studentCode, surname, name, name2, course, courseY, tutor,email)
+					tn=int(database.tutorList[tutor]["tuteesN"])
+					tn+=1
+					database.tutorList[tutor]["tuteesN"]=str(tn)
 					viewTuteeList()
 				elif response=="no":
 					print("You'll be returned to the menu to try again.")
