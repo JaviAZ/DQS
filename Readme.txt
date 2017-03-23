@@ -16,6 +16,7 @@ MarkScheme:
 Things to fix:
 
 	-add validation checking to inputs
+	-spaces after first names in tutees.csv
 	-tutor degree isnt taken in account when assigning groups
 	-random layout changes
 	-can generate groups whenever, regardless of preexisting data
@@ -25,6 +26,7 @@ Things to fix:
 	-might be nice to see list of tutors and IDs when adding a new student as it asks for a tutor ID
 	-edit students doesn't recognise tutors with IDs larger than the length of the tutor list
 	-adding students creates a file with the wrong column order
+	- random layout changes
 
 Fixed:
 	-tutor can be added with the same ID of an old tutor, overwritting it. Make the program create the ID instead of the user - issue also applies to editting preexisting tutors
