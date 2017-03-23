@@ -20,12 +20,15 @@ def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
 
 def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
 	del database.tutorList[ID]
+	tms.exportTutors()
+	redistGroups(ID)
+	print(database.tuteeList)
 
 def viewTutorList(): #Print tutorlist and how many tutees each has. With option to add or remove tutor (which would call respective methods)
 	outputList = []
 	i=1
 	for entry in database.tutorList:
-		temp = "	Name: " + database.tutorList[entry]["name"] + " " + database.tutorList[entry]["surname"]
+		temp = "ID: "+ database.tutorList[entry]["id"]+"	Name: " + database.tutorList[entry]["name"] + " " + database.tutorList[entry]["surname"]
 		outputList.append(temp)
 	for entry in outputList:
 		print(entry)

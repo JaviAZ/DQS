@@ -14,7 +14,6 @@ MarkScheme:
 	5.Teams of five or more: Delete a student from the tutor list and re-assign a single student to an alternative tutor.	
 
 Things to fix:
-	when showing tutor list print their ID
 	when adding student you can put any number into tutor number
 	when editing student you can put any number into tutor number
 	spaces after first names in tutees.csv
@@ -36,3 +35,4 @@ Fixed:
 	can't cancel editting tutor or students on admin page
 	potentially can try and view tutor groups as before they've been generated, makes it crash
 	view students displays first name twice
+	when showing tutor list print their ID
