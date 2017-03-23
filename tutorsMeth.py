@@ -17,24 +17,25 @@ def genGroups(): #Assigns a tutor to each tutee
 
 def redistGroups(tutorDelID): #Redistribute students into new groups
 	newTutorID = 0 
-	temp = 0
+	temp = 1000 # just a large value that is greater than total number of students
 	for tutee in database.tuteeList:
-		if database.tuteeList[tutee]["Tutor"] == tutorDelID:
+		if database.tuteeList[tutee]["tutor"] == tutorDelID:
 			for tutor in database.tutorList:
-				temp = database.tutorList[tutor]["tuteesN"]
-				if database.tutorList[tutor]["tuteesN"] <= temp :
-					newTutorID = database.tutorList["id"]
-			database.tuteeList[tutee]["Tutor"] = newTutorID
-			print(database.tuteeList[tutee]["name"] + " has been moved to a new tutor!")
+				
+				if int(database.tutorList[tutor]["tuteesN"]) <= temp :
+					newTutorID = database.tutorList[tutor]["id"]
+				
+			database.tuteeList[tutee]["tutor"] = newTutorID
+			print("-----------------------------------------------------")
+			print(database.tuteeList[tutee]["name"] +" " + database.tuteeList[tutee]["surname"] + " has been moved to " + database.tutorList[(database.tuteeList[tutee]["tutor"])]["name"] + " " + database.tutorList[(database.tuteeList[tutee]["tutor"])]["surname"] + "'s tutor group.")
+			
 
 def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
 	database.tutorList[ID]={"id":ID, "name":name, "surname":surname, "email":email, "tuteesN":tuteesN}
 
 def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
 	del database.tutorList[ID]
-	tms.exportTutors()
 	redistGroups(ID)
-	print(database.tuteeList)
 
 def printTutors():
 	outputList = []
@@ -89,7 +90,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 					taken4=False
 				elif len(tuteesN)==0:
 					print("			Please enter a value.")
-			print("So, \nTutor ID: "+tutorID+"\nFullname: "+name+" "+surname+"\nE-mail: "+email+" \nNumber of students in his group: "+tuteesN) 
+			print("So, \nTutor ID: "+tutorID+"\nFullname: "+name+" "+surname+"\nE-mail: "+email) 
 			undecided = True
 			while undecided:
 				print("Is that correct: yes/no")
@@ -97,7 +98,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 				if response=="yes":
 					takeAction=False
 					undecided=False
-					addTutor(tutorID, name, surname, email,tuteesN)
+					addTutor(tutorID, name, surname, email, 0)
 					viewTutorList()
 				elif response=="no":
 					print("	   You'll be returned to the menu to try again.")

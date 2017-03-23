@@ -268,6 +268,9 @@ def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask 
 	check1=True
 	check2=True
 	check3=True
+	print("")
+	printTutees()
+	print("")
 	tuteeList=database.tuteeList
 	while check1:
 		print("")
