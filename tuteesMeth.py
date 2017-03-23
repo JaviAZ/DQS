@@ -13,7 +13,8 @@ def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
 	tuteeList=database.tuteeList
 	tutorList=database.tutorList
 	print("")
-	print("Tutor group information:")
+	print("                       Tutor group information:")
+	print("")
 	print("Tutor Number      Name                 Email")
 	for entry in tutorList:
 		if tutorList[entry]["id"] == tutorN:
