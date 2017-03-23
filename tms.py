@@ -9,6 +9,8 @@ def endProgram(): #Later dictionaries will be put into csv before closing the ap
 	print("Exiting program.")
 	exportTutees()
 	exportTutors()
+	if len(database.delTuteeList)>0:
+		exportDelTutees()
 	quit()
 
 def userInput(msg):	#Function to handle user input, make it lower case and check if user wants to end program or go back to main menu. Completed
@@ -43,9 +45,17 @@ def exportTutees(): #Exports information from tuteeList into Tutees.csv
 		header=["Student Code","Surname","Forename1","Forename2","TUTOR","Course","Acad Year","Univ Email"]
 		writer.writerow(header)
 		for tutee in database.tuteeList:
-			writer.writerow([database.tuteeList[tutee]["tuteeNo"],database.tuteeList[tutee]["surname"],database.tuteeList[tutee]["name"],database.tuteeList[tutee]["name2"],database.tuteeList[tutee]["tutor"],database.tuteeList[tutee]["course"],database.tuteeList[tutee]["courseY"],database.tuteeList[tutee]["email"],])
+			writer.writerow([database.tuteeList[tutee]["tuteeNo"],database.tuteeList[tutee]["surname"],database.tuteeList[tutee]["name"],database.tuteeList[tutee]["name2"],database.tuteeList[tutee]["tutor"],database.tuteeList[tutee]["course"],database.tuteeList[tutee]["courseY"],database.tuteeList[tutee]["email"]])
 		courseCodes=[["UFBSCMSA","BSc Computer Science"],["UFBSCMSB","BSc Computer Science with year in industry"],["UFBSCSFA","BSc Computer Science with Security and Forensics"],["UFBSCSFB","BSC Computer Science with Security and Forensics with year in industry"],["UFBSCSHA","BSc Computer Science with HPC"],["UFBSCSHB","BSc Computer Science with HPC with year in industry"],["UFBSCVCA","BSc Computer Science with Computer Vision and Computer Graphics"],["UFBSCVCB","BSc Computer Science with Computer Vision and Computer Graphics with year in industry"],["UFBSASEA","BSc Applied Software Engineering"]]
 		writer.writerows(courseCodes)
+
+def exportDelTutees(): #Exports information from tuteeList into Tutees.csv
+	with open ('DelTutees.csv','w') as csvfile:
+		writer=csv.writer(csvfile,delimiter=";")
+		header=["Student Code","Surname","Forename1","Forename2","TUTOR","Course","Acad Year","Univ Email"]
+		writer.writerow(header)
+		for tutee in database.delTuteeList:
+			writer.writerow([database.delTuteeList[tutee]["tuteeNo"],database.delTuteeList[tutee]["surname"],database.delTuteeList[tutee]["name"],database.tuteeList[tutee]["name2"],database.delTuteeList[tutee]["tutor"],database.delTuteeList[tutee]["course"],database.delTuteeList[tutee]["courseY"],database.delTuteeList[tutee]["email"]])
 
 def exportTutors(): #Exports information from tutorList into Tutors.csv
 	with open ('Tutors.csv',"w") as csvfile:

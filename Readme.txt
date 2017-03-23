@@ -18,7 +18,6 @@ Things to fix:
 	spaces after first names in tutees.csv
 	when showing tutor info also show number of tutees the tutor has
 	tutor degree isnt taken in account when assigning groups
-	keep record of deleted students
 	viewTutorGroup which is found in tuteesMeth.py is used in the tutee() method to display the 
           list of tutees and also in the tutor() method. However, it reads 
           "The other members of your tutor group are:" which doesn't make sense if it's used in the tutor() method.
@@ -37,3 +36,4 @@ Fixed:
 	when editing student you can put any number into tutor number
 	when editing student, and asked for validation of student number, inputing any other student number would edit it
 	when editing tutor, and asked for validation of ID, inputing any other id would edit it
+	keep record of deleted students
