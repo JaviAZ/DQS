@@ -36,15 +36,18 @@ def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, 
 	redistGroups(ID)
 	print(database.tuteeList)
 
-def viewTutorList(): #Print tutorlist and how many tutees each has. With option to add or remove tutor (which would call respective methods)
+def printTutors():
 	outputList = []
 	i=1
 	for entry in database.tutorList:
-		temp = "ID: "+ database.tutorList[entry]["id"]+"	Name: " + database.tutorList[entry]["name"] + " " + database.tutorList[entry]["surname"]
+		temp = "ID: "+ database.tutorList[entry]["id"]+"   Number of tutees: "+database.tutorList[entry]["tuteesN"]+"	Name: " + database.tutorList[entry]["name"] + " " + database.tutorList[entry]["surname"]
 		outputList.append(temp)
 	for entry in outputList:
 		print(entry)
 		i+=1
+
+def viewTutorList(): #Print tutorlist and how many tutees each has. With option to add or remove tutor (which would call respective methods)
+	printTutors()
 	takeAction = True
 	while takeAction:
 		print("\n		Add Tutor 	   Remove Tutor 	  Return to Menu")
@@ -193,6 +196,9 @@ def tutor():
 	check1=True
 	check2=True
 	check3=True
+	print("")
+	printTutors()
+	print("")
 	tutorList=database.tutorList
 	while check1:
 		print("")
