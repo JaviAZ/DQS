@@ -22,8 +22,6 @@ Things to fix:
 		origin/master
           list of tutees and also in the tutor() method. However, it reads 
           "The other members of your tutor group are:" which doesn't make sense if it's used in the tutor() method.
-	-The headers such as "Tutor Number", "Name" and "Email" in the viewTutorGroup method could be changed to
-	   all uppercase to make it stand out?
 	- random layout changes
 
 Fixed:
@@ -38,3 +36,5 @@ Fixed:
 	-when editing student, and asked for validation of student number, inputing any other student number would edit it
 	-when editing tutor, and asked for validation of ID, inputing any other id would edit it
 	-keep record of deleted students
+	-The headers such as "Tutor Number", "Name" and "Email" in the viewTutorGroup method could be changed to
+	   all uppercase to make it stand out?
