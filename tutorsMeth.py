@@ -4,11 +4,17 @@ import tms
 import tuteesMeth
 
 def genGroups(): #Assigns a tutor to each tutee
-	availableGroups=len(database.tutorList)
+	availableGroups=[]
 	selectedGroup=1
+	for tutor in database.tutorList:
+		availableGroups.append(int(database.tutorList[tutor]["id"]))
 	for tutee in database.tuteeList:
-		if selectedGroup > availableGroups:
-			selectedGroup = 1
+		if selectedGroup not in availableGroups:
+			if selectedGroup > max(availableGroups):
+				selectedGroup = 1
+			else:
+				selectedGroup += 1
+		print(selectedGroup)
 		database.tuteeList[tutee]["tutor"]=str(selectedGroup)
 		tn=int(database.tutorList[str(selectedGroup)]["tuteesN"])
 		tn+=1
@@ -16,28 +22,33 @@ def genGroups(): #Assigns a tutor to each tutee
 		selectedGroup += 1
 
 def redistGroups(tutorDelID): #Redistribute students into new groups
+	tutorPos = 0
 	newTutorID = 0 
-	temp = 1000 # just a large value that is greater than total number of students
+	temp = 1000 
 	for tutee in database.tuteeList:
 		if database.tuteeList[tutee]["tutor"] == tutorDelID:
+			temp=1000 # just a large value that is greater than total number of students
 			for tutor in database.tutorList:
 				
-				if int(database.tutorList[tutor]["tuteesN"]) <= temp :
+				if int(database.tutorList[tutor]["tuteesN"]) < temp :
+					temp = int(database.tutorList[tutor]["tuteesN"])
 					newTutorID = database.tutorList[tutor]["id"]
-				
+					tutorPos = tutor
+
+			database.tutorList[tutorPos]["tuteesN"] = str(int(database.tutorList[tutorPos]["tuteesN"]) + 1)	
 			database.tuteeList[tutee]["tutor"] = newTutorID
 			print("-----------------------------------------------------")
 			print(database.tuteeList[tutee]["name"] +" " + database.tuteeList[tutee]["surname"] + " has been moved to " + database.tutorList[(database.tuteeList[tutee]["tutor"])]["name"] + " " + database.tutorList[(database.tuteeList[tutee]["tutor"])]["surname"] + "'s tutor group.")
-			
-
+	print("")
+	print("==================================================================")	
 def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
 	database.tutorList[ID]={"id":ID, "name":name, "surname":surname, "email":email, "tuteesN":tuteesN}
 
 def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
 	del database.tutorList[ID]
-	redistGroups(ID)
+	#redistGroups(ID)
 
-def printTutors():
+def printTutors():	
 	outputList = []
 	i=1
 	for entry in database.tutorList:
@@ -53,12 +64,18 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 	while takeAction:
 		print("\n		Add Tutor 	   Remove Tutor 	  Return to Menu")
 		action = tms.userInput("")	
-		
 		if action.lower()=="add tutor":
-			tutorID=str(i)
+			i=1
+			for entry in  database.tutorList:
+				for entry in  database.tutorList:
+					if str(i)==database.tutorList[entry]["id"]:
+						i+=1
+					else:
+						tutorID=str(i)			
+			#tutorID=str(i)
 			taken1=True
 			while taken1:
-				print("And their first name: ")
+				print("Enter their first name: ")
 				name=tms.userInput("")
 				if len(name)>0:
 					name=name[0].capitalize()+name[1:]
@@ -83,13 +100,13 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 				elif len(email)==0:
 					print("			Please enter a value.")
 			taken4=True
-			while taken4:
-				print("How many tutee's does this tutor have: ")
-				tuteesN=tms.userInput("")
-				if len(tuteesN)>0:
-					taken4=False
-				elif len(tuteesN)==0:
-					print("			Please enter a value.")
+			#while taken4:
+			#	print("How many tutee's does this tutor have: ")
+			#	tuteesN=str(tms.userInput(""))
+			#	if len(tuteesN)>0:
+			#		taken4=False
+			#	elif len(tuteesN)==0:
+			#		print("			Please enter a value.")
 			print("So, \nTutor ID: "+tutorID+"\nFullname: "+name+" "+surname+"\nE-mail: "+email) 
 			undecided = True
 			while undecided:
@@ -98,7 +115,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 				if response=="yes":
 					takeAction=False
 					undecided=False
-					addTutor(tutorID, name, surname, email, 0)
+					addTutor(tutorID, name, surname, email, str(0))
 					viewTutorList()
 				elif response=="no":
 					print("	   You'll be returned to the menu to try again.")
