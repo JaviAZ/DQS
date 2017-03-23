@@ -20,7 +20,6 @@ def genGroups(): #Assigns a tutor to each tutee
 		tn+=1
 		database.tutorList[str(selectedGroup)]["tuteesN"]=str(tn)
 		selectedGroup += 1
-		print("tutor: "+)
 
 def redistGroups(tutorDelID): #Redistribute students into new groups
 	tutorPos = 0
