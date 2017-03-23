@@ -1,12 +1,9 @@
-ID;Name;Surname;Email;nOfTutees
-<<<<<<< HEAD
-3;Fake;Guy;GuyF@cardiff.ac.uk;4
-1;David;Marshall;MarshallAD@cardiff.ac.uk;5
-4;Kirk;Cobain;CobainK@cardiff.ac.uk;4
-2;Kirill;Sidorov;SidorovK@cardiff.ac.uk;4
-=======
-2;Kirill;Sidorov;SidorovK@cardiff.ac.uk;5
-1;David;Marshall;MarshallAD@cardiff.ac.uk;5
-4;Kirk;Cobain;CobainK@cardiff.ac.uk;4
-3;Fake;Guy;GuyF@cardiff.ac.uk;4
->>>>>>> 5a54705627196bb151ba5ecb8ba2c26a9c3733c4
+ID;Name;Surname;Email;nOfTutees
+
+2;Kirill;Sidorov;SidorovK@cardiff.ac.uk;5
+
+1;David;Marshall;MarshallAD@cardiff.ac.uk;5
+
+4;Kirk;Cobain;CobainK@cardiff.ac.uk;4
+
+3;Fake;Guy;GuyF@cardiff.ac.uk;4
