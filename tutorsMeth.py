@@ -8,7 +8,7 @@ def genGroups(): #Assigns a tutor to each tutee
 	selectedGroup=1
 	for tutor in database.tutorList:
 		availableGroups.append(int(database.tutorList[tutor]["id"]))
-		database.tutorList[str(selectedGroup)]["tuteesN"]="0"
+		database.tutorList[tutor]["tuteesN"]="0"
 	for tutee in database.tuteeList:
 		while selectedGroup not in availableGroups:
 			if selectedGroup > max(availableGroups):
