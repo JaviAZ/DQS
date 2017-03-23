@@ -17,6 +17,7 @@ Things to fix:
 	when showing tutor list print their ID
 	when adding student you can put any number into tutor number
 	when editing student you can put any number into tutor number
+	spaces after first names in tutees.csv
 
 Fixed:
 	tutor can be added with the same ID of an old tutor, overwritting it. Make the program create the ID instead of the user - issue also applies to editting preexisting tutors
