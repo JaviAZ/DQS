@@ -49,3 +49,4 @@ Fixed:
 	tutee can be added with the same tuteeNo of an old tutee, overwritting it. Make the program check if that tuteeNo is already in the list.
 	can't cancel editting tutor or students on admin page
 	potentially can try and view tutor groups as before they've been generated, makes it crash
+	view students displays first name twice
