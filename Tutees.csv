@@ -1,27 +1,54 @@
-Student Code;Surname;Forename1;Forename2;TUTOR;Course;Acad Year;Univ Email
-C1628125;Shortman;Louise;;3;UFBSCMSA;2016/17;LouiseS@cardiff.ac.uk
-C1628119;Jones;Felix;Frosty;3;UFBSCMSA;2016/17;JonesF@cardiff.ac.uk
-C1628115;Jones;Larry;;2;UFBSCMSA;2016/17;LarryJ@cardiff.ac.uk
-C1628123;Mills;James;;2;UFBSCMSA;2016/17;JamesM@cardiff.ac.uk
-C1628114;Amos;Goeff;;1;UFBSCMSA;2016/17;GeoffA@cardiff.ac.uk
-C1278982;Builder;Bob;The;2;2016/17;69;bob@gmail.com
-C1628113;Geraldine;Bobby;;1;UFBSCMSA;2016/17;BobbyG@cardiff.ac.uk
-C1628122;Piri;Sam;;3;UFBSCMSA;2016/17;SamP@cardiff.ac.uk
-C1628117;Smith;Alex;;2;UFBSCMSA;2016/17;AlexS@cardiff.ac.uk
-C1628126;Thompson;Alex;;1;UFBSCMSA;2016/17;AlexT@cardiff.ac.uk
-C1628124;Reed;Heidi;;3;UFBSCMSA;2016/17;HeidiR@cardiff.ac.uk
-C1628112;Alcazar;Javier;;1;UFBSCMSA;2016/17;AlcazarZafraJ@cardiff.ac.uk
-C1628127;Kalvin;Fred;;2;UFBSCMSA;2016/17;FredK@cardiff.ac.uk
-C1628118;Moss;Ben;;3;UFBSCMSA;2016/17;BenM@cardiff.ac.uk
-C1628120;Everett;Janice;;1;UFBSCMSA;2016/17;JaniceE@cardiff.ac.uk
-C1628116;Hades;Jerald;;1;UFBSCMSA;2016/17;JeraldH@cardiff.ac.uk
-0236587/1;BLOGGS;JO;;2;UFBSCMSA;2001/2;BloggsJ43@cardiff.ac.uk
-UFBSCMSA;BSc Computer Science
-UFBSCMSB;BSc Computer Science with year in industry
-UFBSCSFA;BSc Computer Science with Security and Forensics
-UFBSCSFB;BSC Computer Science with Security and Forensics with year in industry
-UFBSCSHA;BSc Computer Science with HPC
-UFBSCSHB;BSc Computer Science with HPC with year in industry
-UFBSCVCA;BSc Computer Science with Computer Vision and Computer Graphics
-UFBSCVCB;BSc Computer Science with Computer Vision and Computer Graphics with year in industry
-UFBSASEA;BSc Applied Software Engineering
+Student Code;Surname;Forename1;Forename2;TUTOR;Course;Acad Year;Univ Email
+
+C1628125;Shortman;Louise;;;UFBSCMSA;2016/17;LouiseS@cardiff.ac.uk
+
+C1628119;Jones;Felix;Frosty;;UFBSCMSA;2016/17;JonesF@cardiff.ac.uk
+
+C1628115;Jones;Larry;;;UFBSCMSA;2016/17;LarryJ@cardiff.ac.uk
+
+C1628123;Mills;James;;;UFBSCMSA;2016/17;JamesM@cardiff.ac.uk
+
+C1628114;Amos;Goeff;;;UFBSCMSA;2016/17;GeoffA@cardiff.ac.uk
+
+C1278982;Builder;Bob;The;;2016/17;69;bob@gmail.com
+
+C1628113;Geraldine;Bobby;;;UFBSCMSA;2016/17;BobbyG@cardiff.ac.uk
+
+C1628122;Piri;Sam;;;UFBSCMSA;2016/17;SamP@cardiff.ac.uk
+
+C1628117;Smith;Alex;;;UFBSCMSA;2016/17;AlexS@cardiff.ac.uk
+
+C1628126;Thompson;Alex;;;UFBSCMSA;2016/17;AlexT@cardiff.ac.uk
+
+C1628124;Reed;Heidi;;;UFBSCMSA;2016/17;HeidiR@cardiff.ac.uk
+
+C1628112;Alcazar;Javier;;;UFBSCMSA;2016/17;AlcazarZafraJ@cardiff.ac.uk
+
+C1628127;Kalvin;Fred;;;UFBSCMSA;2016/17;FredK@cardiff.ac.uk
+
+C1628118;Moss;Ben;;;UFBSCMSA;2016/17;BenM@cardiff.ac.uk
+
+C1628120;Everett;Janice;;;UFBSCMSA;2016/17;JaniceE@cardiff.ac.uk
+
+C1628116;Hades;Jerald;;;UFBSCMSA;2016/17;JeraldH@cardiff.ac.uk
+
+0236587/1;BLOGGS;JO;;;UFBSCMSA;2001/2;BloggsJ43@cardiff.ac.uk
+
+UFBSCMSA;BSc Computer Science
+
+UFBSCMSB;BSc Computer Science with year in industry
+
+UFBSCSFA;BSc Computer Science with Security and Forensics
+
+UFBSCSFB;BSC Computer Science with Security and Forensics with year in industry
+
+UFBSCSHA;BSc Computer Science with HPC
+
+UFBSCSHB;BSc Computer Science with HPC with year in industry
+
+UFBSCVCA;BSc Computer Science with Computer Vision and Computer Graphics
+
+UFBSCVCB;BSc Computer Science with Computer Vision and Computer Graphics with year in industry
+
+UFBSASEA;BSc Applied Software Engineering
+
