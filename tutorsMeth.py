@@ -46,10 +46,8 @@ def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
 	database.tutorList[ID]={"id":ID, "name":name, "surname":surname, "email":email, "tuteesN":tuteesN}
 
 def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
-	if ID!=len(database.tutorList):
-		
+	if ID!=len(database.tutorList):	
 		while (int(ID)<len(database.tutorList)):
-			
 			print(database.tutorList[ID])
 			database.tutorList[ID]=database.tutorList[str(int(ID)+1)]
 			database.tutorList[ID]["id"]=ID
@@ -221,12 +219,15 @@ def tutor():
 #Ask for surname. Check list of tutors for surname. 
 #Print error message if tutor not found. Print results with id, name, surname and email. User chooses result and prints its group
 	print("\n                     -----------\n                        TUTOR\n                     -----------")
+	check1=True
+	check2=True
+	check3=True
 	tutorsCode=[]
 	print("")
 	printTutors()
 	print("")
 	tutorList=database.tutorList
-	while True:
+	while check1:
 		print("")
 		tutorSurname=tms.userInput("Enter your surname: ")
 		print("")
@@ -235,27 +236,25 @@ def tutor():
 			if tutorSurname == tutorList[tutorKey]["surname"].lower():
 				tcount += 1
 				tutorObj = tutorList[tutorKey]
+				check1=False
 				tutorsCode+=tutorObj["id"]
 				print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
-				break
-			else:
-				print("Sorry, that tutor was not found. Please try again.")
-				print("")
-				break
-		if tcount>0:
-			break
-	while True:
-		print("")
-		Choice = tms.userInput("Enter your tutor ID number: ")
-		if Choice in tutorList and Choice in tutorsCode:
-			tutorObj=tutorList[Choice]
-			break
+		if check1:
+			print("Sorry, that tutor was not found. Please try again.")
+			print("")
 		else:
-			print("That tutor isn't in the list.")		
-	while True:
-		tuteesMeth.viewTutorGroup(tutorObj["id"])
-		print("\n	            		RETURN TO MENU 		                ")
-		print("")
-		Choice2 = tms.userInput("")
-		if Choice2 == "return to menu":
-			tms.main(True)
+			while check2:
+				print("")
+				Choice = tms.userInput("Enter your tutor ID number: ")
+				if Choice in tutorList and Choice in tutorsCode:
+					tutorObj=tutorList[Choice]
+					check2=False
+					while check3:
+						tuteesMeth.viewTutorGroup(tutorObj["id"])
+						print("\n	            		RETURN TO MENU 		                ")
+						print("")
+						Choice2 = tms.userInput("")
+						if Choice2 == "return to menu":
+							tms.main(True)
+				else:
+					print("That tutor isn't in the list.") 
