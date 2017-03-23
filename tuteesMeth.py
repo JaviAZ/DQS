@@ -3,10 +3,11 @@ import database
 import tms
 
 
-def addTutee(studentCode,surname,name,name2,tutor,course,acadYear,email):	#will call addToGroup if method isnt called from createProgram
+def addTutee(studentCode,surname,name,name2,tutor,course,acadYear,email):	#Adds student to database
 	database.tuteeList[studentCode]={"tuteeNo":studentCode, "name":name, "name2":name2, "surname":surname, "email":email, "course":course, "courseY":acadYear, "tutor":tutor}
 
-def removeTutee(tuteeNo): #remove from tutor group too 
+def removeTutee(tuteeNo): #Place tutee in a separate database.
+	database.delTuteeList[tuteeNo]=database.tuteeList[tuteeNo]
 	del database.tuteeList[tuteeNo]
 
 def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
