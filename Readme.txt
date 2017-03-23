@@ -18,6 +18,8 @@ Things to fix:
 	-spaces after first names in tutees.csv
 	-tutor degree isnt taken in account when assigning groups
 	- random layout changes
+	- tutor login "surname"
+	-when editting student, line 216 sflag2 not defined
 
 Fixed:
 	-tutor can be added with the same ID of an old tutor, overwritting it. Make the program create the ID instead of the user - issue also applies to editting preexisting tutors
