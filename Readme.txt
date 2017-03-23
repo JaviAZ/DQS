@@ -14,10 +14,11 @@ MarkScheme:
 	5.Teams of five or more: Delete a student from the tutor list and re-assign a single student to an alternative tutor.	
 
 Things to fix:
-	when adding student you can put any number into tutor number
-	when editing student you can put any number into tutor number
+	add validation checking to inputs
 	spaces after first names in tutees.csv
 	when showing tutor info also show number of tutees the tutor has
+	tutor degree isnt taken in account when assigning groups
+	keep record of deleted students
 	When you open the program and select "TUTOR" and then enter a surname e.g. Marshall, 
           the following prompt asks you to enter the tutor ID number of the tutor you would like to proceed with. 
           At this point the user can enter the tutor ID of any tutor and it will display the group for 
@@ -36,3 +37,5 @@ Fixed:
 	potentially can try and view tutor groups as before they've been generated, makes it crash
 	view students displays first name twice
 	when showing tutor list print their ID
+	when adding student you can put any number into tutor number
+	when editing student you can put any number into tutor number

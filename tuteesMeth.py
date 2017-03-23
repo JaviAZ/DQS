@@ -57,6 +57,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 							if studentCode == database.tuteeList[entry]["tuteeNo"]:
 								print("			That number is already taken.")
 								checker1=1
+								break
 						if checker1!=1:	
 							taken1=False
 			taken2 = True
@@ -69,13 +70,13 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 				elif len(name)==0:
 					print("			Please enter a value.")
 			taken3=True
-			taken2 = True
-			while taken2:
+			taken8 = True
+			while taken8:
 				print("Enter the new student's middle name (Can leave blank): ")
 				name2=tms.userInput("")
 				if len(name2)>0:
 					name2=name2[0].capitalize()+name2[1:]
-					taken2=False
+					taken8=False
 			taken3=True
 			while taken3:
 				print("Enter the new student's surname: ")
@@ -113,10 +114,15 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 			while taken7:
 				print("Enter the ID of the tutor they will have: ")
 				tutor=tms.userInput("")
-				if len(tutor)>0:
-					taken7=False
-				elif len(tutor)==0:
-					print("			Please enter a value.")
+				if tutor.isdigit():
+					if len(tutor)>0 and int(tutor)<len(database.tutorList):
+						taken7=False
+					elif len(tutor)==0:
+						print("			Please enter a value.")
+					elif int(tutor)>len(database.tutorList):
+						print("         Sorry there is no tutor with that ID")
+				else:
+					print("         Sorry the tutor ID must be an integer")
 			print("So, \nStudent Number: "+studentCode+"\nFullname: "+name+" "+name2+" "+surname+"\nE-mail: "+email+" \nCourse: "+course+"\nYear of study: "+courseY+"\nTutor: "+tutor) 
 			undecided = True
 			while undecided:
@@ -179,7 +185,6 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 		else:
 			print("invalid input")
 
-
 def editTutee(): #Ask for tutee surname. show possible options or print error message. ask user for attribute to change.
 	sflag=True
 	sflag2=True
@@ -203,37 +208,45 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 					break
 				else:
 					print("That student isn't in the list.")
-	editChoice=tms.userInput("Do you wish to edit name, middle name, surname, email, course, course year or tutor? ")
-	if editChoice=="name":
-		tuteeObj["name"] = tms.userInput("Please enter the new name: ")
-		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
-
-	elif editChoice=="middle name":
-		tuteeObj["name2"] = tms.userInput("Please enter the new name: ")
-		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
-		
-	elif editChoice=="surname":
-		tuteeObj["surname"] = tms.userInput("Please enter the new surname: ")
-		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
-
-	elif editChoice=="email":
-		tuteeObj["email"] = tms.userInput("Please enter the new Email address : ")
-		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
-
-	elif editChoice=="course":
-		tuteeObj["course"] = tms.userInput("Please enter the new course: ")
-		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
-
-	elif editChoice=="course year":
-		tuteeObj["course year"] = tms.userInput("Please enter the new course year: ")
-		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
-
-	elif editChoice=="tutor":
-		tuteeObj["tutor"] = tms.userInput("Please enter the new tutor: ")
-		print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
-
-	else:
-		print("\n\n                          ***Please input name, middle name, surname, email, course, course year or tutor.***\n\n")
+	while True:
+		editChoice=tms.userInput("Do you wish to edit name, middle name, surname, email, course, course year or tutor? ")
+		if editChoice=="name":
+			tuteeObj["name"] = tms.userInput("Please enter the new name: ")
+			print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
+			break
+		elif editChoice=="middle name":
+			tuteeObj["name2"] = tms.userInput("Please enter the new name: ")
+			print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
+			break			
+		elif editChoice=="surname":
+			tuteeObj["surname"] = tms.userInput("Please enter the new surname: ")
+			print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
+			break
+		elif editChoice=="email":
+			tuteeObj["email"] = tms.userInput("Please enter the new Email address : ")
+			print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
+			break
+		elif editChoice=="course":
+			tuteeObj["course"] = tms.userInput("Please enter the new course: ")
+			print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
+			break
+		elif editChoice=="course year":
+			tuteeObj["course year"] = tms.userInput("Please enter the new course year: ")
+			print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
+			break
+		elif editChoice=="tutor":
+			tutorn = tms.userInput("Please enter the new tutor: ")
+			if tutorn.isdigit():
+				if int(tutorn)<len(database.tutorList):
+					tuteeObj["tutor"]=tutorn
+					print ("Name: "+tuteeObj["name"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
+					break
+				else:
+					print("         Sorry there is no tutor with that ID")
+			else:
+				print("         Sorry the tutor ID must be an integer")
+		else:
+			print("\n\n                          ***Please input name, middle name, surname, email, course, course year or tutor.***\n\n")
 
 def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask if he wants to view tutor group info, enrolled courses or tutor info.
 	print("\n                     -----------\n                       STUDENT\n                     -----------")
