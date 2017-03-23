@@ -36,9 +36,9 @@ def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
 
 def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
 	del database.tutorList[ID]
-	redistGroups(ID)
+	#redistGroups(ID)
 
-def printTutors():
+def printTutors():	
 	outputList = []
 	i=1
 	for entry in database.tutorList:
@@ -54,9 +54,15 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 	while takeAction:
 		print("\n		Add Tutor 	   Remove Tutor 	  Return to Menu")
 		action = tms.userInput("")	
-		
 		if action.lower()=="add tutor":
-			tutorID=str(i)
+			i=1
+			for entry in  database.tutorList:
+				for entry in  database.tutorList:
+					if str(i)==database.tutorList[entry]["id"]:
+						i+=1
+					else:
+						tutorID=str(i)			
+			#tutorID=str(i)
 			taken1=True
 			while taken1:
 				print("And their first name: ")
@@ -84,13 +90,13 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 				elif len(email)==0:
 					print("			Please enter a value.")
 			taken4=True
-			while taken4:
-				print("How many tutee's does this tutor have: ")
-				tuteesN=tms.userInput("")
-				if len(tuteesN)>0:
-					taken4=False
-				elif len(tuteesN)==0:
-					print("			Please enter a value.")
+			#while taken4:
+			#	print("How many tutee's does this tutor have: ")
+			#	tuteesN=str(tms.userInput(""))
+			#	if len(tuteesN)>0:
+			#		taken4=False
+			#	elif len(tuteesN)==0:
+			#		print("			Please enter a value.")
 			print("So, \nTutor ID: "+tutorID+"\nFullname: "+name+" "+surname+"\nE-mail: "+email) 
 			undecided = True
 			while undecided:
@@ -99,7 +105,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 				if response=="yes":
 					takeAction=False
 					undecided=False
-					addTutor(tutorID, name, surname, email, 0)
+					addTutor(tutorID, name, surname, email, str(0))
 					viewTutorList()
 				elif response=="no":
 					print("	   You'll be returned to the menu to try again.")
