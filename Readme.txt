@@ -23,6 +23,7 @@ Things to fix:
           list of tutees and also in the tutor() method. However, it reads 
           "The other members of your tutor group are:" which doesn't make sense if it's used in the tutor() method.
 	- random layout changes
+	-can generate groups whenever, regardless of preexisting data
 
 Fixed:
 	-tutor can be added with the same ID of an old tutor, overwritting it. Make the program create the ID instead of the user - issue also applies to editting preexisting tutors
