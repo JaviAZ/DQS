@@ -16,13 +16,14 @@ def endProgram(): #Later dictionaries will be put into csv before closing the ap
 def userInput(msg):	#Function to handle user input, make it lower case and check if user wants to end program or go back to main menu. COMPLETED
 	npt = input(msg).lower()
 	test1=True
-	while test1:
-		if npt[0] == " ":
-			npt = npt[1:]
-		elif npt[-1] == " ":
-			npt = npt[:-1]
-		elif npt[0] != " " and npt[-1] != " ":
-			test1=False
+	if len(msg)>1:
+		while test1:
+			if npt[0] == " ":
+				npt = npt[1:]
+			elif npt[-1] == " ":
+				npt = npt[:-1]
+			elif npt[0] != " " and npt[-1] != " ":
+				test1=False
 	if npt=="endp":
 		endProgram()
 	if npt=="main":
