@@ -198,10 +198,8 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 		else:
 			print("invalid input")
 
-def editTutee(): #Ask for tutee surname. show possible options or print error message. ask user for attribute to change.
-	sflag=True
-	sflag2=True
-	while sflag:
+def editTutee(): #Ask for tutee surname. show possible options or print error message. ask user for attribute to change.nn
+	while True:
 		print("")
 		tuteeSurname=tms.userInput("Input the surname of the tutee you wish to edit: ")
 		scount=0
@@ -209,9 +207,9 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 		for tuteeKey in database.tuteeList:
 			if tuteeSurname==database.tuteeList[tuteeKey]["surname"].lower():
 				scount+=1
-				sflag=False
 				print ("Student Number: "+database.tuteeList[tuteeKey]["tuteeNo"]+". Name: "+database.tuteeList[tuteeKey]["name"]+" "+database.tuteeList[tuteeKey]["name2"]+". Surname: "+database.tuteeList[tuteeKey]["surname"]+". Email: "+database.tuteeList[tuteeKey]["email"])
 				tuteesCode+=[database.tuteeList[tuteeKey]["tuteeNo"]]
+				break
 		if scount==0:
 			print("Sorry the tutee was not found.")
 		else:
@@ -219,10 +217,10 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 				Choice=tms.userInput("Enter the student number of the tutee you wish to edit: ").upper()
 				if Choice in database.tuteeList and Choice in tuteesCode:
 					tuteeObj=database.tuteeList[Choice]
-					sflag2=False
 					break
 				else:
 					print("That student isn't in the list.")
+			break
 	while True:
 		editChoice=tms.userInput("Do you wish to edit name, middle name, surname, email, course, course year or tutor? ")
 		if editChoice=="name":
@@ -265,11 +263,8 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 
 def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask if he wants to view tutor group info, enrolled courses or tutor info. COMPLETED
 	print("\n                     -----------\n                       STUDENT\n                     -----------")
-	check1=True
-	check2=True
-	check3=True
 	tuteeList=database.tuteeList
-	while check1:
+	while True:
 		print("")
 		studentNumber=tms.userInput("Enter your student number: ")
 		print("")
@@ -278,25 +273,24 @@ def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask 
 			if studentNumber == tuteeList[tuteeKey]["tuteeNo"].lower():
 				tcount += 1
 				tuteeObj = tuteeList[tuteeKey]
-				check1 = False
 				print ("Name: "+tuteeObj["name"]+" "+tuteeObj["name2"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
-		if check1:
-			print("Sorry, that student was not found. Please try again.")
+				break
+			else:
+				print("Sorry, that student was not found. Please try again.")
+	while True:
+		print("")
+		Choice = tms.userInput("Is this the correct student? ")
+		if Choice == "yes":
+			break
+		elif Choice == "no":
+			tutee()
 		else:
-			while check2:
-				print("")
-				Choice = tms.userInput("Is this the correct student? ")
-				if Choice == "yes":
-					check2=False
-					while check3:
-						viewTutorGroup(tuteeObj["tutor"])
-						print("\n	            		RETURN TO MENU 		                ")
-						print("")
-						Choice2 = tms.userInput("")
-						if Choice2 == "return to menu":
-							tms.main(True)
-				elif Choice == "no":
-					tutee()
-				else:
-					print("That is not a valid response. Please enter 'yes' or 'no'.")
-					print("")
+			print("That is not a valid response. Please enter 'yes' or 'no'.")
+			print("")
+	while True:
+		viewTutorGroup(tuteeObj["tutor"])
+		print("\n	            		RETURN TO MENU 		                ")
+		print("")
+		Choice2 = tms.userInput("")
+		if Choice2 == "return to menu":
+			tms.main(True)

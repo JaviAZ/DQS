@@ -13,7 +13,7 @@ def endProgram(): #Later dictionaries will be put into csv before closing the ap
 		exportDelTutees()
 	quit()
 
-def userInput(msg):	#Function to handle user input, make it lower case and check if user wants to end program or go back to main menu. To be completed
+def userInput(msg):	#Function to handle user input, make it lower case and check if user wants to end program or go back to main menu. COMPLETED
 	npt = input(msg).lower()
 	test1=True
 	while test1:
