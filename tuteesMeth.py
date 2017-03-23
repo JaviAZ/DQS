@@ -36,9 +36,9 @@ def printTutees():
 	print("STUDENT NUMER      NAME")
 	for entry in database.tuteeList:
 		if len(database.tuteeList[entry]["name2"])==0:
-			print(database.tuteeList[entry]["tuteeNo"]+"            "+database.tuteeList[entry]["name"]+" "+database.tuteeList[entry]["surname"])
+			print(database.tuteeList[entry]["tuteeNo"]+"           "+database.tuteeList[entry]["name"]+" "+database.tuteeList[entry]["surname"])
 		else:
-			print(database.tuteeList[entry]["tuteeNo"]+"            "+database.tuteeList[entry]["name"]+" "+database.tuteeList[entry]["name2"]+" "+database.tuteeList[entry]["surname"])
+			print(database.tuteeList[entry]["tuteeNo"]+"           "+database.tuteeList[entry]["name"]+" "+database.tuteeList[entry]["name2"]+" "+database.tuteeList[entry]["surname"])
 
 def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods)
 	printTutees()
