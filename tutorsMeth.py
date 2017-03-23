@@ -152,19 +152,17 @@ def editTutor(): #Ask for surname. Show possible options or print error message.
 		print("")
 		tutorSurname=tms.userInput("Input the surname of the tutor you wish to edit: ")
 		tcount=0
-		tutors=[]
 		for tutorKey in database.tutorList:
 			if tutorSurname==database.tutorList[tutorKey]["surname"].lower():
 				tcount+=1
 				print ("ID: "+database.tutorList[tutorKey]["id"]+". Name: "+database.tutorList[tutorKey]["name"]+". Surname: "+database.tutorList[tutorKey]["surname"]+". Email: "+database.tutorList[tutorKey]["email"])
-				tutors+=[database.tutorList[tutorKey]["id"]]
 				break
 		if tcount==0:
 			print("Sorry the tutor was not found.")
 		else:
 			while True:
 				tChoice=tms.userInput("Enter the ID of the tutor you wish to edit: ")
-				if tChoice in database.tutorList and tChoice in tutors:
+				if tChoice in database.tutorList:
 					tutorObj=database.tutorList[tChoice]
 					break
 				else:

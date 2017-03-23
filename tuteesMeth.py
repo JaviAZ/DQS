@@ -21,7 +21,7 @@ def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
 		if tutorList[entry]["id"] == tutorN:
 			print(tutorList[entry]["id"]+" "+(" ")*(17-len(tutorList[entry]["id"]))+tutorList[entry]["name"]+" "+tutorList[entry]["surname"]+" "+(" ")*(19-(len(tutorList[entry]["name"])+len(tutorList[entry]["surname"])))+tutorList[entry]["email"])
 			print("")
-			print(len(tutorList[entry]))
+			print("Your tutor group has " + tutorList[entry]["tuteesN"] + " tutees in it.")
 			print("")
 	print("Student Number    Name                 Email")
 	for entry in tuteeList:
