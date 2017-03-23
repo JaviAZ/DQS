@@ -14,26 +14,25 @@ MarkScheme:
 	5.Teams of five or more: Delete a student from the tutor list and re-assign a single student to an alternative tutor.	
 
 Things to fix:
-	add validation checking to inputs
-	spaces after first names in tutees.csv
-	when showing tutor info also show number of tutees the tutor has
-	tutor degree isnt taken in account when assigning groups
-	viewTutorGroup which is found in tuteesMeth.py is used in the tutee() method to display the 
+	-add validation checking to inputs
+	-spaces after first names in tutees.csv
+	-tutor degree isnt taken in account when assigning groups
+	-viewTutorGroup which is found in tuteesMeth.py is used in the tutee() method to display the 
           list of tutees and also in the tutor() method. However, it reads 
           "The other members of your tutor group are:" which doesn't make sense if it's used in the tutor() method.
-	The headers such as "Tutor Number", "Name" and "Email" in the viewTutorGroup method could be changed to
+	-The headers such as "Tutor Number", "Name" and "Email" in the viewTutorGroup method could be changed to
 	   all uppercase to make it stand out?
-	+ random layout changes
+	- random layout changes
 
 Fixed:
-	tutor can be added with the same ID of an old tutor, overwritting it. Make the program create the ID instead of the user - issue also applies to editting preexisting tutors
-	tutee can be added with the same tuteeNo of an old tutee, overwritting it. Make the program check if that tuteeNo is already in the list.
-	can't cancel editting tutor or students on admin page
-	potentially can try and view tutor groups as before they've been generated, makes it crash
-	view students displays first name twice
-	when showing tutor list print their ID
-	when adding student you can put any number into tutor number
-	when editing student you can put any number into tutor number
-	when editing student, and asked for validation of student number, inputing any other student number would edit it
-	when editing tutor, and asked for validation of ID, inputing any other id would edit it
-	keep record of deleted students
+	-tutor can be added with the same ID of an old tutor, overwritting it. Make the program create the ID instead of the user - issue also applies to editting preexisting tutors
+	-tutee can be added with the same tuteeNo of an old tutee, overwritting it. Make the program check if that tuteeNo is already in the list.
+	-can't cancel editting tutor or students on admin page
+	-potentially can try and view tutor groups as before they've been generated, makes it crash
+	-view students displays first name twice
+	-when showing tutor list print their ID
+	-when adding student you can put any number into tutor number
+	-when editing student you can put any number into tutor number
+	-when editing student, and asked for validation of student number, inputing any other student number would edit it
+	-when editing tutor, and asked for validation of ID, inputing any other id would edit it
+	-keep record of deleted students
