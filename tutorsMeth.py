@@ -4,11 +4,17 @@ import tms
 import tuteesMeth
 
 def genGroups(): #Assigns a tutor to each tutee
-	availableGroups=len(database.tutorList)
+	availableGroups=[]
 	selectedGroup=1
+	for tutor in database.tutorList:
+		availableGroups.append(int(database.tutorList[tutor]["id"]))
 	for tutee in database.tuteeList:
-		if selectedGroup > availableGroups:
-			selectedGroup = 1
+		if selectedGroup not in availableGroups:
+			if selectedGroup > max(availableGroups):
+				selectedGroup = 1
+			else:
+				selectedGroup += 1
+		print(selectedGroup)
 		database.tuteeList[tutee]["tutor"]=str(selectedGroup)
 		tn=int(database.tutorList[str(selectedGroup)]["tuteesN"])
 		tn+=1
@@ -65,7 +71,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 			#tutorID=str(i)
 			taken1=True
 			while taken1:
-				print("And their first name: ")
+				print("Enter their first name: ")
 				name=tms.userInput("")
 				if len(name)>0:
 					name=name[0].capitalize()+name[1:]

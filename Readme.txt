@@ -17,9 +17,14 @@ Things to fix:
 
 	-add validation checking to inputs
 	-tutor degree isnt taken in account when assigning groups
-	- random layout changes
+	-random layout changes
 	-can generate groups whenever, regardless of preexisting data
 	-tuteesN isn't updated after redist
+	-changing id in edit tutors not working
+	-could do with cancel option when editting
+	-might be nice to see list of tutors and IDs when adding a new student as it asks for a tutor ID
+	-edit students doesn't recognise tutors with IDs larger than the length of the tutor list
+	-adding students creates a file with the wrong column order
 
 Fixed:
 	-tutor can be added with the same ID of an old tutor, overwritting it. Make the program create the ID instead of the user - issue also applies to editting preexisting tutors
@@ -40,3 +45,4 @@ Fixed:
       list of tutees and also in the tutor() method. However, it reads 
       "The other members of your tutor group are:" which doesn't make sense if it's used in the tutor() method.
      -spaces after first names in tutees.csv
+    -gengroup now doesn't mind if the tutor IDs aren't all consecutive 
