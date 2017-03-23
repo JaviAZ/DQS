@@ -293,7 +293,8 @@ def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask 
 	tuteeList=database.tuteeList
 	while check1:
 		print("")
-		studentNumber=tms.userInput("Enter your student number: ")
+		print("Enter your student number: ")
+		studentNumber=tms.userInput("")
 		print("")
 		tcount=0
 		for tuteeKey in tuteeList:
@@ -308,7 +309,8 @@ def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask 
 		else:
 			while check2:
 				print("")
-				Choice = tms.userInput("Is this the correct student? ")
+				print("Is this the correct student? ")
+				Choice = tms.userInput("")
 				if Choice == "yes":
 					check2=False
 					while check3:

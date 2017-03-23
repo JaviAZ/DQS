@@ -239,7 +239,8 @@ def tutor():
 	tutorList=database.tutorList
 	while check1:
 		print("")
-		tutorSurname=tms.userInput("Enter your surname: ")
+		print("Enter your surname: ")
+		tutorSurname=tms.userInput("")
 		print("")
 		tcount=0
 		for tutorKey in tutorList:
@@ -255,7 +256,8 @@ def tutor():
 		else:
 			while check2:
 				print("")
-				Choice = tms.userInput("Enter your tutor ID number: ")
+				print("Enter your tutor ID number: ")
+				Choice = tms.userInput("")
 				if Choice in tutorList and Choice in tutorsCode:
 					tutorObj=tutorList[Choice]
 					check2=False
