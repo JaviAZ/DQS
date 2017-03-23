@@ -17,11 +17,11 @@ def redistGroups(tutorDelID): #Redistribute students into new groups
 	temp = 0
 	for tutee in database.tuteeList:
 		if database.tuteeList[tutee]["Tutor"] == tutorDelID:
-		 	for tutor in database.tutorList:
-		 		temp = database.tutorList[tutor]["tuteesN"]
+			for tutor in database.tutorList:
+				temp = database.tutorList[tutor]["tuteesN"]
 
-		 		if database.tutorList[tutor]["tuteesN"] <= temp :
-		 			newTutorID = database.tutorList["id"]
+				if database.tutorList[tutor]["tuteesN"] <= temp :
+					newTutorID = database.tutorList["id"]
 
 			database.tuteeList[tutee]["Tutor"] = newTutorID
 			print(database.tuteeList[tutee]["name"] + " has been moved to a new tutor!")
