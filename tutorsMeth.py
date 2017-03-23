@@ -10,10 +10,22 @@ def genGroups(): #Assigns a tutor to each tutee
 		if selectedGroup > availableGroups:
 			selectedGroup = 1
 		database.tuteeList[tutee]["tutor"]=str(selectedGroup)
+		tn=int(database.tutorList[str(selectedGroup)]["tuteesN"])
+		tn+=1
+		database.tutorList[str(selectedGroup)]["tuteesN"]=str(tn)
 		selectedGroup += 1
 
 def redistGroups(tutorDelID): #Redistribute students into new groups
-	print("To be completed")
+	newTutorID = 0 
+	temp = 0
+	for tutee in database.tuteeList:
+		if database.tuteeList[tutee]["Tutor"] == tutorDelID:
+			for tutor in database.tutorList:
+				temp = database.tutorList[tutor]["tuteesN"]
+				if database.tutorList[tutor]["tuteesN"] <= temp :
+					newTutorID = database.tutorList["id"]
+			database.tuteeList[tutee]["Tutor"] = newTutorID
+			print(database.tuteeList[tutee]["name"] + " has been moved to a new tutor!")
 
 def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
 	database.tutorList[ID]={"id":ID, "name":name, "surname":surname, "email":email, "tuteesN":tuteesN}
@@ -22,15 +34,18 @@ def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, 
 	del database.tutorList[ID]
 	redistGroups(ID)
 
-def viewTutorList(): #Print tutorlist and how many tutees each has. With option to add or remove tutor (which would call respective methods)
+def printTutors():
 	outputList = []
 	i=1
 	for entry in database.tutorList:
-		temp = "ID: "+ database.tutorList[entry]["id"]+"	Name: " + database.tutorList[entry]["name"] + " " + database.tutorList[entry]["surname"]
+		temp = "ID: "+ database.tutorList[entry]["id"]+"   Number of tutees: "+database.tutorList[entry]["tuteesN"]+"	Name: " + database.tutorList[entry]["name"] + " " + database.tutorList[entry]["surname"]
 		outputList.append(temp)
 	for entry in outputList:
 		print(entry)
 		i+=1
+
+def viewTutorList(): #Print tutorlist and how many tutees each has. With option to add or remove tutor (which would call respective methods)
+	printTutors()
 	takeAction = True
 	while takeAction:
 		print("\n		Add Tutor 	   Remove Tutor 	  Return to Menu")
@@ -138,19 +153,17 @@ def editTutor(): #Ask for surname. Show possible options or print error message.
 		print("")
 		tutorSurname=tms.userInput("Input the surname of the tutor you wish to edit: ")
 		tcount=0
-		tutors=[]
 		for tutorKey in database.tutorList:
 			if tutorSurname==database.tutorList[tutorKey]["surname"].lower():
 				tcount+=1
 				print ("ID: "+database.tutorList[tutorKey]["id"]+". Name: "+database.tutorList[tutorKey]["name"]+". Surname: "+database.tutorList[tutorKey]["surname"]+". Email: "+database.tutorList[tutorKey]["email"])
-				tutors+=[database.tutorList[tutorKey]["id"]]
 				break
 		if tcount==0:
 			print("Sorry the tutor was not found.")
 		else:
 			while True:
 				tChoice=tms.userInput("Enter the ID of the tutor you wish to edit: ")
-				if tChoice in database.tutorList and tChoice in tutors:
+				if tChoice in database.tutorList:
 					tutorObj=database.tutorList[tChoice]
 					break
 				else:
@@ -181,6 +194,9 @@ def tutor():
 	check1=True
 	check2=True
 	check3=True
+	print("")
+	printTutors()
+	print("")
 	tutorList=database.tutorList
 	while check1:
 		print("")
