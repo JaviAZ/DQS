@@ -16,14 +16,10 @@ MarkScheme:
 Things to fix:
 
 	-add validation checking to inputs
-	-spaces after first names in tutees.csv
 	-tutor degree isnt taken in account when assigning groups
-	-viewTutorGroup which is found in tuteesMeth.py is used in the tutee() method to display the 
-		origin/master
-          list of tutees and also in the tutor() method. However, it reads 
-          "The other members of your tutor group are:" which doesn't make sense if it's used in the tutor() method.
 	- random layout changes
 	-can generate groups whenever, regardless of preexisting data
+	-tuteesN isn't updated after redist
 
 Fixed:
 	-tutor can be added with the same ID of an old tutor, overwritting it. Make the program create the ID instead of the user - issue also applies to editting preexisting tutors
@@ -39,3 +35,8 @@ Fixed:
 	-keep record of deleted students
 	-The headers such as "Tutor Number", "Name" and "Email" in the viewTutorGroup method could be changed to
 	   all uppercase to make it stand out?
+  	-viewTutorGroup which is found in tuteesMeth.py is used in the tutee() method to display the 
+	origin/master
+      list of tutees and also in the tutor() method. However, it reads 
+      "The other members of your tutor group are:" which doesn't make sense if it's used in the tutor() method.
+     -spaces after first names in tutees.csv
