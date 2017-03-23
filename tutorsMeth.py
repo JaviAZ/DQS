@@ -10,7 +10,7 @@ def genGroups(): #Assigns a tutor to each tutee
 		if selectedGroup > availableGroups:
 			selectedGroup = 1
 		database.tuteeList[tutee]["tutor"]=str(selectedGroup)
-		tn=int(database.tutorList[selectedGroup]["tuteesN"])
+		tn=int(database.tutorList[str(selectedGroup)]["tuteesN"])
 		tn+=1
 		database.tutorList[selectedGroup]["tuteesN"]=str(tn)
 		selectedGroup += 1
