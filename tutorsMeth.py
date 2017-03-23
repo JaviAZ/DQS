@@ -40,8 +40,12 @@ def redistGroups(tutorDelID): #Redistribute students into new groups
 			print("-----------------------------------------------------")
 			print(database.tuteeList[tutee]["name"] +" " + database.tuteeList[tutee]["surname"] + " has been moved to " + database.tutorList[(database.tuteeList[tutee]["tutor"])]["name"] + " " + database.tutorList[(database.tuteeList[tutee]["tutor"])]["surname"] + "'s tutor group.")
 	print("")
+<<<<<<< HEAD
 	print("==================================================================")	
 
+=======
+	print("=====================================================")	
+>>>>>>> 9fa70deede1e3551479b19e171b2d5e42bb27568
 def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
 	database.tutorList[ID]={"id":ID, "name":name, "surname":surname, "email":email, "tuteesN":tuteesN}
 
