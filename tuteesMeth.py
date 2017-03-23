@@ -3,17 +3,17 @@ import database
 import tms
 
 
-def addTutee(studentCode,surname,name,name2,tutor,course,acadYear,email):	#Adds student to database
+def addTutee(studentCode,surname,name,name2,tutor,course,acadYear,email):	#Adds student to database #COMPLETED
 	database.tuteeList[studentCode]={"tuteeNo":studentCode, "name":name, "name2":name2, "surname":surname, "email":email, "course":course, "courseY":acadYear, "tutor":tutor}
 
-def removeTutee(tuteeNo): #Place tutee in a separate database.
+def removeTutee(tuteeNo): #Place tutee in a separate database. COMPLETED
 	database.delTuteeList[tuteeNo]=database.tuteeList[tuteeNo]
 	tn=int(database.tutorList[database.tuteeList[tuteeNo]["tutor"]]["tuteesN"])
 	tn-=1
 	database.tutorList[database.tuteeList[tuteeNo]["tutor"]]["tuteesN"]=str(tn)
 	del database.tuteeList[tuteeNo]
 
-def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
+def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor COMPLETED
 	tuteeList=database.tuteeList
 	tutorList=database.tutorList
 	print("")
@@ -31,7 +31,7 @@ def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
 		if tuteeList[entry]["tutor"] == tutorN:
 			print(tuteeList[entry]["tuteeNo"]+" "+(" ")*(17-len(tuteeList[entry]["tuteeNo"]))+tuteeList[entry]["name"]+" "+tuteeList[entry]["name2"]+tuteeList[entry]["surname"]+" "+(" ")*(19-(len(tuteeList[entry]["name"])+len(tuteeList[entry]["name2"])+len(tuteeList[entry]["surname"])))+tuteeList[entry]["email"])
 
-def printTutees():
+def printTutees(): #COMPLETED
 	print("")
 	print("STUDENT NUMER      NAME")
 	for entry in database.tuteeList:
@@ -268,9 +268,6 @@ def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask 
 	check1=True
 	check2=True
 	check3=True
-	print("")
-	printTutees()
-	print("")
 	tuteeList=database.tuteeList
 	while check1:
 		print("")

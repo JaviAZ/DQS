@@ -4,7 +4,7 @@ import tutorsMeth
 import tuteesMeth
 import csv
 
-def endProgram(): #Later dictionaries will be put into csv before closing the application. To be completed
+def endProgram(): #Later dictionaries will be put into csv before closing the application. COMPLETED
 	print("")
 	print("Exiting program.")
 	exportTutees()
@@ -13,7 +13,7 @@ def endProgram(): #Later dictionaries will be put into csv before closing the ap
 		exportDelTutees()
 	quit()
 
-def userInput(msg):	#Function to handle user input, make it lower case and check if user wants to end program or go back to main menu. Completed
+def userInput(msg):	#Function to handle user input, make it lower case and check if user wants to end program or go back to main menu. To be completed
 	npt = input(msg).lower()
 	if npt=="endp":
 		endProgram()
@@ -39,7 +39,7 @@ def importTutors(): #Imports informtation from Tutors.csv into tutorList COMPLET
 				if row[0][0]!="U":
 					tutorsMeth.addTutor(row[0],row[1],row[2],row[3],row[4])
 
-def exportTutees(): #Exports information from tuteeList into Tutees.csv
+def exportTutees(): #Exports information from tuteeList into Tutees.csv COMPLETED
 	with open ('Tutees.csv','w') as csvfile:
 		writer=csv.writer(csvfile,delimiter=";")
 		header=["Student Code","Surname","Forename1","Forename2","TUTOR","Course","Acad Year","Univ Email"]
@@ -110,7 +110,7 @@ def admin(groupsCreated): #Let user choose view tutors, view students, edit tuto
 			print("\n\n                          ***Please input view tutors, edit tutors, view students, edit students, create program, start program or end program.***\n\n")
 		admin(True)
 
-def main(groupsCreated):
+def main(groupsCreated): #COMPLETED
 	print("")
 	print("            ===========================================================")
 	print("            Cardiff University Computer Science Tutor Management System")

@@ -8,6 +8,7 @@ def genGroups(): #Assigns a tutor to each tutee
 	selectedGroup=1
 	for tutor in database.tutorList:
 		availableGroups.append(int(database.tutorList[tutor]["id"]))
+		database.tutorList[str(selectedGroup)]["tuteesN"]="0"
 	for tutee in database.tuteeList:
 		if selectedGroup not in availableGroups:
 			if selectedGroup > max(availableGroups):
@@ -40,12 +41,15 @@ def redistGroups(tutorDelID): #Redistribute students into new groups
 			print(database.tuteeList[tutee]["name"] +" " + database.tuteeList[tutee]["surname"] + " has been moved to " + database.tutorList[(database.tuteeList[tutee]["tutor"])]["name"] + " " + database.tutorList[(database.tuteeList[tutee]["tutor"])]["surname"] + "'s tutor group.")
 	print("")
 	print("==================================================================")	
+
 def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
 	database.tutorList[ID]={"id":ID, "name":name, "surname":surname, "email":email, "tuteesN":tuteesN}
 
 def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
 	del database.tutorList[ID]
 	redistGroups(ID)
+#	if ID!=len(database.tutorList):
+#		database.tutorList[str(int(ID)+1)]=database.tutorList[ID]
 
 def printTutors():	
 	outputList = []
