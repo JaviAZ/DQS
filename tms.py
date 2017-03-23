@@ -16,13 +16,14 @@ def endProgram(): #Later dictionaries will be put into csv before closing the ap
 def userInput(msg):	#Function to handle user input, make it lower case and check if user wants to end program or go back to main menu. COMPLETED
 	npt = input(msg).lower()
 	test1=True
-	while test1:
-		if npt[0] == " ":
-			npt = npt[1:]
-		elif npt[-1] == " ":
-			npt = npt[:-1]
-		elif npt[0] != " " and npt[-1] != " ":
-			test1=False
+	if len(msg)>1:
+		while test1:
+			if npt[0] == " ":
+				npt = npt[1:]
+			elif npt[-1] == " ":
+				npt = npt[:-1]
+			elif npt[0] != " " and npt[-1] != " ":
+				test1=False
 	if npt=="endp":
 		endProgram()
 	if npt=="main":
@@ -92,6 +93,7 @@ def admin(groupsCreated): #Let user choose view tutors, view students, edit tuto
 	print("      EDIT TUTORS                                     EDIT STUDENTS  ")
 	print()
 	print("                               CREATE GROUPS                        ")
+	print("                           CHANGE STUDENT TUTOR                     ")
 	print("                                END PROGRAM                         ")
 	adminOption=userInput("")
 	if groupsCreated==False:
@@ -114,8 +116,17 @@ def admin(groupsCreated): #Let user choose view tutors, view students, edit tuto
 			tutorsMeth.genGroups()
 		elif adminOption=="end program":
 			endProgram()
+		elif adminOption =="change student tutor":
+			while True:
+				snumber=userInput("Enter the students number: ").upper()
+				if snumber in database.tuteeList:
+					tutorsMeth.redistTutee(database.tuteeList[snumber]["tutor"],snumber)
+					database.tutorList[database.tuteeList[snumber]["tutor"]]["tuteesN"]=str(int(database.tutorList[database.tuteeList[snumber]["tutor"]]["tuteesN"])-1)
+					break
+				else:
+					print("That student number does not belong to any student in the list.")
 		else:
-			print("\n\n                          ***Please input view tutors, edit tutors, view students, edit students, create program, start program or end program.***\n\n")
+			print("\n\n                          ***Please input view tutors, edit tutors, view students, edit students, create program, change student tutor or end program.***\n\n")
 		admin(True)
 
 def main(groupsCreated): #COMPLETED

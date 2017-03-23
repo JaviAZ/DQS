@@ -70,30 +70,42 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 								break
 						if checker1!=1:	
 							taken1=False
+			
 			taken2 = True
 			while taken2:
 				print("Enter the new student's first name: ")
 				name=tms.userInput("")
 				if len(name)>0:
-					name=name[0].capitalize()+name[1:]
-					taken2=False
+					if name.isalpha():
+						name=name[0].capitalize()+name[1:]
+						taken2=False
+					if not name.isalpha():
+						print("		Please use just alphabetical characters")
 				elif len(name)==0:
 					print("			Please enter a value.")
-			taken3=True
+
 			taken8 = True
 			while taken8:
 				print("Enter the new student's middle name (Can leave blank): ")
 				name2=tms.userInput("")
 				if len(name2)>0:
-					name2=name2[0].capitalize()+name2[1:]
+					if name2.isalpha():
+						name2=name2[0].capitalize()+name2[1:]
+						taken8=False
+					if not name2.isalpha():
+						print("		Please use just alphabetical characters")
+				if len(name2)==0:
 					taken8=False
 			taken3=True
 			while taken3:
 				print("Enter the new student's surname: ")
 				surname=tms.userInput("")
 				if len(surname)>0:
-					surname=surname[0].capitalize()+surname[1:]
-					taken3=False
+					if surname.isalpha():
+						surname=surname[0].capitalize()+surname[1:]
+						taken3=False
+					if not surname.isalpha():
+						print("		Please use just alphabetical characters")
 				elif len(surname)==0:
 					print("			Please enter a value.")
 			taken4=True
@@ -109,17 +121,27 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 				print("Enter the course they will be studying: ")
 				course=tms.userInput("")
 				if len(course)>0:
-					taken5=False
+					if course.isalpha():
+						taken5=False
+					if not course.isalpha():
+						print("		Please use just alphabetical characters")
 				elif len(course)==0:
 					print("			Please enter a value.")
 			taken6=True
 			while taken6:
 				print("Enter which year of study will they be in: ")
 				courseY=tms.userInput("")
-				if len(courseY)>0:
-					taken6=False
+				if courseY.isdigit():
+					if len(courseY)>0:
+						if int(courseY)<=6 and int(courseY)>0:
+							taken6=False	
+					if int(courseY)>6 or int(courseY)<1:
+						print("		Please enter a valid year(e.g. 1-6)")
+				
 				elif len(courseY)==0:
 					print("			Please enter a value.")
+				elif not courseY.isdigit():
+					print("		Please use just numerical values")
 			taken7=True
 			while taken7:
 				print("Enter the ID of the tutor they will have: ")
