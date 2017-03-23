@@ -16,15 +16,20 @@ def genGroups(): #Assigns a tutor to each tutee
 		selectedGroup += 1
 
 def redistGroups(tutorDelID): #Redistribute students into new groups
+	tutorPos = 0
 	newTutorID = 0 
-	temp = 1000 # just a large value that is greater than total number of students
+	temp = 1000 
 	for tutee in database.tuteeList:
 		if database.tuteeList[tutee]["tutor"] == tutorDelID:
+			temp=1000 # just a large value that is greater than total number of students
 			for tutor in database.tutorList:
 				
-				if int(database.tutorList[tutor]["tuteesN"]) <= temp :
+				if int(database.tutorList[tutor]["tuteesN"]) < temp :
+					temp = int(database.tutorList[tutor]["tuteesN"])
 					newTutorID = database.tutorList[tutor]["id"]
-				
+					tutorPos = tutor
+
+			database.tutorList[tutorPos]["tuteesN"] = str(int(database.tutorList[tutorPos]["tuteesN"]) + 1)	
 			database.tuteeList[tutee]["tutor"] = newTutorID
 			print("-----------------------------------------------------")
 			print(database.tuteeList[tutee]["name"] +" " + database.tuteeList[tutee]["surname"] + " has been moved to " + database.tutorList[(database.tuteeList[tutee]["tutor"])]["name"] + " " + database.tutorList[(database.tuteeList[tutee]["tutor"])]["surname"] + "'s tutor group.")
