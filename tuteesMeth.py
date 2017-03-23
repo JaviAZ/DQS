@@ -33,14 +33,14 @@ def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor COMPLETED
 
 def printTutees(): #COMPLETED
 	print("")
-	print("STUDENT NUMER      NAME")
+	print("STUDENT NUMBER     NAME")
 	for entry in database.tuteeList:
 		if len(database.tuteeList[entry]["name2"])==0:
 			print(database.tuteeList[entry]["tuteeNo"]+"           "+database.tuteeList[entry]["name"]+" "+database.tuteeList[entry]["surname"])
 		else:
 			print(database.tuteeList[entry]["tuteeNo"]+"           "+database.tuteeList[entry]["name"]+" "+database.tuteeList[entry]["name2"]+" "+database.tuteeList[entry]["surname"])
 
-def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods)
+def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods) 
 	printTutees()
 	takeAction = True
 	while takeAction:
@@ -263,7 +263,7 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 		else:
 			print("\n\n                          ***Please input name, middle name, surname, email, course, course year or tutor.***\n\n")
 
-def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask if he wants to view tutor group info, enrolled courses or tutor info.
+def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask if he wants to view tutor group info, enrolled courses or tutor info. COMPLETED
 	print("\n                     -----------\n                       STUDENT\n                     -----------")
 	check1=True
 	check2=True
@@ -281,7 +281,7 @@ def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask 
 				check1 = False
 				print ("Name: "+tuteeObj["name"]+" "+tuteeObj["name2"]+". Surname: "+tuteeObj["surname"]+". Email: "+tuteeObj["email"]+". Course: "+tuteeObj["course"]+". Year: "+tuteeObj["courseY"]+". Tutor: "+tuteeObj["tutor"])
 		if check1:
-			print("Sorry that student was not found.")
+			print("Sorry, that student was not found. Please try again.")
 		else:
 			while check2:
 				print("")

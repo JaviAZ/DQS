@@ -242,7 +242,7 @@ def tutor():
 				tutorsCode+=tutorObj["id"]
 				print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
 		if check1:
-			print("Sorry that tutor was not found.")
+			print("Sorry, that tutor was not found. Please try again.")
 			print("")
 		else:
 			while check2:

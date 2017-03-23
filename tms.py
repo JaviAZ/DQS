@@ -98,7 +98,7 @@ def admin(groupsCreated): #Let user choose view tutors, view students, edit tuto
 		if adminOption=="create groups":
 			tutorsMeth.genGroups()
 		else:
-			print("Groups must be created, go to Create groups")
+			print("Groups must be created, go to CREATE GROUPS")
 			admin(False)
 	else:
 		if adminOption=="view tutors":
