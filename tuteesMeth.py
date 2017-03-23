@@ -8,6 +8,9 @@ def addTutee(studentCode,surname,name,name2,tutor,course,acadYear,email):	#Adds 
 
 def removeTutee(tuteeNo): #Place tutee in a separate database.
 	database.delTuteeList[tuteeNo]=database.tuteeList[tuteeNo]
+	tn=int(database.tutorList[database.tuteeList[tuteeNo]["tutor"]]["tuteesN"])
+	tn-=1
+	database.tutorList[database.tuteeList[tuteeNo]["tutor"]]["tuteesN"]=str(tn)
 	del database.tuteeList[tuteeNo]
 
 def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
@@ -16,25 +19,29 @@ def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor
 	print("")
 	print("                       Tutor group information:")
 	print("")
-	print("Tutor Number      Name                 Email")
+	print("TUTOR NUMBER      NAME                 EMAIL")
 	for entry in tutorList:
 		if tutorList[entry]["id"] == tutorN:
 			print(tutorList[entry]["id"]+" "+(" ")*(17-len(tutorList[entry]["id"]))+tutorList[entry]["name"]+" "+tutorList[entry]["surname"]+" "+(" ")*(19-(len(tutorList[entry]["name"])+len(tutorList[entry]["surname"])))+tutorList[entry]["email"])
 			print("")
-			print(len(tutorList[entry]))
+			print("Your tutor group has " + tutorList[entry]["tuteesN"] + " tutees in it.")
 			print("")
-	print("Student Number    Name                 Email")
+	print("STUDENT NUMBER    NAME                 EMAIL")
 	for entry in tuteeList:
 		if tuteeList[entry]["tutor"] == tutorN:
 			print(tuteeList[entry]["tuteeNo"]+" "+(" ")*(17-len(tuteeList[entry]["tuteeNo"]))+tuteeList[entry]["name"]+" "+tuteeList[entry]["name2"]+tuteeList[entry]["surname"]+" "+(" ")*(19-(len(tuteeList[entry]["name"])+len(tuteeList[entry]["name2"])+len(tuteeList[entry]["surname"])))+tuteeList[entry]["email"])
 
-def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods)
-	outputList = []
+def printTutees():
+	print("")
+	print("STUDENT NUMER      NAME")
 	for entry in database.tuteeList:
-		temp = "		Student number: "+database.tuteeList[entry]["tuteeNo"]+" \n			Name: " + database.tuteeList[entry]["name"] + " " + database.tuteeList[entry]["name2"]+ " " + database.tuteeList[entry]["surname"]
-		outputList.append(temp)
-	for entry in outputList:
-		print(entry)
+		if len(database.tuteeList[entry]["name2"])==0:
+			print(database.tuteeList[entry]["tuteeNo"]+"            "+database.tuteeList[entry]["name"]+" "+database.tuteeList[entry]["surname"])
+		else:
+			print(database.tuteeList[entry]["tuteeNo"]+"            "+database.tuteeList[entry]["name"]+" "+database.tuteeList[entry]["name2"]+" "+database.tuteeList[entry]["surname"])
+
+def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods)
+	printTutees()
 	takeAction = True
 	while takeAction:
 		print("\n	ADD STUDENT 		REMOVE STUDENT 		  RETURN TO MENU")
@@ -135,6 +142,9 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 					takeAction=False
 					undecided=False
 					addTutee(studentCode, surname, name, name2, course, courseY, tutor,email)
+					tn=int(database.tutorList[tutor]["tuteesN"])
+					tn+=1
+					database.tutorList[tutor]["tuteesN"]=str(tn)
 					viewTuteeList()
 				elif response=="no":
 					print("You'll be returned to the menu to try again.")
