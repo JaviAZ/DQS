@@ -99,14 +99,6 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 					taken3=False
 				elif len(email)==0:
 					print("			Please enter a value.")
-			taken4=True
-			#while taken4:
-			#	print("How many tutee's does this tutor have: ")
-			#	tuteesN=str(tms.userInput(""))
-			#	if len(tuteesN)>0:
-			#		taken4=False
-			#	elif len(tuteesN)==0:
-			#		print("			Please enter a value.")
 			print("So, \nTutor ID: "+tutorID+"\nFullname: "+name+" "+surname+"\nE-mail: "+email) 
 			undecided = True
 			while undecided:
@@ -115,7 +107,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 				if response=="yes":
 					takeAction=False
 					undecided=False
-					addTutor(tutorID, name, surname, email, str(0))
+					addTutor(tutorID, name, surname, email, "0")
 					viewTutorList()
 				elif response=="no":
 					print("	   You'll be returned to the menu to try again.")
