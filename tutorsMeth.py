@@ -46,10 +46,23 @@ def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
 	database.tutorList[ID]={"id":ID, "name":name, "surname":surname, "email":email, "tuteesN":tuteesN}
 
 def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
-	del database.tutorList[ID]
-	redistGroups(ID)
-#	if ID!=len(database.tutorList):
-#		database.tutorList[str(int(ID)+1)]=database.tutorList[ID]
+	if ID!=len(database.tutorList):
+		print("through if")
+		while (int(ID)<len(database.tutorList)):
+			print("through while")
+			print(database.tutorList[ID])
+			database.tutorList[ID]=database.tutorList[str(int(ID)+1)]
+			database.tutorList[ID]["id"]=ID
+			print(database.tutorList[ID])
+			for tutees in database.tuteeList:
+				print("through for")
+				if database.tuteeList[tutees]["tutor"]==str(int(ID)+1):
+					database.tuteeList[tutees]["tutor"]==ID
+			ID=str(int(ID)+1)
+		del database.tutorList[str(len(database.tutorList))]
+	else:
+		del database.tutorList[ID]
+		redistGroups(ID)
 
 def printTutors():	
 	outputList = []
