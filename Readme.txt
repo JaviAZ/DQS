@@ -19,10 +19,6 @@ Things to fix:
 	when showing tutor info also show number of tutees the tutor has
 	tutor degree isnt taken in account when assigning groups
 	keep record of deleted students
-	When you open the program and select "TUTOR" and then enter a surname e.g. Marshall, 
-          the following prompt asks you to enter the tutor ID number of the tutor you would like to proceed with. 
-          At this point the user can enter the tutor ID of any tutor and it will display the group for 
-          the tutor with the matching ID. Not restricted to the tutors that are shown on screen with the surnames.
 	viewTutorGroup which is found in tuteesMeth.py is used in the tutee() method to display the 
           list of tutees and also in the tutor() method. However, it reads 
           "The other members of your tutor group are:" which doesn't make sense if it's used in the tutor() method.
@@ -39,3 +35,5 @@ Fixed:
 	when showing tutor list print their ID
 	when adding student you can put any number into tutor number
 	when editing student you can put any number into tutor number
+	when editing student, and asked for validation of student number, inputing any other student number would edit it
+	when editing tutor, and asked for validation of ID, inputing any other id would edit it
