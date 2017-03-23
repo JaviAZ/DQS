@@ -1,20 +1,20 @@
 Student Code;Surname;Forename1;Forename2;TUTOR;Course;Acad Year;Univ Email
 C1628127;Kalvin;Fred;;1;UFBSCMSA;2016/17;FredK@cardiff.ac.uk
-0236587/1;BLOGGS;JO;;2;UFBSCMSA;2001/2;BloggsJ43@cardiff.ac.uk
-C1628125;Shortman;Louise;;3;UFBSCMSA;2016/17;LouiseS@cardiff.ac.uk
-C1628114;Amos;Goeff;;4;UFBSCMSA;2016/17;GeoffA@cardiff.ac.uk
-C1628117;Smith;Alex;;1;UFBSCMSA;2016/17;AlexS@cardiff.ac.uk
-C1628113;Geraldine;Bobby;;2;UFBSCMSA;2016/17;BobbyG@cardiff.ac.uk
+C1628114;Amos;Goeff;;2;UFBSCMSA;2016/17;GeoffA@cardiff.ac.uk
 C1628126;Thompson;Alex;;3;UFBSCMSA;2016/17;AlexT@cardiff.ac.uk
-C1628119;Jones;Felix;Frosty;4;UFBSCMSA;2016/17;JonesF@cardiff.ac.uk
+C1628122;Piri;Sam;;4;UFBSCMSA;2016/17;SamP@cardiff.ac.uk
 C1628115;Jones;Larry;;1;UFBSCMSA;2016/17;LarryJ@cardiff.ac.uk
-C1628122;Piri;Sam;;2;UFBSCMSA;2016/17;SamP@cardiff.ac.uk
-C1628116;Hades;Jerald;;3;UFBSCMSA;2016/17;JeraldH@cardiff.ac.uk
-C1628112;Alcazar;Javier;;4;UFBSCMSA;2016/17;AlcazarZafraJ@cardiff.ac.uk
-C1628120;Everett;Janice;;1;UFBSCMSA;2016/17;JaniceE@cardiff.ac.uk
-C1278982;Builder;Bob;The;2;2016/17;69;bob@gmail.com
-C1628123;Mills;James;;3;UFBSCMSA;2016/17;JamesM@cardiff.ac.uk
-C1628124;Reed;Heidi;;4;UFBSCMSA;2016/17;HeidiR@cardiff.ac.uk
+C1628116;Hades;Jerald;;2;UFBSCMSA;2016/17;JeraldH@cardiff.ac.uk
+C1628125;Shortman;Louise;;3;UFBSCMSA;2016/17;LouiseS@cardiff.ac.uk
+C1628119;Jones;Felix;Frosty;4;UFBSCMSA;2016/17;JonesF@cardiff.ac.uk
+C1278982;Builder;Bob;The;1;2016/17;69;bob@gmail.com
+C1628124;Reed;Heidi;;2;UFBSCMSA;2016/17;HeidiR@cardiff.ac.uk
+C1628112;Alcazar;Javier;;3;UFBSCMSA;2016/17;AlcazarZafraJ@cardiff.ac.uk
+0236587/1;BLOGGS;JO;;4;UFBSCMSA;2001/2;BloggsJ43@cardiff.ac.uk
+C1628117;Smith;Alex;;1;UFBSCMSA;2016/17;AlexS@cardiff.ac.uk
+C1628123;Mills;James;;2;UFBSCMSA;2016/17;JamesM@cardiff.ac.uk
+C1628113;Geraldine;Bobby;;3;UFBSCMSA;2016/17;BobbyG@cardiff.ac.uk
+C1628120;Everett;Janice;;4;UFBSCMSA;2016/17;JaniceE@cardiff.ac.uk
 C1628118;Moss;Ben;;1;UFBSCMSA;2016/17;BenM@cardiff.ac.uk
 UFBSCMSA;BSc Computer Science
 UFBSCMSB;BSc Computer Science with year in industry
