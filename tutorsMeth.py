@@ -48,10 +48,10 @@ def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
 def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
 	if ID!=len(database.tutorList):	
 		while (int(ID)<len(database.tutorList)):
-			print(database.tutorList[ID])
+			#print(database.tutorList[ID])
 			database.tutorList[ID]=database.tutorList[str(int(ID)+1)]
 			database.tutorList[ID]["id"]=ID
-			print(database.tutorList[ID])
+			#print(database.tutorList[ID])
 			for tutees in database.tuteeList:
 				
 				if database.tuteeList[tutees]["tutor"]==str(int(ID)+1):
