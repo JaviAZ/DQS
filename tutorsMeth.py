@@ -14,7 +14,6 @@ def genGroups(): #Assigns a tutor to each tutee
 				selectedGroup = 1
 			else:
 				selectedGroup += 1
-		print(selectedGroup)
 		database.tuteeList[tutee]["tutor"]=str(selectedGroup)
 		tn=int(database.tutorList[str(selectedGroup)]["tuteesN"])
 		tn+=1
@@ -46,7 +45,7 @@ def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
 
 def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
 	del database.tutorList[ID]
-	#redistGroups(ID)
+	redistGroups(ID)
 
 def printTutors():	
 	outputList = []
