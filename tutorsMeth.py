@@ -20,9 +20,7 @@ def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
 
 def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
 	del database.tutorList[ID]
-	tms.exportTutors()
 	redistGroups(ID)
-	print(database.tuteeList)
 
 def viewTutorList(): #Print tutorlist and how many tutees each has. With option to add or remove tutor (which would call respective methods)
 	outputList = []
@@ -74,7 +72,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 					taken4=False
 				elif len(tuteesN)==0:
 					print("			Please enter a value.")
-			print("So, \nTutor ID: "+tutorID+"\nFullname: "+name+" "+surname+"\nE-mail: "+email+" \nNumber of students in his group: "+tuteesN) 
+			print("So, \nTutor ID: "+tutorID+"\nFullname: "+name+" "+surname+"\nE-mail: "+email) 
 			undecided = True
 			while undecided:
 				print("Is that correct: yes/no")
@@ -82,7 +80,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 				if response=="yes":
 					takeAction=False
 					undecided=False
-					addTutor(tutorID, name, surname, email,tuteesN)
+					addTutor(tutorID, name, surname, email, 0)
 					viewTutorList()
 				elif response=="no":
 					print("	   You'll be returned to the menu to try again.")

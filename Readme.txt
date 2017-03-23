@@ -15,7 +15,6 @@ MarkScheme:
 
 Things to fix:
 	add validation checking to inputs
-	spaces after first names in tutees.csv
 	when showing tutor info also show number of tutees the tutor has
 	tutor degree isnt taken in account when assigning groups
 	keep record of deleted students
@@ -25,6 +24,7 @@ Things to fix:
 	The headers such as "Tutor Number", "Name" and "Email" in the viewTutorGroup method could be changed to
 	   all uppercase to make it stand out?
 	+ random layout changes
+	adding a tutor asks user how many tutees they have, value should be determined by system not user
 
 Fixed:
 	tutor can be added with the same ID of an old tutor, overwritting it. Make the program create the ID instead of the user - issue also applies to editting preexisting tutors
