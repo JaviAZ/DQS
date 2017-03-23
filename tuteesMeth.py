@@ -252,7 +252,6 @@ def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask 
 			while check2:
 				print("")
 				Choice = tms.userInput("Is this the correct student? ")
-				print("")
 				if Choice == "yes":
 					check2=False
 					while check3:

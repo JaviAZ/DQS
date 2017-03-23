@@ -5,6 +5,7 @@ import tuteesMeth
 import csv
 
 def endProgram(): #Later dictionaries will be put into csv before closing the application. To be completed
+	print("")
 	print("Exiting program.")
 	exportTutees()
 	exportTutors()

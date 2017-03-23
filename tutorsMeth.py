@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import database
 import tms
+import tuteesMeth
 
 def genGroups(): #Assigns a tutor to each tutee
 	availableGroups=len(database.tutorList)
@@ -176,10 +177,12 @@ def tutor():
 	print("\n                     -----------\n                        TUTOR\n                     -----------")
 	check1=True
 	check2=True
+	check3=True
 	tutorList=database.tutorList
 	while check1:
 		print("")
 		tutorSurname=tms.userInput("Enter your surname: ")
+		print("")
 		tcount=0
 		for tutorKey in tutorList:
 			if tutorSurname == tutorList[tutorKey]["surname"].lower():
@@ -189,12 +192,20 @@ def tutor():
 				print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
 		if check1:
 			print("Sorry that tutor was not found.")
+			print("")
 		else:
 			while check2:
-				Choice = tms.userInput("Enter your tutor ID: ")
+				print("")
+				Choice = tms.userInput("Enter your tutor ID number: ")
 				if Choice in tutorList:
 					tutorObj=tutorList[Choice]
 					check2=False
-					break
+					while check3:
+						tuteesMeth.viewTutorGroup(tutorObj["id"])
+						print("\n	            		RETURN TO MENU 		                ")
+						print("")
+						Choice2 = tms.userInput("")
+						if Choice2 == "return to menu":
+							tms.main(True)
 				else:
 					print("That tutor isn't in the list.")
