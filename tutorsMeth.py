@@ -12,7 +12,7 @@ def genGroups(): #Assigns a tutor to each tutee
 		database.tuteeList[tutee]["tutor"]=str(selectedGroup)
 		tn=int(database.tutorList[str(selectedGroup)]["tuteesN"])
 		tn+=1
-		database.tutorList[selectedGroup]["tuteesN"]=str(tn)
+		database.tutorList[str(selectedGroup)]["tuteesN"]=str(tn)
 		selectedGroup += 1
 
 def redistGroups(tutorDelID): #Redistribute students into new groups
