@@ -20,6 +20,7 @@ def genGroups(): #Assigns a tutor to each tutee
 		tn+=1
 		database.tutorList[str(selectedGroup)]["tuteesN"]=str(tn)
 		selectedGroup += 1
+		print("tutor: "+)
 
 def redistGroups(tutorDelID): #Redistribute students into new groups
 	tutorPos = 0
@@ -241,6 +242,9 @@ def tutor():
 			else:
 				print("Sorry, that tutor was not found. Please try again.")
 				print("")
+				break
+		if tcount>0:
+			break
 	while True:
 		print("")
 		Choice = tms.userInput("Enter your tutor ID number: ")

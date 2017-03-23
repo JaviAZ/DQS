@@ -277,6 +277,8 @@ def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask 
 				break
 			else:
 				print("Sorry, that student was not found. Please try again.")
+		if tcount>0:
+			break
 	while True:
 		print("")
 		Choice = tms.userInput("Is this the correct student? ")
