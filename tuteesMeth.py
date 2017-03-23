@@ -202,26 +202,26 @@ def editTutee(): #Ask for tutee surname. show possible options or print error me
 	sflag=True
 	sflag2=True
 	while sflag:
-  		print("")
-  		tuteeSurname=tms.userInput("Input the surname of the tutee you wish to edit: ")
-  		scount=0
-  		tuteesCode=[]
-  		for tuteeKey in database.tuteeList:
-  			if tuteeSurname==database.tuteeList[tuteeKey]["surname"].lower():
-  				scount+=1
+		print("")
+		tuteeSurname=tms.userInput("Input the surname of the tutee you wish to edit: ")
+		scount=0
+		tuteesCode=[]
+		for tuteeKey in database.tuteeList:
+			if tuteeSurname==database.tuteeList[tuteeKey]["surname"].lower():
+				scount+=1
 				sflag=False
-  				print ("Student Number: "+database.tuteeList[tuteeKey]["tuteeNo"]+". Name: "+database.tuteeList[tuteeKey]["name"]+" "+database.tuteeList[tuteeKey]["name2"]+". Surname: "+database.tuteeList[tuteeKey]["surname"]+". Email: "+database.tuteeList[tuteeKey]["email"])
-  				tuteesCode+=[database.tuteeList[tuteeKey]["tuteeNo"]]
-  		if scount==0:
-  			print("Sorry the tutee was not found.")
-  		else:
-  			while sflag2:
-  				Choice=tms.userInput("Enter the student number of the tutee you wish to edit: ").upper()
-  				if Choice in database.tuteeList and Choice in tuteesCode:
-  					tuteeObj=database.tuteeList[Choice]
+				print ("Student Number: "+database.tuteeList[tuteeKey]["tuteeNo"]+". Name: "+database.tuteeList[tuteeKey]["name"]+" "+database.tuteeList[tuteeKey]["name2"]+". Surname: "+database.tuteeList[tuteeKey]["surname"]+". Email: "+database.tuteeList[tuteeKey]["email"])
+				tuteesCode+=[database.tuteeList[tuteeKey]["tuteeNo"]]
+		if scount==0:
+			print("Sorry the tutee was not found.")
+		else:
+			while sflag2:
+				Choice=tms.userInput("Enter the student number of the tutee you wish to edit: ").upper()
+				if Choice in database.tuteeList and Choice in tuteesCode:
+					tuteeObj=database.tuteeList[Choice]
 					sflag2=False
-  					break
-  				else:
+					break
+				else:
 					print("That student isn't in the list.")
 	while True:
 		editChoice=tms.userInput("Do you wish to edit name, middle name, surname, email, course, course year or tutor? ")
