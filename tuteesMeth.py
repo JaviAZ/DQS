@@ -33,6 +33,7 @@ def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor COMPLETED
 			print(tuteeList[entry]["tuteeNo"]+" "+(" ")*(17-len(tuteeList[entry]["tuteeNo"]))+tuteeList[entry]["name"]+" "+tuteeList[entry]["name2"]+tuteeList[entry]["surname"]+" "+(" ")*(19-(len(tuteeList[entry]["name"])+len(tuteeList[entry]["name2"])+len(tuteeList[entry]["surname"])))+tuteeList[entry]["email"])
 			tuteeNList+=[entry]
 	return tuteeNList
+
 def printTutees(): #COMPLETED
 	print("")
 	print("STUDENT NUMBER     NAME")
@@ -42,15 +43,18 @@ def printTutees(): #COMPLETED
 		else:
 			print(database.tuteeList[entry]["tuteeNo"]+"           "+database.tuteeList[entry]["name"]+" "+database.tuteeList[entry]["name2"]+" "+database.tuteeList[entry]["surname"])
 
+def printTutee(TuteeN):
+	print("\nTutee:\n     Student number: "+TuteeN+"\n     Name: "+database.tuteeList[TuteeN]["name"]+"\n     Middle name: "+database.tuteeList[TuteeN]["name2"]+"\n     Surname: "+database.tuteeList[TuteeN]["surname"]+"\n     Email: "+database.tuteeList[TuteeN]["email"]+"\n     Degree: "+database.tuteeList[TuteeN]["course"]+"\n     Course year: "+database.tuteeList[TuteeN]["courseY"]+"\n     Tutor: "+database.tutorList[database.tuteeList[TuteeN]["tutor"]]["surname"])
+
 def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods) COMPLETED
 	printTutees()
 	takeAction = True
 	while takeAction:
-		print("\n	ADD STUDENT 		REMOVE STUDENT 		  RETURN TO MENU")
+		print("\nFor student info input student number\n	ADD STUDENT 		REMOVE STUDENT 		  RETURN TO MENU")
 		print("")
 		action = tms.userInput("")	
 
-		if action.lower()=="add student":
+		if action=="add student":
 			taken1=True
 			checker1=0
 			while taken1:
@@ -176,7 +180,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 				else:
 					print("Please enter 'yes' or 'no'")
 		
-		elif action.lower()=="remove student":
+		elif action=="remove student":
 			match=True
 			checker = 0
 			while match:
@@ -216,9 +220,11 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 					print("Please enter 'yes' or 'no'")
 			
 		
-		elif action.lower()=="return to menu":
+		elif action=="return to menu":
 			takeAction=False
 			tms.admin(True)
+		elif action.upper() in database.tuteeList:
+			printTutee(action.upper())
 		else:
 			print("invalid input")
 

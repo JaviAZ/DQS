@@ -284,7 +284,7 @@ def tutor():
 					check2=False
 					while check3:
 						tuteesNList=tuteesMeth.viewTutorGroup(tutorObj["id"])
-						print("\nFor quota of tutees in course year order type courseY\nFor quota of tutees in course degree order type course.")
+						print("\nFor quota of tutees in course year order type courseY\nFor quota of tutees in course degree order type course.\nFor student info input student number")
 						print("\n	            		RETURN TO MENU 		                ")
 						print("")
 						Choice2 = tms.userInput("")
@@ -296,6 +296,9 @@ def tutor():
 						elif Choice2=="course":
 							tutorsQuota("course",tutorObj["id"],tuteesNList)
 							tms.main(True)
+						elif Choice2.upper() in database.tuteeList:
+							tuteesMeth.printTutee(Choice2.upper())
+							print("")
 						else:
 							print("Sorry that isn't a valid input. Please type return to menu, coursey or course.")
 				else:
