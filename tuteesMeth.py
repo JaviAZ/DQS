@@ -16,6 +16,7 @@ def removeTutee(tuteeNo): #Place tutee in a separate database. COMPLETED
 def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor COMPLETED
 	tuteeList=database.tuteeList
 	tutorList=database.tutorList
+	tuteeNList=[]
 	print("")
 	print("                       Tutor group information:")
 	print("")
@@ -30,7 +31,8 @@ def viewTutorGroup(tutorN):	#Print tutorgroup depending on tutor COMPLETED
 	for entry in tuteeList:
 		if tuteeList[entry]["tutor"] == tutorN:
 			print(tuteeList[entry]["tuteeNo"]+" "+(" ")*(17-len(tuteeList[entry]["tuteeNo"]))+tuteeList[entry]["name"]+" "+tuteeList[entry]["name2"]+tuteeList[entry]["surname"]+" "+(" ")*(19-(len(tuteeList[entry]["name"])+len(tuteeList[entry]["name2"])+len(tuteeList[entry]["surname"])))+tuteeList[entry]["email"])
-
+			tuteeNList+=[entry]
+	return tuteeNList
 def printTutees(): #COMPLETED
 	print("")
 	print("STUDENT NUMBER     NAME")

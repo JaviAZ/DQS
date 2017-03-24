@@ -224,6 +224,28 @@ def editTutor(): #Ask for surname. Show possible options or print error message.
 			print("\n\n                          ***Please input name, surname, email or group.***\n\n")
 	print ("ID: "+tutorObj["id"]+". Name: "+tutorObj["name"]+". Surname: "+tutorObj["surname"]+". Email: "+tutorObj["email"])
 
+def tutorsQuota(choice,tutorN,tuteesNList):
+	tutorList=database.tutorList
+	tuteeList=database.tuteeList
+	temp=[]
+	for tuteesN in tuteesNList: 
+		temp+=[[tuteesN,database.tuteeList[tuteesN][choice]]]
+	temp.sort(key=lambda tup: tup[1]) 
+	print("")
+	print("                       Tutor group information:")
+	print("")
+	print("TUTOR NUMBER      NAME                 EMAIL")
+	for entry in tutorList:
+		if tutorList[entry]["id"] == tutorN:
+			print(tutorList[entry]["id"]+" "+(" ")*(17-len(tutorList[entry]["id"]))+tutorList[entry]["name"]+" "+tutorList[entry]["surname"]+" "+(" ")*(19-(len(tutorList[entry]["name"])+len(tutorList[entry]["surname"])))+tutorList[entry]["email"])
+			print("")
+			print("Your tutor group has " + tutorList[entry]["tuteesN"] + " tutees in it.")
+			print("")
+			break
+	print("STUDENT NUMBER    NAME                 COURSE YEAR     DEGREE              EMAIL")
+	for entry in temp:
+		print(entry[0]+" "+(" ")*(17-len(tuteeList[entry[0]]["tuteeNo"]))+tuteeList[entry[0]]["name"]+" "+tuteeList[entry[0]]["name2"]+tuteeList[entry[0]]["surname"]+" "+(" ")*(19-(len(tuteeList[entry[0]]["name"])+len(tuteeList[entry[0]]["name2"])+len(tuteeList[entry[0]]["surname"])))+tuteeList[entry[0]]["courseY"]+"         "+tuteeList[entry[0]]["course"]+"            "+tuteeList[entry[0]]["email"])
+
 def tutor(): 
 #Ask for surname. Check list of tutors for surname. 
 #Print error message if tutor not found. Print results with id, name, surname and email. User chooses result and prints its group COMPLETED
@@ -261,11 +283,20 @@ def tutor():
 					tutorObj=tutorList[Choice]
 					check2=False
 					while check3:
-						tuteesMeth.viewTutorGroup(tutorObj["id"])
+						tuteesNList=tuteesMeth.viewTutorGroup(tutorObj["id"])
+						print("\nFor quota of tutees in course year order type courseY\nFor quota of tutees in course degree order type course.")
 						print("\n	            		RETURN TO MENU 		                ")
 						print("")
 						Choice2 = tms.userInput("")
 						if Choice2 == "return to menu":
 							tms.main(True)
+						elif Choice2=="coursey":
+							tutorsQuota("courseY",tutorObj["id"],tuteesNList)
+							tms.main(True)
+						elif Choice2=="course":
+							tutorsQuota("course",tutorObj["id"],tuteesNList)
+							tms.main(True)
+						else:
+							print("Sorry that isn't a valid input. Please type return to menu, coursey or course.")
 				else:
 					print("That tutor isn't in the list.") 
