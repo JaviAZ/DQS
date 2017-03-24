@@ -80,7 +80,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 						name=name[0].capitalize()+name[1:]
 						taken2=False
 					if not name.isalpha():
-						print("		Please use just alphabetical characters")
+						print("		Please use just alphabetical characters.")
 				elif len(name)==0:
 					print("			Please enter a value.")
 
@@ -93,7 +93,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 						name2=name2[0].capitalize()+name2[1:]
 						taken8=False
 					if not name2.isalpha():
-						print("		Please use just alphabetical characters")
+						print("		Please use just alphabetical characters.")
 				if len(name2)==0:
 					taken8=False
 			taken3=True
@@ -105,7 +105,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 						surname=surname[0].capitalize()+surname[1:]
 						taken3=False
 					if not surname.isalpha():
-						print("		Please use just alphabetical characters")
+						print("		Please use just alphabetical characters.")
 				elif len(surname)==0:
 					print("			Please enter a value.")
 			taken4=True
@@ -124,7 +124,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 					if course.isalpha():
 						taken5=False
 					if not course.isalpha():
-						print("		Please use just alphabetical characters")
+						print("		Please use just alphabetical characters.")
 				elif len(course)==0:
 					print("			Please enter a value.")
 			taken6=True
@@ -136,12 +136,12 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 						if int(courseY)<=6 and int(courseY)>0:
 							taken6=False	
 					if int(courseY)>6 or int(courseY)<1:
-						print("		Please enter a valid year(e.g. 1-6)")
+						print("		Please enter a valid year(e.g. 1-6).")
 				
 				elif len(courseY)==0:
 					print("			Please enter a value.")
 				elif not courseY.isdigit():
-					print("		Please use just numerical values")
+					print("		Please use just numerical values.")
 			taken7=True
 			while taken7:
 				print("Enter the ID of the tutor they will have: ")
@@ -152,9 +152,9 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 					elif len(tutor)==0:
 						print("			Please enter a value.")
 					elif int(tutor)>len(database.tutorList):
-						print("         Sorry there is no tutor with that ID")
+						print("         Sorry there is no tutor with that ID.")
 				else:
-					print("         Sorry the tutor ID must be an integer")
+					print("         Sorry the tutor ID must be an integer.")
 			print("So, \nStudent Number: "+studentCode+"\nFullname: "+name+" "+name2+" "+surname+"\nE-mail: "+email+" \nCourse: "+course+"\nYear of study: "+courseY+"\nTutor: "+tutor) 
 			undecided = True
 			while undecided:
@@ -293,7 +293,8 @@ def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask 
 	tuteeList=database.tuteeList
 	while check1:
 		print("")
-		studentNumber=tms.userInput("Enter your student number: ")
+		print("Enter your student number: ")
+		studentNumber=tms.userInput("")
 		print("")
 		tcount=0
 		for tuteeKey in tuteeList:
@@ -308,7 +309,8 @@ def tutee(): #Ask for tutee number. Print error message if tutee not found. Ask 
 		else:
 			while check2:
 				print("")
-				Choice = tms.userInput("Is this the correct student? ")
+				print("Is this the correct student? ")
+				Choice = tms.userInput("")
 				if Choice == "yes":
 					check2=False
 					while check3:

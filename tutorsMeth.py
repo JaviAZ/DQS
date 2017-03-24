@@ -95,8 +95,11 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 				print("Enter their first name: ")
 				name=tms.userInput("")
 				if len(name)>0:
-					name=name[0].capitalize()+name[1:]
-					taken1=False
+					if name.isalpha():
+						name=name[0].capitalize()+name[1:]
+						taken1=False
+					elif not name.isalpha():
+						print("		Please use just alphabetical characters.")
 				elif len(name)==0:
 					print("			Please enter a value.")
 			taken2=True
@@ -104,8 +107,11 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 				print("Enter their surname: ")
 				surname=tms.userInput("")
 				if len(surname)>0:
-					surname=surname[0].capitalize()+surname[1:]
-					taken2=False
+					if surname.isalpha():
+						surname=surname[0].capitalize()+surname[1:]
+						taken2=False
+					elif not surname.isalpha():
+						print("		Please enter just alphabetical characters.")
 				elif len(surname)==0:
 					print("			Please enter a value.")
 			taken3=True
@@ -232,7 +238,8 @@ def tutor():
 	tutorList=database.tutorList
 	while check1:
 		print("")
-		tutorSurname=tms.userInput("Enter your surname: ")
+		print("Enter your surname: ")
+		tutorSurname=tms.userInput("")
 		print("")
 		tcount=0
 		for tutorKey in tutorList:
@@ -248,7 +255,8 @@ def tutor():
 		else:
 			while check2:
 				print("")
-				Choice = tms.userInput("Enter your tutor ID number: ")
+				print("Enter your tutor ID number: ")
+				Choice = tms.userInput("")
 				if Choice in tutorList and Choice in tutorsCode:
 					tutorObj=tutorList[Choice]
 					check2=False
