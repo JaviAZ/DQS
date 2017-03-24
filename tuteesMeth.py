@@ -40,7 +40,7 @@ def printTutees(): #COMPLETED
 		else:
 			print(database.tuteeList[entry]["tuteeNo"]+"           "+database.tuteeList[entry]["name"]+" "+database.tuteeList[entry]["name2"]+" "+database.tuteeList[entry]["surname"])
 
-def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods) 
+def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which would call respective methods) COMPLETED
 	printTutees()
 	takeAction = True
 	while takeAction:
@@ -220,7 +220,7 @@ def viewTuteeList(): #Print tuteeList with option to add or remove tutees (which
 		else:
 			print("invalid input")
 
-def editTutee(): #Ask for tutee surname. show possible options or print error message. ask user for attribute to change.
+def editTutee(): #Ask for tutee surname. show possible options or print error message. ask user for attribute to change. COMPLETED
 	sflag=True
 	sflag2=True
 	while sflag:

@@ -39,6 +39,13 @@ def importTutees(): #Imports information from Tutees.csv into tuteeList COMPLETE
 				if row[0][0]!="U":
 					tuteesMeth.addTutee(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7])
 
+def importDelTutees():
+	with open ('DelTutees.csv',"r") as csvfile:
+		spamreader=csv.reader(csvfile,delimiter=";",quotechar="|")
+		for row in spamreader:
+			if len(row)>0:
+				database.delTuteeList[row[0]]={"tuteeNo":row[0], "name":row[1], "name2":row[2], "surname":row[3], "email":row[4], "course":row[5], "courseY":row[6], "tutor":row[7]}
+
 def importTutors(): #Imports informtation from Tutors.csv into tutorList COMPLETED
 	with open ('Tutors.csv',"r") as csvfile:
 		spamreader=csv.reader(csvfile,delimiter=";",quotechar="|")
@@ -61,8 +68,6 @@ def exportTutees(): #Exports information from tuteeList into Tutees.csv COMPLETE
 def exportDelTutees(): #Exports information from tuteeList into Tutees.csv
 	with open ('DelTutees.csv','w') as csvfile:
 		writer=csv.writer(csvfile,delimiter=";")
-		header=["Student Code","Surname","Forename1","Forename2","TUTOR","Course","Acad Year","Univ Email"]
-		writer.writerow(header)
 		for tutee in database.delTuteeList:
 			writer.writerow([database.delTuteeList[tutee]["tuteeNo"],database.delTuteeList[tutee]["surname"],database.delTuteeList[tutee]["name"],database.tuteeList[tutee]["name2"],database.delTuteeList[tutee]["tutor"],database.delTuteeList[tutee]["course"],database.delTuteeList[tutee]["courseY"],database.delTuteeList[tutee]["email"]])
 
@@ -77,6 +82,7 @@ def exportTutors(): #Exports information from tutorList into Tutors.csv
 def startProgram(): #Calls importing functions and main function. COMPLETED
 	importTutees()
 	importTutors()
+	importDelTutees()
 	for tutee in database.tuteeList:
 		if(len(database.tuteeList[tutee]["tutor"])==0):
 			print("Groups must be created, go to ADMIN and create groups")

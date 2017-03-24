@@ -3,7 +3,7 @@ import database
 import tms
 import tuteesMeth
 
-def genGroups(): #Assigns a tutor to each tutee
+def genGroups(): #Assigns a tutor to each tutee COMPLETED
 	availableGroups=[]
 	selectedGroup=1
 	for tutor in database.tutorList:
@@ -21,7 +21,7 @@ def genGroups(): #Assigns a tutor to each tutee
 		database.tutorList[str(selectedGroup)]["tuteesN"]=str(tn)
 		selectedGroup += 1
 
-def redistTutee(tutorDelID,tutee):
+def redistTutee(tutorDelID,tutee):#COMPLETED
 	if database.tuteeList[tutee]["tutor"] == tutorDelID:
 			temp=1000 # just a large value that is greater than total number of students
 			for tutor in database.tutorList:
@@ -36,7 +36,7 @@ def redistTutee(tutorDelID,tutee):
 			print("-----------------------------------------------------")
 			print(database.tuteeList[tutee]["name"] +" " + database.tuteeList[tutee]["surname"] + " has been moved to " + database.tutorList[(database.tuteeList[tutee]["tutor"])]["name"] + " " + database.tutorList[(database.tuteeList[tutee]["tutor"])]["surname"] + "'s tutor group.")
 
-def redistGroups(tutorDelID): #Redistribute students into new groups
+def redistGroups(tutorDelID): #Redistribute students into new groups COMPLETED
 	tutorPos = 0
 	newTutorID = 0 
 	temp = 1000 
@@ -45,11 +45,10 @@ def redistGroups(tutorDelID): #Redistribute students into new groups
 	print("")
 	print("=====================================================")	
 
-
-def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList
+def addTutor(ID,name,surname,email,tuteesN): #Adds tutor to tutorList COMPLETED
 	database.tutorList[ID]={"id":ID, "name":name, "surname":surname, "email":email, "tuteesN":tuteesN}
 
-def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, delete tutor from list
+def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, delete tutor from list COMPLETED
 	if ID!=len(database.tutorList):	
 		while (int(ID)<len(database.tutorList)):
 			#print(database.tutorList[ID])
@@ -66,7 +65,7 @@ def removeTutor(ID): #Call redistGroups to redistribute group if tutor has one, 
 		del database.tutorList[ID]
 	redistGroups(ID)
 
-def printTutors():	
+def printTutors(): #COMPLETED
 	outputList = []
 	i=1
 	for entry in database.tutorList:
@@ -76,7 +75,7 @@ def printTutors():
 		print(entry)
 		i+=1
 
-def viewTutorList(): #Print tutorlist and how many tutees each has. With option to add or remove tutor (which would call respective methods)
+def viewTutorList(): #Print tutorlist and how many tutees each has. With option to add or remove tutor (which would call respective methods) COMPLETED
 	printTutors()
 	takeAction = True
 	while takeAction:
@@ -178,7 +177,7 @@ def viewTutorList(): #Print tutorlist and how many tutees each has. With option 
 		else:
 			print("invalid input")
 
-def editTutor(): #Ask for surname. Show possible options or print error message. ask user for attribute to change.
+def editTutor(): #Ask for surname. Show possible options or print error message. ask user for attribute to change. COMPLETED
 	while True:
 		print("")
 		tutorSurname=tms.userInput("Input the surname of the tutor you wish to edit: ")
@@ -221,7 +220,7 @@ def editTutor(): #Ask for surname. Show possible options or print error message.
 
 def tutor(): 
 #Ask for surname. Check list of tutors for surname. 
-#Print error message if tutor not found. Print results with id, name, surname and email. User chooses result and prints its group
+#Print error message if tutor not found. Print results with id, name, surname and email. User chooses result and prints its group COMPLETED
 	print("\n                     -----------\n                        TUTOR\n                     -----------")
 	check1=True
 	check2=True
